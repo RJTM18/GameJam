@@ -1,4 +1,10 @@
 #pragma once
+#include  "Analizador.h"
+#include "GestorBitacora.h"
+#include "PalabrasClave.h"
+#include "RegistroIA.h"
+#include "GeneradorAleatorio.h"
+#include "Estadisticas.h"
 
 
 namespace GameJam {

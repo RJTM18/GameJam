@@ -2,6 +2,7 @@
 #include "GestorBitacora.h"
 #include "FrmRegistro.h"
 #include "FrmPrompts.h"
+#include "FrmIndicadores.h"
 namespace GameJam {
 
 	using namespace System;
@@ -74,6 +75,7 @@ namespace GameJam {
 			// 
 			// menuPrincipal
 			// 
+			this->menuPrincipal->ImageScalingSize = System::Drawing::Size(20, 20);
 			this->menuPrincipal->Items->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(9) {
 				this->asdToolStripMenuItem,
 					this->listadoDeRegistrosToolStripMenuItem, this->dashBoardToolStripMenuItem, this->indicadoresToolStripMenuItem, this->promptsToolStripMenuItem,
@@ -122,25 +124,26 @@ namespace GameJam {
 			// generarDatosToolStripMenuItem
 			// 
 			this->generarDatosToolStripMenuItem->Name = L"generarDatosToolStripMenuItem";
-			this->generarDatosToolStripMenuItem->Size = System::Drawing::Size(93, 20);
+			this->generarDatosToolStripMenuItem->Size = System::Drawing::Size(118, 24);
 			this->generarDatosToolStripMenuItem->Text = L"Generar Datos";
+			this->generarDatosToolStripMenuItem->Click += gcnew System::EventHandler(this, &FrmInicio::generarDatosToolStripMenuItem_Click);
 			// 
 			// instruccionesToolStripMenuItem
 			// 
 			this->instruccionesToolStripMenuItem->Name = L"instruccionesToolStripMenuItem";
-			this->instruccionesToolStripMenuItem->Size = System::Drawing::Size(89, 20);
+			this->instruccionesToolStripMenuItem->Size = System::Drawing::Size(108, 24);
 			this->instruccionesToolStripMenuItem->Text = L"Instrucciones";
 			// 
 			// creadoresToolStripMenuItem
 			// 
 			this->creadoresToolStripMenuItem->Name = L"creadoresToolStripMenuItem";
-			this->creadoresToolStripMenuItem->Size = System::Drawing::Size(72, 20);
+			this->creadoresToolStripMenuItem->Size = System::Drawing::Size(90, 24);
 			this->creadoresToolStripMenuItem->Text = L"Creadores";
 			// 
 			// mnuSalir
 			// 
 			this->mnuSalir->Name = L"mnuSalir";
-			this->mnuSalir->Size = System::Drawing::Size(41, 20);
+			this->mnuSalir->Size = System::Drawing::Size(52, 24);
 			this->mnuSalir->Text = L"Salir";
 			this->mnuSalir->TextAlign = System::Drawing::ContentAlignment::TopCenter;
 			this->mnuSalir->Click += gcnew System::EventHandler(this, &FrmInicio::mnuSalir_Click);
@@ -153,7 +156,7 @@ namespace GameJam {
 			this->Controls->Add(this->menuPrincipal);
 			this->IsMdiContainer = true;
 			this->MainMenuStrip = this->menuPrincipal;
-			this->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->Margin = System::Windows::Forms::Padding(4);
 			this->Name = L"FrmInicio";
 			this->Text = L"FrmInicio";
 			this->Load += gcnew System::EventHandler(this, &FrmInicio::FrmInicio_Load);
@@ -176,6 +179,9 @@ namespace GameJam {
 	private: System::Void mnuHallazgos_click(System::Object^ sender, System::EventArgs^ e) {
 	}
 	private: System::Void mnuIndicadores_click(System::Object^ sender, System::EventArgs^ e) {
+		FrmIndicadores^ indicador = gcnew FrmIndicadores(bitacora);
+		indicador->MdiParent = this;
+		indicador->Show();
 	}
 	private: System::Void mnuPrompts_click(System::Object^ sender, System::EventArgs^ e) {
 		FormPrompts^ prompts = gcnew FormPrompts(bitacora);
@@ -187,5 +193,8 @@ private: System::Void FrmInicio_Load(System::Object^ sender, System::EventArgs^ 
 	private: System::Void mnuSalir_Click(System::Object^ sender, System::EventArgs^ e) {
 		this->Close();
 	}
+private: System::Void generarDatosToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
+	   
+}
 };
 }
