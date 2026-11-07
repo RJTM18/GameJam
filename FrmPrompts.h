@@ -61,18 +61,18 @@ namespace GameJam {
 		/// </summary>
 		void InitializeComponent(void)
 		{
-			System::Windows::Forms::DataVisualization::Charting::ChartArea^ chartArea2 = (gcnew System::Windows::Forms::DataVisualization::Charting::ChartArea());
-			System::Windows::Forms::DataVisualization::Charting::Legend^ legend2 = (gcnew System::Windows::Forms::DataVisualization::Charting::Legend());
-			System::Windows::Forms::DataVisualization::Charting::Series^ series2 = (gcnew System::Windows::Forms::DataVisualization::Charting::Series());
+			System::Windows::Forms::DataVisualization::Charting::ChartArea^ chartArea1 = (gcnew System::Windows::Forms::DataVisualization::Charting::ChartArea());
+			System::Windows::Forms::DataVisualization::Charting::Legend^ legend1 = (gcnew System::Windows::Forms::DataVisualization::Charting::Legend());
+			System::Windows::Forms::DataVisualization::Charting::Series^ series1 = (gcnew System::Windows::Forms::DataVisualization::Charting::Series());
 			this->lblTitulo = (gcnew System::Windows::Forms::Label());
 			this->label1 = (gcnew System::Windows::Forms::Label());
 			this->chartPalabras = (gcnew System::Windows::Forms::DataVisualization::Charting::Chart());
 			this->dgvPalabras = (gcnew System::Windows::Forms::DataGridView());
+			this->colPalabra = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->colFrecuencia = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->lblHallazgos0 = (gcnew System::Windows::Forms::Label());
 			this->lblHallazgos = (gcnew System::Windows::Forms::Label());
 			this->btnAnalisis = (gcnew System::Windows::Forms::Button());
-			this->colPalabra = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->colFrecuencia = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->chartPalabras))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dgvPalabras))->BeginInit();
 			this->SuspendLayout();
@@ -87,6 +87,7 @@ namespace GameJam {
 			this->lblTitulo->Size = System::Drawing::Size(337, 36);
 			this->lblTitulo->TabIndex = 0;
 			this->lblTitulo->Text = L"AI TRACE - Dashboard 3";
+			this->lblTitulo->Click += gcnew System::EventHandler(this, &FormPrompts::lblTitulo_Click);
 			// 
 			// label1
 			// 
@@ -98,22 +99,24 @@ namespace GameJam {
 			this->label1->Size = System::Drawing::Size(226, 20);
 			this->label1->TabIndex = 1;
 			this->label1->Text = L"palabras clave de los prompts";
+			this->label1->Click += gcnew System::EventHandler(this, &FormPrompts::label1_Click);
 			// 
 			// chartPalabras
 			// 
-			chartArea2->Name = L"ChartArea1";
-			this->chartPalabras->ChartAreas->Add(chartArea2);
-			legend2->Name = L"Legend1";
-			this->chartPalabras->Legends->Add(legend2);
+			chartArea1->Name = L"ChartArea1";
+			this->chartPalabras->ChartAreas->Add(chartArea1);
+			legend1->Name = L"Legend1";
+			this->chartPalabras->Legends->Add(legend1);
 			this->chartPalabras->Location = System::Drawing::Point(31, 96);
 			this->chartPalabras->Name = L"chartPalabras";
-			series2->ChartArea = L"ChartArea1";
-			series2->Legend = L"Legend1";
-			series2->Name = L"Frecuencia";
-			this->chartPalabras->Series->Add(series2);
+			series1->ChartArea = L"ChartArea1";
+			series1->Legend = L"Legend1";
+			series1->Name = L"Frecuencia";
+			this->chartPalabras->Series->Add(series1);
 			this->chartPalabras->Size = System::Drawing::Size(703, 459);
 			this->chartPalabras->TabIndex = 2;
 			this->chartPalabras->Text = L"chart1";
+			this->chartPalabras->Click += gcnew System::EventHandler(this, &FormPrompts::chartPalabras_Click);
 			// 
 			// dgvPalabras
 			// 
@@ -129,6 +132,22 @@ namespace GameJam {
 			this->dgvPalabras->Size = System::Drawing::Size(703, 142);
 			this->dgvPalabras->TabIndex = 3;
 			// 
+			// colPalabra
+			// 
+			this->colPalabra->AutoSizeMode = System::Windows::Forms::DataGridViewAutoSizeColumnMode::Fill;
+			this->colPalabra->HeaderText = L"Palabra clave";
+			this->colPalabra->MinimumWidth = 6;
+			this->colPalabra->Name = L"colPalabra";
+			this->colPalabra->ReadOnly = true;
+			// 
+			// colFrecuencia
+			// 
+			this->colFrecuencia->AutoSizeMode = System::Windows::Forms::DataGridViewAutoSizeColumnMode::Fill;
+			this->colFrecuencia->HeaderText = L"Frecuencia";
+			this->colFrecuencia->MinimumWidth = 6;
+			this->colFrecuencia->Name = L"colFrecuencia";
+			this->colFrecuencia->ReadOnly = true;
+			// 
 			// lblHallazgos0
 			// 
 			this->lblHallazgos0->AutoSize = true;
@@ -139,6 +158,7 @@ namespace GameJam {
 			this->lblHallazgos0->Size = System::Drawing::Size(79, 20);
 			this->lblHallazgos0->TabIndex = 4;
 			this->lblHallazgos0->Text = L"Hallazgos";
+			this->lblHallazgos0->Click += gcnew System::EventHandler(this, &FormPrompts::lblHallazgos0_Click);
 			// 
 			// lblHallazgos
 			// 
@@ -162,22 +182,6 @@ namespace GameJam {
 			this->btnAnalisis->Text = L"Actualizar analisis";
 			this->btnAnalisis->UseVisualStyleBackColor = true;
 			this->btnAnalisis->Click += gcnew System::EventHandler(this, &FormPrompts::btnAnalisis_Click);
-			// 
-			// colPalabra
-			// 
-			this->colPalabra->AutoSizeMode = System::Windows::Forms::DataGridViewAutoSizeColumnMode::Fill;
-			this->colPalabra->HeaderText = L"Palabra clave";
-			this->colPalabra->MinimumWidth = 6;
-			this->colPalabra->Name = L"colPalabra";
-			this->colPalabra->ReadOnly = true;
-			// 
-			// colFrecuencia
-			// 
-			this->colFrecuencia->AutoSizeMode = System::Windows::Forms::DataGridViewAutoSizeColumnMode::Fill;
-			this->colFrecuencia->HeaderText = L"Frecuencia";
-			this->colFrecuencia->MinimumWidth = 6;
-			this->colFrecuencia->Name = L"colFrecuencia";
-			this->colFrecuencia->ReadOnly = true;
 			// 
 			// FormPrompts
 			// 
@@ -286,5 +290,13 @@ namespace GameJam {
 		}
 		
 	}
+private: System::Void lblTitulo_Click(System::Object^ sender, System::EventArgs^ e) {
+}
+private: System::Void label1_Click(System::Object^ sender, System::EventArgs^ e) {
+}
+private: System::Void chartPalabras_Click(System::Object^ sender, System::EventArgs^ e) {
+}
+private: System::Void lblHallazgos0_Click(System::Object^ sender, System::EventArgs^ e) {
+}
 };
 }

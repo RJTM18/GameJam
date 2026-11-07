@@ -52,7 +52,7 @@ namespace GameJam {
             {
                 delete components;
             }
-            delete bitacora;
+       
         }
 
     private:

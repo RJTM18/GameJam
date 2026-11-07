@@ -250,20 +250,38 @@ namespace GameJam {
 	private: System::Void FrmIndicadores_Load(System::Object^ sender, System::EventArgs^ e) {
 		Estadisticas datos(bitacora);
 		datos.analizar();
+		int validados = 0;
+		int total = datos.getTotalConsultas();
 
-		lblTotalRegistros->Text = Convert::ToString(datos.getTotalConsultas());
+		lblTotalRegistros->Text = Convert::ToString(total);
+
+		for (int i = 0; i < bitacora->ObtenerTotal(); i++)
+		{
+			if (!bitacora->ObtenerRegistro(i)->getComoSeValido().empty())
+				validados++;
+
+			double porcentaje = total > 0 ? validados * 100.0 / total : 0;
+
+			lblValidados->Text = Convert::ToString(porcentaje) + L"%";
+			lblNoValidados->Text = Convert::ToString(100 - porcentaje) + L"%";
+		}
 
 		ChartIndicadores->Series[0]->Points->Clear();
+
 		string cursos[3] = {
-	    "Calculo I", "Algoritmos", "Matematica Discreta"
+			"Calculo I", "Algoritmos", "Matematica Discreta"
 		};
 
 		for (int i = 0; i < 3; i++)
 		{
 			double porcentaje = datos.CalcularPorcentaje(cursos[i]);
 
-			ChartIndicadores->Series[0]->Points->AddXY(gcnew String(cursos[i].c_str()), porcentaje);
+			ChartIndicadores->Series[0]->Points->AddXY(
+				gcnew String(cursos[i].c_str()), porcentaje);
 		}
+
+		lblHallazgos->Text =
+			L"Registros encontrados: " + Convert::ToString(total);
 
 	}
 	};
