@@ -8,6 +8,10 @@ private:
     vector<RegistroAI*> registros;
 
 public:
+    ~GestorBitacora() {
+        for (int i = 0; i <= (int)registros.size(); i++) { delete registros[i]; }
+    }
+
     vector<RegistroAI*> getRegistros() { return registros; }
 
     bool Agregar(RegistroAI* nuevo) {

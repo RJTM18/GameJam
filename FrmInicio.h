@@ -1,4 +1,6 @@
 #pragma once
+#include "GestorBitacora.h"
+#include "FrmRegistro.h"
 
 namespace GameJam {
 
@@ -12,27 +14,22 @@ namespace GameJam {
 	/// <summary>
 	/// Summary for FrmInicio
 	/// </summary>
-	public ref class FrmInicio : public System::Windows::Forms::Form
-	{
+	public ref class FrmInicio : public System::Windows::Forms::Form {
+	private:
+		GestorBitacora* bitacora;
 	public:
-		FrmInicio(void)
-		{
+		FrmInicio(void) {
 			InitializeComponent();
-			//
-			//TODO: Add the constructor code here
-			//
+			bitacora = new GestorBitacora();
 		}
 
 	protected:
 		/// <summary>
 		/// Clean up any resources being used.
 		/// </summary>
-		~FrmInicio()
-		{
-			if (components)
-			{
-				delete components;
-			}
+		~FrmInicio() {
+			if (components) { delete components; }
+			delete bitacora;
 		}
 	private: System::Windows::Forms::MenuStrip^ menuPrincipal;
 	protected:
@@ -130,6 +127,7 @@ namespace GameJam {
 		}
 #pragma endregion
 	private: System::Void mnuRegistro_Click(System::Object^ sender, System::EventArgs^ e) {
+		FrmRegistro^ registro = gcnew FrmRegistro(bitacora);
 	}
 	private: System::Void mnuListado_click(System::Object^ sender, System::EventArgs^ e) {
 	}
