@@ -2,7 +2,6 @@
 #pragma once
 #include "pch.h"
 #include <string>
-#include <cstdlib>
 #include "RegistroIA.h"
 #include "GestorBitacora.h"
 

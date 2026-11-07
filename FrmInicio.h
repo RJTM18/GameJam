@@ -1,7 +1,7 @@
 #pragma once
 #include "GestorBitacora.h"
 #include "FrmRegistro.h"
-#include "FormPrompts.h"
+#include "FrmPrompts.h"
 namespace GameJam {
 
 	using namespace System;
