@@ -58,11 +58,6 @@ namespace GameJam {
 	private: System::Windows::Forms::Label^ lblNoVerificados;
 	private: System::Windows::Forms::Button^ btnGoDashBoard;
 
-
-
-
-
-
 	protected:
 
 	private:
@@ -310,7 +305,7 @@ namespace GameJam {
 			this->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->Name = L"FrmListado";
 			this->Text = L"AI-TRACE — Detalle y Análisis";
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dgvRegistros))->EndInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->lvRegistros))->EndInit();
 			this->ResumeLayout(false);
 			this->PerformLayout();
 

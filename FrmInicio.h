@@ -3,6 +3,7 @@
 #include "FrmRegistro.h"
 #include "FrmPrompts.h"
 #include "FrmListado.h"
+
 namespace GameJam {
 
 	using namespace System;
