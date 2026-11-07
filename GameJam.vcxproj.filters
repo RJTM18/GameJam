@@ -65,6 +65,21 @@
     <ClInclude Include="FrmPrompts.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="FrmRegistro.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="FrmDashboard.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="FrmIndicadores.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="FrmInicio.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="FrmListado.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
