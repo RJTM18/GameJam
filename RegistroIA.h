@@ -27,91 +27,43 @@ public:
 
     }
 
+	RegistroIA(int ID, string Fecha, string Curso,
+		string Categoria, string HerramientaAI,
+		string Consulta, string Resultado, string Cambios) :
+		id(ID), fecha(Fecha), curso(Curso),
+		categoria(Categoria), herramientaAI(HerramientaAI),
+		consulta(Consulta), resultado(Resultado), cambios(Cambios),
+		validacion(false) { };
 
-    int getID() 
-    {
-        return id;
-    }
+    // GETTERS: obtener información
+	~RegistroIA() { };
 
-    string getFecha() 
-    { 
-        return fecha; 
-    }
+    // GETTERS: obtener información
 
-    string getCurso() 
-    { 
-        return curso;
-    }
-
-    string getCategoria() 
-    { 
-        return categoria; 
-    }
-
-    string getHerramientaAI() 
-    { 
-        return herramientaAI; 
-    }
-
-    string getConsulta() 
-    { 
-        return consulta; 
-    }
-
-    string getResultado() 
-    { 
-        return resultado; 
-    }
-
-    string getCambios() 
-    { 
-        return cambios; 
-    }
+    int getID() { return id; }
+    string getFecha() { return fecha; }
+    string getCurso() { return curso; }
+    string getCategoria() { return categoria; }
+    string getHerramientaAI() { return herramientaAI; }
+    string getConsulta() { return consulta; }
+    string getResultado() { return resultado; }
+    string getCambios() { return cambios; }
+    bool getValidacion() { return validacion; }
 
     bool getValidacion() 
     { 
         return validacion;
     }
 
-    void setFecha(string Fecha)
-    {
-        fecha = Fecha;
-    }
+    void setFecha(string Fecha) { fecha = Fecha; }
+    void setCurso(string Curso) { curso = Curso; }
+    void setCategoria(string Categoria) { categoria = Categoria; }
+    void setHerramientaAI(string HerramientaAI) { herramientaAI = HerramientaAI; }
+    void setConsulta(string Consulta) { consulta = Consulta; }
+    void setResultado(string Resultado) { resultado = Resultado; }
+    void setCambios(string Cambios) { cambios = Cambios; }
+    void setValidacion(bool Validacion) { validacion = Validacion; }
 
-    void setCurso(string Curso)
-    {
-        curso = Curso;
-    }
-
-    void setCategoria(string Categoria)
-    {
-        categoria = Categoria;
-    }
-
-    void setHerramientaAI(string HerramientaAI)
-    {
-        herramientaAI = HerramientaAI;
-    }
-
-    void setConsulta(string Consulta)
-    {
-        consulta = Consulta;
-    }
-
-    void setResultado(string Resultado)
-    {
-        resultado = Resultado;
-    }
-
-    void setCambios(string Cambios)
-    {
-        cambios = Cambios;
-    }
-
-    void setValidacion(bool Validacion)
-    {
-        validacion = Validacion;
-    }
 private:
 
     int id;
