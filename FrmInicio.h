@@ -128,6 +128,8 @@ namespace GameJam {
 #pragma endregion
 	private: System::Void mnuRegistro_Click(System::Object^ sender, System::EventArgs^ e) {
 		FrmRegistro^ registro = gcnew FrmRegistro(bitacora);
+		registro->MdiParent = this;
+		registro->Show();
 	}
 	private: System::Void mnuListado_click(System::Object^ sender, System::EventArgs^ e) {
 	}

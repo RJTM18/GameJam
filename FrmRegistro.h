@@ -12,27 +12,25 @@ namespace GameJam {
 	/// <summary>
 	/// Resumen de FrmRegistro
 	/// </summary>
-	public ref class FrmRegistro : public System::Windows::Forms::Form
-	{
+	public ref class FrmRegistro : public System::Windows::Forms::Form 	{
+	private:
+		GestorBitacora* bitacora;
+		GestorBitacora* gestorB;
+
 	public:
-		FrmRegistro(void)
+		FrmRegistro(GestorBitacora* bitacora)
 		{
 			InitializeComponent();
-			//
-			//TODO: agregar código de constructor aquí
-			//
+			this->bitacora = bitacora;
 		}
 
 	protected:
 		/// <summary>
 		/// Limpiar los recursos que se estén usando.
 		/// </summary>
-		~FrmRegistro()
-		{
-			if (components)
-			{
-				delete components;
-			}
+		~FrmRegistro() {
+			if (components) { delete components; }
+			delete bitacora;
 		}
 	private: System::Windows::Forms::GroupBox^ grpNuevoRegistro;
 	private: System::Windows::Forms::Label^ lblFecha;
