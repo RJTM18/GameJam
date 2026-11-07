@@ -43,7 +43,8 @@ namespace GameJam {
 	private: System::Windows::Forms::ToolStripMenuItem^ generarDatosToolStripMenuItem;
 	private: System::Windows::Forms::ToolStripMenuItem^ instruccionesToolStripMenuItem;
 	private: System::Windows::Forms::ToolStripMenuItem^ creadoresToolStripMenuItem;
-	private: System::Windows::Forms::ToolStripMenuItem^ salirToolStripMenuItem;
+	private: System::Windows::Forms::ToolStripMenuItem^ mnuSalir;
+
 
 	private:
 		/// <summary>
@@ -67,7 +68,7 @@ namespace GameJam {
 			this->generarDatosToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->instruccionesToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->creadoresToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
-			this->salirToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
+			this->mnuSalir = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->menuPrincipal->SuspendLayout();
 			this->SuspendLayout();
 			// 
@@ -76,7 +77,7 @@ namespace GameJam {
 			this->menuPrincipal->Items->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(9) {
 				this->asdToolStripMenuItem,
 					this->listadoDeRegistrosToolStripMenuItem, this->dashBoardToolStripMenuItem, this->indicadoresToolStripMenuItem, this->promptsToolStripMenuItem,
-					this->generarDatosToolStripMenuItem, this->instruccionesToolStripMenuItem, this->creadoresToolStripMenuItem, this->salirToolStripMenuItem
+					this->generarDatosToolStripMenuItem, this->instruccionesToolStripMenuItem, this->creadoresToolStripMenuItem, this->mnuSalir
 			});
 			this->menuPrincipal->Location = System::Drawing::Point(0, 0);
 			this->menuPrincipal->Name = L"menuPrincipal";
@@ -136,11 +137,13 @@ namespace GameJam {
 			this->creadoresToolStripMenuItem->Size = System::Drawing::Size(72, 20);
 			this->creadoresToolStripMenuItem->Text = L"Creadores";
 			// 
-			// salirToolStripMenuItem
+			// mnuSalir
 			// 
-			this->salirToolStripMenuItem->Name = L"salirToolStripMenuItem";
-			this->salirToolStripMenuItem->Size = System::Drawing::Size(41, 20);
-			this->salirToolStripMenuItem->Text = L"Salir";
+			this->mnuSalir->Name = L"mnuSalir";
+			this->mnuSalir->Size = System::Drawing::Size(41, 20);
+			this->mnuSalir->Text = L"Salir";
+			this->mnuSalir->TextAlign = System::Drawing::ContentAlignment::TopCenter;
+			this->mnuSalir->Click += gcnew System::EventHandler(this, &FrmInicio::mnuSalir_Click);
 			// 
 			// FrmInicio
 			// 
@@ -171,6 +174,9 @@ namespace GameJam {
 	private: System::Void mnuIndicadores_click(System::Object^ sender, System::EventArgs^ e) {
 	}
 	private: System::Void mnuPrompts_click(System::Object^ sender, System::EventArgs^ e) {
+	}
+	private: System::Void mnuSalir_Click(System::Object^ sender, System::EventArgs^ e) {
+		this->Close();
 	}
 };
 }

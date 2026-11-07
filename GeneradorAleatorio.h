@@ -8,16 +8,14 @@
 
 using namespace std;
 
-class GeneradorAleatorio
-{
+class GeneradorAleatorio{
 private:
     int cantidad;
     int contador;
 
 public:
 
-    GeneradorAleatorio(int Cantidad, int Contador)
-    {
+    GeneradorAleatorio(int Cantidad, int Contador) {
         cantidad = Cantidad;
         contador = Contador;
     }
@@ -221,10 +219,8 @@ public:
 
     void GenerarDatos(GestorBitacora& gestor)
     {
-        for (int i = 0; i < cantidad; i++)
-        {
+        for (int i = 0; i < cantidad; i++) {
             RegistroAI* nuevo = GenerarRegistro();
-
             gestor.Agregar(nuevo);
         }
     }

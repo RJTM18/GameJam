@@ -1,5 +1,6 @@
 #pragma once
 
+
 namespace GameJam {
 
 	using namespace System;
@@ -12,8 +13,9 @@ namespace GameJam {
 	/// <summary>
 	/// Summary for FrmListado
 	/// </summary>
-	public ref class FrmListado : public System::Windows::Forms::Form
-	{
+	public ref class FrmListado : public System::Windows::Forms::Form {
+	private: 
+		
 	public:
 		FrmListado(void)
 		{
@@ -44,14 +46,22 @@ namespace GameJam {
 	private: System::Windows::Forms::ComboBox^ cboDetalleHerramienta;
 	private: System::Windows::Forms::Button^ btnDetalleBuscar;
 	private: System::Windows::Forms::Button^ btnDetalleLimpiar;
-	private: System::Windows::Forms::DataGridView^ dgvRegistros;
-	private: System::Windows::Forms::DataGridViewTextBoxColumn^ colNumero;
-	private: System::Windows::Forms::DataGridViewTextBoxColumn^ colFecha;
-	private: System::Windows::Forms::DataGridViewTextBoxColumn^ colCurso;
-	private: System::Windows::Forms::DataGridViewTextBoxColumn^ colCategoria;
-	private: System::Windows::Forms::DataGridViewTextBoxColumn^ colHerramienta;
-	private: System::Windows::Forms::DataGridViewTextBoxColumn^ colConsulta;
-	private: System::Windows::Forms::DataGridViewTextBoxColumn^ colValidado;
+	private: System::Windows::Forms::ListView^ lvRegistros;
+	private: System::Windows::Forms::ColumnHeader^ columnHeader1;
+	private: System::Windows::Forms::ColumnHeader^ columnHeader2;
+	private: System::Windows::Forms::ColumnHeader^ columnHeader3;
+	private: System::Windows::Forms::ColumnHeader^ columnHeader4;
+	private: System::Windows::Forms::ColumnHeader^ columnHeader5;
+	private: System::Windows::Forms::ColumnHeader^ columnHeader6;
+	private: System::Windows::Forms::ColumnHeader^ columnHeader7;
+
+
+
+
+
+
+
+
 
 
 	protected:
@@ -77,15 +87,14 @@ namespace GameJam {
 			this->cboDetalleHerramienta = (gcnew System::Windows::Forms::ComboBox());
 			this->btnDetalleBuscar = (gcnew System::Windows::Forms::Button());
 			this->btnDetalleLimpiar = (gcnew System::Windows::Forms::Button());
-			this->dgvRegistros = (gcnew System::Windows::Forms::DataGridView());
-			this->colNumero = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->colFecha = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->colCurso = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->colCategoria = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->colHerramienta = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->colConsulta = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->colValidado = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dgvRegistros))->BeginInit();
+			this->lvRegistros = (gcnew System::Windows::Forms::ListView());
+			this->columnHeader1 = (gcnew System::Windows::Forms::ColumnHeader());
+			this->columnHeader2 = (gcnew System::Windows::Forms::ColumnHeader());
+			this->columnHeader3 = (gcnew System::Windows::Forms::ColumnHeader());
+			this->columnHeader4 = (gcnew System::Windows::Forms::ColumnHeader());
+			this->columnHeader5 = (gcnew System::Windows::Forms::ColumnHeader());
+			this->columnHeader6 = (gcnew System::Windows::Forms::ColumnHeader());
+			this->columnHeader7 = (gcnew System::Windows::Forms::ColumnHeader());
 			this->SuspendLayout();
 			// 
 			// lblDetalleCurso
@@ -172,61 +181,63 @@ namespace GameJam {
 			this->btnDetalleLimpiar->Text = L"Limpiar";
 			this->btnDetalleLimpiar->UseVisualStyleBackColor = true;
 			// 
-			// dgvRegistros
+			// lvRegistros
 			// 
-			this->dgvRegistros->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
-			this->dgvRegistros->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(7) {
-				this->colNumero,
-					this->colFecha, this->colCurso, this->colCategoria, this->colHerramienta, this->colConsulta, this->colValidado
+			this->lvRegistros->Columns->AddRange(gcnew cli::array< System::Windows::Forms::ColumnHeader^  >(7) {
+				this->columnHeader1,
+					this->columnHeader2, this->columnHeader3, this->columnHeader4, this->columnHeader5, this->columnHeader6, this->columnHeader7
 			});
-			this->dgvRegistros->Location = System::Drawing::Point(11, 59);
-			this->dgvRegistros->Name = L"dgvRegistros";
-			this->dgvRegistros->RowHeadersVisible = false;
-			this->dgvRegistros->Size = System::Drawing::Size(763, 371);
-			this->dgvRegistros->TabIndex = 8;
-			this->dgvRegistros->CellContentClick += gcnew System::Windows::Forms::DataGridViewCellEventHandler(this, &FrmListado::dataGridView1_CellContentClick);
+			this->lvRegistros->FullRowSelect = true;
+			this->lvRegistros->GridLines = true;
+			this->lvRegistros->HideSelection = false;
+			this->lvRegistros->Location = System::Drawing::Point(12, 69);
+			this->lvRegistros->Name = L"lvRegistros";
+			this->lvRegistros->Size = System::Drawing::Size(769, 352);
+			this->lvRegistros->TabIndex = 8;
+			this->lvRegistros->UseCompatibleStateImageBehavior = false;
+			this->lvRegistros->View = System::Windows::Forms::View::Details;
 			// 
-			// colNumero
+			// columnHeader1
 			// 
-			this->colNumero->HeaderText = L"#";
-			this->colNumero->Name = L"colNumero";
+			this->columnHeader1->Text = L"ID";
+			this->columnHeader1->Width = 100;
 			// 
-			// colFecha
+			// columnHeader2
 			// 
-			this->colFecha->HeaderText = L"Fecha";
-			this->colFecha->Name = L"colFecha";
+			this->columnHeader2->Text = L"Fecha";
+			this->columnHeader2->Width = 100;
 			// 
-			// colCurso
+			// columnHeader3
 			// 
-			this->colCurso->HeaderText = L"Curso";
-			this->colCurso->Name = L"colCurso";
+			this->columnHeader3->Text = L"Curso";
+			this->columnHeader3->Width = 100;
 			// 
-			// colCategoria
+			// columnHeader4
 			// 
-			this->colCategoria->HeaderText = L"Categoría";
-			this->colCategoria->Name = L"colCategoria";
+			this->columnHeader4->Text = L"Categoria";
+			this->columnHeader4->Width = 100;
 			// 
-			// colHerramienta
+			// columnHeader5
 			// 
-			this->colHerramienta->HeaderText = L"Herramienta";
-			this->colHerramienta->Name = L"colHerramienta";
+			this->columnHeader5->Text = L"Herramienta de IA";
+			this->columnHeader5->Width = 125;
 			// 
-			// colConsulta
+			// columnHeader6
 			// 
-			this->colConsulta->HeaderText = L"Qué consultamos";
-			this->colConsulta->Name = L"colConsulta";
+			this->columnHeader6->Text = L"Que Consultamos\?";
+			this->columnHeader6->Width = 125;
 			// 
-			// colValidado
+			// columnHeader7
 			// 
-			this->colValidado->HeaderText = L"Validado";
-			this->colValidado->Name = L"colValidado";
+			this->columnHeader7->Text = L"Validado";
+			this->columnHeader7->Width = 100;
 			// 
 			// FrmListado
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(813, 454);
-			this->Controls->Add(this->dgvRegistros);
+			this->Controls->Add(this->lvRegistros);
 			this->Controls->Add(this->btnDetalleLimpiar);
 			this->Controls->Add(this->btnDetalleBuscar);
 			this->Controls->Add(this->cboDetalleHerramienta);
@@ -237,11 +248,24 @@ namespace GameJam {
 			this->Controls->Add(this->lblDetalleCurso);
 			this->Name = L"FrmListado";
 			this->Text = L"AI-TRACE — Detalle y Análisis";
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dgvRegistros))->EndInit();
 			this->ResumeLayout(false);
 			this->PerformLayout();
 
 		}
+
+#pragma endregion Metodos privados
+
+	private: void ActualizarLista() {
+		lvRegistros->Items->Clear();
+		for (int i = 0; i < universidad->getCantidad(); i++) {
+			Alumno* a = universidad->obtener(i);
+			ListViewItem^ fila = gcnew ListViewItem(marshal_as<String^>(a->getNombre()));
+			fila->SubItems->Add(marshal_as<String^>(a->getApellido()));
+			fila->SubItems->Add(marshal_as<String^>(a->getCarrera()));
+			lvAlumnos->Items->Add(fila);
+		}
+	}
+
 #pragma endregion
 	private: System::Void dataGridView1_CellContentClick(System::Object^ sender, System::Windows::Forms::DataGridViewCellEventArgs^ e) {
 	}

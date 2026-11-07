@@ -28,13 +28,10 @@ class RegistroAI
         cambios (Cambios),
         comoSeValido (ComoSeValido),
         validacion(false)
-    {
-    }
+    { }
 
     ~RegistroAI() { }
     	
-    // GETTERS: obtener información
-
     int getID() { return id; }
     string getFecha() { return fecha; }
     string getCurso() { return curso; }
