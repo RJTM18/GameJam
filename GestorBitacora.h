@@ -1,12 +1,9 @@
-
 #pragma once
 #include "pch.h"
 #include <vector>
 #include "RegistroIA.h"
-using namespace std;
 
-class GestorBitacora
-{
+class GestorBitacora {
 private:
     vector<RegistroIA*> registros;
 
@@ -20,7 +17,7 @@ public:
         }
 
         
-        if (Buscar(nuevo->getId()) != nullptr)
+        if (Buscar(nuevo->getID()) != nullptr)
         {
             return false;
         }
@@ -33,7 +30,7 @@ public:
     {
         for (int i = 0; i < registros.size(); i++)
         {
-            if (registros[i]->getId() == id)
+            if (registros[i]->getID() == id)
             {
                 return registros[i];
             }

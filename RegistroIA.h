@@ -1,14 +1,14 @@
 #pragma once
 #include "pch.h"
 
-//Registro AI.
+//Registro IA.
 //Aquellos en minuscula son los atributos de la clase.
 //En mayuscula, los parametros del contructor.
 //Por default, validacion sera false.
 
-class RegistroAI {
+class RegistroIA {
 public:
-	RegistroAI(int ID, string Fecha, string Curso,
+	RegistroIA(int ID, string Fecha, string Curso,
 		string Categoria, string HerramientaAI,
 		string Consulta, string Resultado, string Cambios) :
 		id(ID), fecha(Fecha), curso(Curso),
@@ -16,7 +16,7 @@ public:
 		consulta(Consulta), resultado(Resultado), cambios(Cambios),
 		validacion(false) { };
 
-	~RegistroAI() { };
+	~RegistroIA() { };
 
 	int getID() { return id; }
 
