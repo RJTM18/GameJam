@@ -8,15 +8,19 @@ class GestorBitacora {
     vector<RegistroAI*> registros;
 
  public:
-    ~GestorBitacora() 
-    {
-        for (int i = 0; i < (int)registros.size(); i++) 
-        { 
-            delete registros[i]; 
-        }
+    ~GestorBitacora() {
+        for (int i = 0; i < (int)registros.size(); i++) { delete registros[i]; }
     }
 
     vector<RegistroAI*> getRegistros() { return registros; }
+
+    int getTotalVerificados() {
+        int contador = 0;
+        for (int i = 0; i < (int)registros.size(); i++) {
+            if (registros[i]->getValidacion()) contador++;
+        }
+        return contador;
+    }
 
     bool Agregar(RegistroAI* nuevo) {
         if (nuevo == nullptr) { return false; }
@@ -27,13 +31,8 @@ class GestorBitacora {
     }
 
     RegistroAI* Buscar(int id) {
-        for (int i = 0; i < registros.size(); i++) 
-        {
-
-            if (registros[i]->getID() == id) 
-            {
-                return registros[i];
-            }
+        for (int i = 0; i < registros.size(); i++) {
+            if (registros[i]->getID() == id) { return registros[i]; }
         }
         return nullptr;
     }
