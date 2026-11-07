@@ -71,7 +71,7 @@ namespace GameJam {
 			});
 			this->menuPrincipal->Location = System::Drawing::Point(0, 0);
 			this->menuPrincipal->Name = L"menuPrincipal";
-			this->menuPrincipal->Size = System::Drawing::Size(1019, 24);
+			this->menuPrincipal->Size = System::Drawing::Size(1703, 24);
 			this->menuPrincipal->TabIndex = 0;
 			// 
 			// asdToolStripMenuItem
@@ -113,7 +113,7 @@ namespace GameJam {
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(1019, 371);
+			this->ClientSize = System::Drawing::Size(1703, 631);
 			this->Controls->Add(this->menuPrincipal);
 			this->IsMdiContainer = true;
 			this->MainMenuStrip = this->menuPrincipal;

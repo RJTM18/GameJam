@@ -3,27 +3,22 @@
 #include "GestorBitacora.h"
 #include "RegistroIA.h"
 #include "Analizador.h"
-class PalabrasClave: public analizador
-{
+
+class PalabrasClave : public analizador {
 private:
 	GestorBitacora* gestor;
 	string palabra;
 	int contador;
 
 public:
-	PalabrasClave(GestorBitacora* Gestor, string Palabra)
-	{
+	PalabrasClave(GestorBitacora* Gestor, string Palabra) {
 		gestor = Gestor;
 		palabra = Palabra;
 		contador = 0;
 	}
 
-	
-
-	void analizar() override
-	{
-		if (palabra.empty())
-		{
+	void analizar() override {
+		if (palabra.empty()) {
 			return;
 		}
 
