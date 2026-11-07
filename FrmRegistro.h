@@ -108,7 +108,7 @@ namespace GameJam {
             this->grpNuevoRegistro->SuspendLayout();
             this->SuspendLayout();
 
-            // GRUPO PRINCIPAL
+         
             this->grpNuevoRegistro->Controls->Add(this->cboComoSeValido);
             this->grpNuevoRegistro->Controls->Add(this->lblComoSeValido);
             this->grpNuevoRegistro->Controls->Add(this->comboBox1);
@@ -131,7 +131,7 @@ namespace GameJam {
             this->grpNuevoRegistro->Size = Drawing::Size(655, 272);
             this->grpNuevoRegistro->Text = L"Nuevo registro";
 
-            // FECHA
+     
             this->lblFecha->Location = Point(10, 22);
             this->lblFecha->AutoSize = true;
             this->lblFecha->Text = L"Fecha";
@@ -139,7 +139,7 @@ namespace GameJam {
             this->dtpFecha->Location = Point(13, 38);
             this->dtpFecha->Size = Drawing::Size(200, 20);
 
-            // CATEGORIA
+         
             this->lblCategoriaConsulta->Location = Point(10, 70);
             this->lblCategoriaConsulta->AutoSize = true;
             this->lblCategoriaConsulta->Text = L"Categoría de la consulta";
@@ -156,7 +156,7 @@ namespace GameJam {
                     L"Depuración de errores", L"Otro"
             });
 
-            // CONSULTA
+      
             this->lblQueConsultamos->Location = Point(10, 119);
             this->lblQueConsultamos->AutoSize = true;
             this->lblQueConsultamos->Text = L"Qué consultamos";
@@ -165,7 +165,7 @@ namespace GameJam {
             this->txtQueConsultamos->Size = Drawing::Size(620, 20);
             this->txtQueConsultamos->Multiline = true;
 
-            // RESULTADO
+       
             this->lblResultadoIA->Location = Point(10, 169);
             this->lblResultadoIA->AutoSize = true;
             this->lblResultadoIA->Text = L"Resultado de la IA (resumen)";
@@ -174,7 +174,7 @@ namespace GameJam {
             this->txtResultadoIA->Size = Drawing::Size(620, 20);
             this->txtResultadoIA->Multiline = true;
 
-            // CAMBIOS
+         
             this->lblQueSeCambio->Location = Point(10, 220);
             this->lblQueSeCambio->AutoSize = true;
             this->lblQueSeCambio->Text = L"Qué se cambió";
@@ -182,7 +182,7 @@ namespace GameJam {
             this->txtQueSeCambio->Location = Point(14, 237);
             this->txtQueSeCambio->Size = Drawing::Size(329, 20);
 
-            // CURSO
+           
             this->lblCurso->Location = Point(391, 22);
             this->lblCurso->AutoSize = true;
             this->lblCurso->Text = L"Curso";
@@ -191,7 +191,7 @@ namespace GameJam {
             this->cboCurso->Size = Drawing::Size(240, 21);
             this->cboCurso->DropDownStyle = ComboBoxStyle::DropDownList;
 
-            // HERRAMIENTA
+        
             this->lblHerramienta->Location = Point(391, 70);
             this->lblHerramienta->AutoSize = true;
             this->lblHerramienta->Text = L"Herramienta de IA";
@@ -200,7 +200,7 @@ namespace GameJam {
             this->comboBox1->Size = Drawing::Size(240, 21);
             this->comboBox1->DropDownStyle = ComboBoxStyle::DropDownList;
 
-            // VALIDACION
+            
             this->lblComoSeValido->Location = Point(391, 220);
             this->lblComoSeValido->AutoSize = true;
             this->lblComoSeValido->Text = L"Cómo se validó";
@@ -209,7 +209,7 @@ namespace GameJam {
             this->cboComoSeValido->Size = Drawing::Size(240, 21);
             this->cboComoSeValido->DropDownStyle = ComboBoxStyle::DropDownList;
 
-            // BOTONES
+            
             this->btnGuardar->Location = Point(27, 303);
             this->btnGuardar->Size = Drawing::Size(86, 23);
             this->btnGuardar->Text = L"Guardar";
@@ -226,7 +226,7 @@ namespace GameJam {
             this->btnVerDetalle->Size = Drawing::Size(75, 23);
             this->btnVerDetalle->Text = L"Ver Detalle";
 
-            // EVENTOS
+         
             this->btnGuardar->Click += gcnew EventHandler(
                 this, &FrmRegistro::btnGuardar_Click);
 
@@ -239,7 +239,6 @@ namespace GameJam {
             this->btnVerDetalle->Click += gcnew EventHandler(
                 this, &FrmRegistro::btnVerDetalle_Click);
 
-            // FORMULARIO
             this->ClientSize = Drawing::Size(792, 353);
             this->Controls->Add(this->btnVerDetalle);
             this->Controls->Add(this->btnGenerarDatos);
@@ -293,7 +292,8 @@ namespace GameJam {
         string cambios = marshal_as<string>(txtQueSeCambio->Text);
         string validacion = marshal_as<string>(cboComoSeValido->Text);
 
-        RegistroAI* nuevo = new RegistroAI(
+        RegistroAI* nuevo = new RegistroAI
+        (
             id, fecha, curso, categoria, herramienta,
             consulta, resultado, cambios, validacion);
 
@@ -311,6 +311,7 @@ namespace GameJam {
     private: System::Void btnLimpiar_Click(
         System::Object^ sender, System::EventArgs^ e)
     {
+        
         dtpFecha->Value = DateTime::Today;
         cboCurso->SelectedIndex = -1;
         cboCategoria->SelectedIndex = -1;
@@ -320,6 +321,7 @@ namespace GameJam {
         txtQueConsultamos->Clear();
         txtResultadoIA->Clear();
         txtQueSeCambio->Clear();
+        
     }
 
     private: System::Void btnGenerarDatos_Click(
@@ -342,7 +344,8 @@ namespace GameJam {
 
         MessageBox::Show(
             L"Total de registros: " +
-            bitacora->ObtenerTotal().ToString());
+            Convert::ToString(bitacora->ObtenerTotal().ToString())
+        );
     }
 
     private: System::Void btnVerDetalle_Click(
@@ -369,7 +372,7 @@ namespace GameJam {
         {
             RegistroAI* registro = bitacora->ObtenerRegistro(i);
 
-            mensaje += L"ID: " + registro->getID().ToString() + L"\n";
+            mensaje += L"ID: " + Convert::ToString(registro->getID()) + L"\n";
 
             mensaje += L"Curso: " +
                 gcnew String(registro->getCurso().c_str()) + L"\n";
