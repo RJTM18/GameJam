@@ -3,8 +3,7 @@
 #include <vector>
 #include "RegistroIA.h"
 
-class GestorBitacora 
-{
+class GestorBitacora {
  private:
     vector<RegistroAI*> registros;
 
@@ -20,14 +19,8 @@ class GestorBitacora
     vector<RegistroAI*> getRegistros() { return registros; }
 
     bool Agregar(RegistroAI* nuevo) {
-        if (nuevo == nullptr) 
-        { 
-            return false;
-        }
-        if (Buscar(nuevo->getID()) != nullptr) 
-        {
-            return false; 
-        }
+        if (nuevo == nullptr) { return false; }
+        if (Buscar(nuevo->getID()) != nullptr) { return false; }
 
         registros.push_back(nuevo); 
         return true;
@@ -85,17 +78,10 @@ class GestorBitacora
         return false;
     }
 
-    int ObtenerTotal() 
-    {
-        return (int)registros.size(); 
-    }
+    int ObtenerTotal() { return (int)registros.size(); }
 
-    RegistroAI* ObtenerRegistro(int indice) 
-    {
-        if (indice < 0 || indice >= ObtenerTotal()) 
-        { 
-            return nullptr; 
-        }
+    RegistroAI* ObtenerRegistro(int indice) {
+        if (indice < 0 || indice >= ObtenerTotal()) { return nullptr; }
         return registros[indice];
     }
 };

@@ -52,6 +52,7 @@ namespace GameJam {
             {
                 delete components;
             }
+            delete bitacora;
         }
 
     private:
@@ -142,7 +143,7 @@ namespace GameJam {
          
             this->lblCategoriaConsulta->Location = Point(10, 70);
             this->lblCategoriaConsulta->AutoSize = true;
-            this->lblCategoriaConsulta->Text = L"Categoría de la consulta";
+            this->lblCategoriaConsulta->Text = L"Categoria de la consulta";
 
             this->cboCategoria->Location = Point(13, 86);
             this->cboCategoria->Size = Drawing::Size(200, 21);
@@ -166,7 +167,7 @@ namespace GameJam {
       
             this->lblQueConsultamos->Location = Point(10, 119);
             this->lblQueConsultamos->AutoSize = true;
-            this->lblQueConsultamos->Text = L"Qué consultamos";
+            this->lblQueConsultamos->Text = L"Que consultamos";
 
             this->txtQueConsultamos->Location = Point(14, 136);
             this->txtQueConsultamos->Size = Drawing::Size(620, 20);
@@ -184,7 +185,7 @@ namespace GameJam {
          
             this->lblQueSeCambio->Location = Point(10, 220);
             this->lblQueSeCambio->AutoSize = true;
-            this->lblQueSeCambio->Text = L"Qué se cambió";
+            this->lblQueSeCambio->Text = L"Que se cambio";
 
             this->txtQueSeCambio->Location = Point(14, 237);
             this->txtQueSeCambio->Size = Drawing::Size(329, 20);
@@ -210,7 +211,7 @@ namespace GameJam {
             
             this->lblComoSeValido->Location = Point(391, 220);
             this->lblComoSeValido->AutoSize = true;
-            this->lblComoSeValido->Text = L"Cómo se validó";
+            this->lblComoSeValido->Text = L"Como se valido: ";
 
             this->cboComoSeValido->Location = Point(394, 236);
             this->cboComoSeValido->Size = Drawing::Size(240, 21);
@@ -254,7 +255,7 @@ namespace GameJam {
             this->Controls->Add(this->grpNuevoRegistro);
 
             this->Name = L"FrmRegistro";
-            this->Text = L"AI-TRACE - Registro de Bitácora de Uso de IA";
+            this->Text = L"AI-TRACE - Registro de Bitacora de Uso de IA";
 
             this->grpNuevoRegistro->ResumeLayout(false);
             this->grpNuevoRegistro->PerformLayout();
@@ -331,26 +332,18 @@ namespace GameJam {
         
     }
 
-    private: System::Void btnGenerarDatos_Click(
-        System::Object^ sender, System::EventArgs^ e)
-    {
+    private: System::Void btnGenerarDatos_Click(System::Object^ sender, System::EventArgs^ e) {
         int siguienteID = 1;
 
-        for (int i = 0; i < bitacora->ObtenerTotal(); i++)
-        {
+        for (int i = 0; i < bitacora->ObtenerTotal(); i++) {
             RegistroAI* registro = bitacora->ObtenerRegistro(i);
-
-            if (registro->getID() >= siguienteID)
-            {
-                siguienteID = registro->getID() + 1;
-            }
+            if (registro->getID() >= siguienteID) { siguienteID = registro->getID() + 1; }
         }
 
         GeneradorAleatorio generador(100, siguienteID);
         generador.GenerarDatos(*bitacora);
 
-        MessageBox::Show(
-            L"Total de registros: " +
+        MessageBox::Show(L"Total de registros: " + 
             Convert::ToString(bitacora->ObtenerTotal().ToString())
         );
     }
