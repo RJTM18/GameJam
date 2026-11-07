@@ -141,6 +141,12 @@
   <ItemGroup>
     <ClInclude Include="Analizador.h" />
     <ClInclude Include="Estadisticas.h" />
+    <ClInclude Include="FrmCreadores.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="FrmInstrucciones.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
     <ClInclude Include="FrmPrompts.h">
       <FileType>CppForm</FileType>
     </ClInclude>
@@ -168,6 +174,8 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AssemblyInfo.cpp" />
+    <ClCompile Include="FrmCreadores.cpp" />
+    <ClCompile Include="FrmInstrucciones.cpp" />
     <ClCompile Include="FrmPrompts.cpp" />
     <ClCompile Include="FrmRegistro.cpp" />
     <ClCompile Include="FrmDashboard.cpp" />
@@ -197,8 +205,14 @@
     <EmbeddedResource Include="FormPrompts.resx">
       <DependentUpon>FormPrompts.h</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FrmCreadores.resx">
+      <DependentUpon>FrmCreadores.h</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmIndicadores.resx">
       <DependentUpon>FrmIndicadores.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmInstrucciones.resx">
+      <DependentUpon>FrmInstrucciones.h</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmPrompts.resx">
       <DependentUpon>FrmPrompts.h</DependentUpon>

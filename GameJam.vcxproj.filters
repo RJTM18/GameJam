@@ -80,6 +80,12 @@
     <ClInclude Include="FrmListado.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="FrmInstrucciones.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="FrmCreadores.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -107,6 +113,12 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="FrmPrompts.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="FrmInstrucciones.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="FrmCreadores.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

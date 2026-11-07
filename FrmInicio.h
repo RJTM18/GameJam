@@ -4,6 +4,8 @@
 #include "FrmPrompts.h"
 #include "FrmListado.h"
 #include "FrmIndicadores.h"
+#include "FrmInstrucciones.h"
+#include "FrmCreadores.h"
 namespace GameJam {
 
 	using namespace System;
@@ -134,12 +136,15 @@ namespace GameJam {
 			this->instruccionesToolStripMenuItem->Name = L"instruccionesToolStripMenuItem";
 			this->instruccionesToolStripMenuItem->Size = System::Drawing::Size(108, 24);
 			this->instruccionesToolStripMenuItem->Text = L"Instrucciones";
+			this->instruccionesToolStripMenuItem->Click += gcnew System::EventHandler(this, &FrmInicio::mnuInstrucciones_Click);
 			// 
 			// creadoresToolStripMenuItem
 			// 
 			this->creadoresToolStripMenuItem->Name = L"creadoresToolStripMenuItem";
 			this->creadoresToolStripMenuItem->Size = System::Drawing::Size(90, 24);
 			this->creadoresToolStripMenuItem->Text = L"Creadores";
+			this->creadoresToolStripMenuItem->Click +=
+				gcnew System::EventHandler(this, &FrmInicio::mnuCreadores_Click);
 			// 
 			// mnuSalir
 			// 
@@ -168,6 +173,18 @@ namespace GameJam {
 
 		}
 #pragma endregion
+		private: System::Void mnuCreadores_Click(System::Object^ sender, System::EventArgs^ e) {
+			FrmCreadores^ creadores = gcnew FrmCreadores(bitacora);
+			creadores->MdiParent = this;
+			creadores->Show();
+		}
+
+		private: System::Void mnuInstrucciones_Click(System::Object^ sender, System::EventArgs^ e) {
+			FrmInstrucciones^ instrucciones = gcnew FrmInstrucciones(bitacora);
+			instrucciones->MdiParent = this;
+			instrucciones->Show();
+		}
+
 	private: System::Void mnuRegistro_Click(System::Object^ sender, System::EventArgs^ e) {
 		FrmRegistro^ registro = gcnew FrmRegistro(bitacora);
 		registro->MdiParent = this;
