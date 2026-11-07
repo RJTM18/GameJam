@@ -141,7 +141,7 @@
   <ItemGroup>
     <ClInclude Include="Analizador.h" />
     <ClInclude Include="Estadisticas.h" />
-    <ClInclude Include="FormPrompts.h">
+    <ClInclude Include="FrmPrompts.h">
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="FrmRegistro.h">
@@ -168,7 +168,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AssemblyInfo.cpp" />
-    <ClCompile Include="FormPrompts.cpp" />
+    <ClCompile Include="FrmPrompts.cpp" />
     <ClCompile Include="FrmRegistro.cpp" />
     <ClCompile Include="FrmDashboard.cpp" />
     <ClCompile Include="FrmIndicadores.cpp" />

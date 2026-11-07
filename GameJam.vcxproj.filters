@@ -62,7 +62,7 @@
     <ClInclude Include="RegistroIA.h">
       <Filter>Header Files\Classes</Filter>
     </ClInclude>
-    <ClInclude Include="FormPrompts.h">
+    <ClInclude Include="FrmPrompts.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="FrmRegistro.h">
@@ -106,7 +106,7 @@
     <ClCompile Include="FrmListado.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="FormPrompts.cpp">
+    <ClCompile Include="FrmPrompts.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
