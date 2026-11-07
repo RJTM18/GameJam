@@ -44,6 +44,21 @@
     <ClInclude Include="Analizador.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="FrmRegistro.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="FrmDashboard.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="FrmIndicadores.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="FrmInicio.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="FrmListado.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -53,6 +68,21 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="pch.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="FrmRegistro.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="FrmDashboard.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="FrmIndicadores.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="FrmInicio.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="FrmListado.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

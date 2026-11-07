@@ -189,6 +189,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="FrmIndicadores.resx">
+      <DependentUpon>FrmIndicadores.h</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmRegistro.resx">
       <DependentUpon>FrmRegistro.h</DependentUpon>
     </EmbeddedResource>

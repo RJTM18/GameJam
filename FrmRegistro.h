@@ -148,12 +148,19 @@ namespace GameJam {
             this->cboCategoria->Size = Drawing::Size(200, 21);
             this->cboCategoria->DropDownStyle = ComboBoxStyle::DropDownList;
 
-            this->cboCategoria->Items->AddRange(
-                gcnew cli::array<Object^>{
-                L"Tarea", L"Examen", L"LB1", L"EA1",
-                    L"Reto", L"Proyecto/Trabajo",
+            this->cboCategoria->Items->AddRange
+            (
+                gcnew cli::array<System::Object^>(9)
+            {
+                L"Tarea",
+                    L"Examen",
+                    L"LB1",
+                    L"EA1",
+                    L"Reto",
+                    L"Proyecto/Trabajo",
                     L"Teoría/Consulta conceptual",
-                    L"Depuración de errores", L"Otro"
+                    L"Depuración de errores",
+                    L"Otro"
             });
 
       
