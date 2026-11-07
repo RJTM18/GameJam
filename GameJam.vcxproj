@@ -139,7 +139,11 @@
     <ResourceCompile Include="app.rc" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Analizador.h" />
+    <ClInclude Include="Estadisticas.h" />
+    <ClInclude Include="GeneradorAleatorio.h" />
     <ClInclude Include="GestorBitacora.h" />
+    <ClInclude Include="PalabrasClave.h" />
     <ClInclude Include="pch.h" />
     <ClInclude Include="RegistroIA.h" />
     <ClInclude Include="Resource.h" />
