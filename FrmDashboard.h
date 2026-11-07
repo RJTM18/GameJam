@@ -52,14 +52,18 @@ namespace GameJam {
 			// 
 			// FrmDashboard
 			// 
-			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
+			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(1410, 634);
+			this->ClientSize = System::Drawing::Size(1880, 780);
+			this->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->Name = L"FrmDashboard";
 			this->Text = L"FrmDashboard";
+			this->Load += gcnew System::EventHandler(this, &FrmDashboard::FrmDashboard_Load);
 			this->ResumeLayout(false);
 
 		}
 #pragma endregion
+	private: System::Void FrmDashboard_Load(System::Object^ sender, System::EventArgs^ e) {
+	}
 	};
 }
