@@ -3,7 +3,8 @@
 #include "GestorBitacora.h"
 #include "RegistroIA.h"
 #include "Analizador.h"
-
+#include <algorithm>
+#include <cctype>
 class PalabrasClave : public analizador {
 private:
 	GestorBitacora* gestor;
@@ -17,26 +18,45 @@ public:
 		contador = 0;
 	}
 
-	void analizar() override {
-		if (palabra.empty()) {
-			return;
-		}
+    void analizar() override
+    {
+        contador = 0;
 
-		contador = 0;
+        if (palabra.empty())
+            return;
 
-		for (int i = 0; i < gestor->ObtenerTotal(); i++)
-		{
-			RegistroAI* registro = gestor->ObtenerRegistro(i);
-			string consulta = registro->getConsulta();
+        string buscada = palabra;
 
-			if (consulta.find(palabra) < consulta.length())
-			{
-				contador++;
-			}
-		}
+        transform(buscada.begin(), buscada.end(),
+            buscada.begin(), [](unsigned char c) 
+            {
+                return tolower(c);
+            });
+
+        for (int i = 0; i < gestor->ObtenerTotal(); i++)
+        {
+            RegistroAI* registro = gestor->ObtenerRegistro(i);
+
+            string texto = registro->getConsulta();
+
+            transform(texto.begin(), texto.end(),
+                texto.begin(), [](unsigned char c) {
+                    return tolower(c);
+                });
+
+            size_t posicion = 0;
+
+            while ((posicion = texto.find(buscada, posicion))
+                != string::npos)
+            {
+                contador++;
+                posicion += buscada.length();
+            }
+        }
+    }
 
 		
-	}
+	
 
 	int getPalabras()
 	{
