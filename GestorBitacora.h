@@ -3,24 +3,24 @@
 #include "pch.h"
 #include <vector>
 #include "RegistroIA.h"
+
 using namespace std;
 
 class GestorBitacora
 {
 private:
-    vector<RegistroIA*> registros;
+    vector<RegistroAI*> registros;
 
 public:
 
-    bool Agregar(RegistroIA* nuevo)
+    bool Agregar(RegistroAI* nuevo)
     {
         if (nuevo == nullptr)
         {
             return false;
         }
 
-        
-        if (Buscar(nuevo->getId()) != nullptr)
+        if (Buscar(nuevo->getID()) != nullptr)
         {
             return false;
         }
@@ -29,11 +29,11 @@ public:
         return true;
     }
 
-    RegistroIA* Buscar(int id)
+    RegistroAI* Buscar(int id)
     {
         for (int i = 0; i < registros.size(); i++)
         {
-            if (registros[i]->getId() == id)
+            if (registros[i]->getID() == id)
             {
                 return registros[i];
             }
@@ -42,14 +42,14 @@ public:
         return nullptr;
     }
 
-    bool Editar(int id, RegistroIA* datos)
+    bool Editar(int id, RegistroAI* datos)
     {
         if (datos == nullptr)
         {
             return false;
         }
 
-        RegistroIA* encontrado = Buscar(id);
+        RegistroAI* encontrado = Buscar(id);
 
         if (encontrado == nullptr)
         {
@@ -59,7 +59,7 @@ public:
         encontrado->setFecha(datos->getFecha());
         encontrado->setCurso(datos->getCurso());
         encontrado->setCategoria(datos->getCategoria());
-        encontrado->setHerramientaIA(datos->getHerramientaIA());
+        encontrado->setHerramientaAI(datos->getHerramientaAI());
         encontrado->setConsulta(datos->getConsulta());
         encontrado->setResultado(datos->getResultado());
         encontrado->setCambios(datos->getCambios());
@@ -72,7 +72,7 @@ public:
     {
         for (int i = 0; i < registros.size(); i++)
         {
-            if (registros[i]->getId() == id)
+            if (registros[i]->getID() == id)
             {
                 registros.erase(registros.begin() + i);
                 return true;
@@ -85,5 +85,15 @@ public:
     int ObtenerTotal()
     {
         return (int)registros.size();
+    }
+
+    RegistroAI* ObtenerRegistro(int indice)
+    {
+        if (indice < 0 || indice >= ObtenerTotal())
+        {
+            return nullptr;
+        }
+
+        return registros[indice];
     }
 };
