@@ -1,11 +1,6 @@
 #pragma once
-#include  "Analizador.h"
 #include "GestorBitacora.h"
-#include "PalabrasClave.h"
-#include "RegistroIA.h"
-#include "GeneradorAleatorio.h"
-#include "Estadisticas.h"
-
+#include "FrmRegistro.h"
 
 namespace GameJam {
 
@@ -21,26 +16,24 @@ namespace GameJam {
 	/// </summary>
 	public ref class FrmListado : public System::Windows::Forms::Form {
 	private: 
-		
+		GestorBitacora* gestorB;
+
 	public:
 		FrmListado(void)
 		{
 			InitializeComponent();
-			//
-			//TODO: Add the constructor code here
-			//
 		}
 
 	protected:
 		/// <summary>
 		/// Clean up any resources being used.
 		/// </summary>
-		~FrmListado()
-		{
+		~FrmListado() 		{
 			if (components)
 			{
 				delete components;
 			}
+			delete gestorB;
 		}
 	private: System::Windows::Forms::Label^ lblDetalleCurso;
 	protected:
@@ -60,10 +53,10 @@ namespace GameJam {
 	private: System::Windows::Forms::ColumnHeader^ columnHeader5;
 	private: System::Windows::Forms::ColumnHeader^ columnHeader6;
 	private: System::Windows::Forms::ColumnHeader^ columnHeader7;
-
-
-
-
+	private: System::Windows::Forms::Label^ lblTotalRegistros;
+	private: System::Windows::Forms::Label^ lblVerificados;
+	private: System::Windows::Forms::Label^ lblNoVerificados;
+	private: System::Windows::Forms::Button^ btnGoDashBoard;
 
 
 
@@ -101,6 +94,10 @@ namespace GameJam {
 			this->columnHeader5 = (gcnew System::Windows::Forms::ColumnHeader());
 			this->columnHeader6 = (gcnew System::Windows::Forms::ColumnHeader());
 			this->columnHeader7 = (gcnew System::Windows::Forms::ColumnHeader());
+			this->lblTotalRegistros = (gcnew System::Windows::Forms::Label());
+			this->lblVerificados = (gcnew System::Windows::Forms::Label());
+			this->lblNoVerificados = (gcnew System::Windows::Forms::Label());
+			this->btnGoDashBoard = (gcnew System::Windows::Forms::Button());
 			this->SuspendLayout();
 			// 
 			// lblDetalleCurso
@@ -206,7 +203,7 @@ namespace GameJam {
 			this->lvRegistros->HideSelection = false;
 			this->lvRegistros->Location = System::Drawing::Point(12, 69);
 			this->lvRegistros->Name = L"lvRegistros";
-			this->lvRegistros->Size = System::Drawing::Size(769, 352);
+			this->lvRegistros->Size = System::Drawing::Size(769, 316);
 			this->lvRegistros->TabIndex = 8;
 			this->lvRegistros->UseCompatibleStateImageBehavior = false;
 			this->lvRegistros->View = System::Windows::Forms::View::Details;
@@ -246,12 +243,62 @@ namespace GameJam {
 			this->colValidado->HeaderText = L"Validado";
 			this->colValidado->Name = L"colValidado";
 			// 
+			// lblTotalRegistros
+			// 
+			this->lblTotalRegistros->AutoSize = true;
+			this->lblTotalRegistros->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->lblTotalRegistros->Location = System::Drawing::Point(12, 405);
+			this->lblTotalRegistros->Name = L"lblTotalRegistros";
+			this->lblTotalRegistros->Size = System::Drawing::Size(172, 20);
+			this->lblTotalRegistros->TabIndex = 9;
+			this->lblTotalRegistros->Text = L"Total de Registros: -";
+			// 
+			// lblVerificados
+			// 
+			this->lblVerificados->AutoSize = true;
+			this->lblVerificados->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->lblVerificados->ForeColor = System::Drawing::Color::Green;
+			this->lblVerificados->Location = System::Drawing::Point(230, 405);
+			this->lblVerificados->Name = L"lblVerificados";
+			this->lblVerificados->Size = System::Drawing::Size(115, 20);
+			this->lblVerificados->TabIndex = 10;
+			this->lblVerificados->Text = L"Verificados: -";
+			// 
+			// lblNoVerificados
+			// 
+			this->lblNoVerificados->AutoSize = true;
+			this->lblNoVerificados->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->lblNoVerificados->ForeColor = System::Drawing::Color::Red;
+			this->lblNoVerificados->Location = System::Drawing::Point(384, 405);
+			this->lblNoVerificados->Name = L"lblNoVerificados";
+			this->lblNoVerificados->Size = System::Drawing::Size(142, 20);
+			this->lblNoVerificados->TabIndex = 11;
+			this->lblNoVerificados->Text = L"No Verificados: -";
+			// 
+			// btnGoDashBoard
+			// 
+			this->btnGoDashBoard->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 15.75F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->btnGoDashBoard->Location = System::Drawing::Point(593, 398);
+			this->btnGoDashBoard->Name = L"btnGoDashBoard";
+			this->btnGoDashBoard->Size = System::Drawing::Size(188, 36);
+			this->btnGoDashBoard->TabIndex = 12;
+			this->btnGoDashBoard->Text = L"Ir a Dashboard";
+			this->btnGoDashBoard->UseVisualStyleBackColor = true;
+			// 
 			// FrmListado
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(813, 454);
-			this->Controls->Add(this->dgvRegistros);
+			this->Controls->Add(this->btnGoDashBoard);
+			this->Controls->Add(this->lblNoVerificados);
+			this->Controls->Add(this->lblVerificados);
+			this->Controls->Add(this->lblTotalRegistros);
+			this->Controls->Add(this->lvRegistros);
 			this->Controls->Add(this->btnDetalleLimpiar);
 			this->Controls->Add(this->btnDetalleBuscar);
 			this->Controls->Add(this->cboDetalleHerramienta);
@@ -273,19 +320,26 @@ namespace GameJam {
 
 	private: void ActualizarLista() {
 		lvRegistros->Items->Clear();
-		for (int i = 0; i < universidad->getCantidad(); i++) {
-			Alumno* a = universidad->obtener(i);
-			ListViewItem^ fila = gcnew ListViewItem(marshal_as<String^>(a->getNombre()));
-			fila->SubItems->Add(marshal_as<String^>(a->getApellido()));
-			fila->SubItems->Add(marshal_as<String^>(a->getCarrera()));
-			lvAlumnos->Items->Add(fila);
+		for (int i = 0; i < gestorB->ObtenerTotal(); i++) {
+			RegistroAI* r = gestorB->ObtenerRegistro(i);
+			ListViewItem^ fila = gcnew ListViewItem(marshal_as<String^>(r->getID()));
+			fila->SubItems->Add(marshal_as<String^>(r->getFecha()));
+			fila->SubItems->Add(marshal_as<String^>(r->getCurso()));
+			fila->SubItems->Add(marshal_as<String^>(r->getCategoria()));
+			fila->SubItems->Add(marshal_as<String^>(r->getHerramientaAI()));
+			fila->SubItems->Add(marshal_as<String^>(r->getConsulta()));
+			fila->SubItems->Add(marshal_as<String^>(r->getValidacion() ? "Si" : "No"));
+			lvRegistros->Items->Add(fila);
 		}
+
+		lblTotalRegistros->Text = "Total de Registros: " + gestorB->ObtenerTotal().ToString();
+		lblVerificados->Text = "Verificados: " + gestorB->getTotalVerificados().ToString();
+		lblNoVerificados->Text = "No verificados: " + (gestorB->ObtenerTotal() - gestorB->getTotalVerificados()).ToString();
 	}
 
 #pragma endregion
 	private: System::Void dataGridView1_CellContentClick(System::Object^ sender, System::Windows::Forms::DataGridViewCellEventArgs^ e) {
 	}
-private: System::Void FrmListado_Load(System::Object^ sender, System::EventArgs^ e) {
-}
+
 };
 }

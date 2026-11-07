@@ -2,7 +2,7 @@
 #include "GestorBitacora.h"
 #include "FrmRegistro.h"
 #include "FrmPrompts.h"
-#include "FrmIndicadores.h"
+#include "FrmListado.h"
 namespace GameJam {
 
 	using namespace System;
@@ -171,10 +171,11 @@ namespace GameJam {
 		FrmRegistro^ registro = gcnew FrmRegistro(bitacora);
 		registro->MdiParent = this;
 		registro->Show();
-
-		
 	}
 	private: System::Void mnuListado_click(System::Object^ sender, System::EventArgs^ e) {
+		FrmListado^ listado = gcnew FrmListado();
+		listado->MdiParent = this;
+		listado->Show();
 	}
 	private: System::Void mnuHallazgos_click(System::Object^ sender, System::EventArgs^ e) {
 	}
