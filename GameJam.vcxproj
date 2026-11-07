@@ -141,7 +141,7 @@
   <ItemGroup>
     <ClInclude Include="Analizador.h" />
     <ClInclude Include="Estadisticas.h" />
-    <ClInclude Include="FmrRegistro.h">
+    <ClInclude Include="FrmRegistro.h">
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="FrmDashboard.h">
@@ -165,7 +165,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AssemblyInfo.cpp" />
-    <ClCompile Include="FmrRegistro.cpp" />
+    <ClCompile Include="FrmRegistro.cpp" />
     <ClCompile Include="FrmDashboard.cpp" />
     <ClCompile Include="FrmIndicadores.cpp" />
     <ClCompile Include="FrmInicio.cpp" />
@@ -189,8 +189,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="FmrRegistro.resx">
-      <DependentUpon>FmrRegistro.h</DependentUpon>
+    <EmbeddedResource Include="FrmRegistro.resx">
+      <DependentUpon>FrmRegistro.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmDashboard.resx">
+      <DependentUpon>FrmDashboard.h</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmInicio.resx">
       <DependentUpon>FrmInicio.h</DependentUpon>
