@@ -5,11 +5,11 @@
 
 class GestorBitacora {
 private:
-    vector<RegistroAI*> registros;
+    vector<RegistroIA*> registros;
 
 public:
 
-    bool Agregar(RegistroAI* nuevo)
+    bool Agregar(RegistroIA* nuevo)
     {
         if (nuevo == nullptr)
         {
@@ -26,7 +26,7 @@ public:
         return true;
     }
 
-    RegistroAI* Buscar(int id)
+    RegistroIA* Buscar(int id)
     {
         for (int i = 0; i < registros.size(); i++)
         {
@@ -39,14 +39,14 @@ public:
         return nullptr;
     }
 
-    bool Editar(int id, RegistroAI* datos)
+    bool Editar(int id, RegistroIA* datos)
     {
         if (datos == nullptr)
         {
             return false;
         }
 
-        RegistroAI* encontrado = Buscar(id);
+        RegistroIA* encontrado = Buscar(id);
 
         if (encontrado == nullptr)
         {
@@ -84,7 +84,7 @@ public:
         return (int)registros.size();
     }
 
-    RegistroAI* ObtenerRegistro(int indice)
+    RegistroIA* ObtenerRegistro(int indice)
     {
         if (indice < 0 || indice >= ObtenerTotal())
         {
