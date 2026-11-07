@@ -17,26 +17,10 @@ public:
         id(ID), fecha(Fecha), curso(Curso),
         categoria(Categoria), herramientaAI(HerramientaAI),
         consulta(Consulta), resultado(Resultado),
-        cambios(Cambios), validacion(false)
-    {
+        cambios(Cambios), validacion(false) { }
 
-    }
-
-    ~RegistroAI() 
-    {
-
-    }
-
-	RegistroIA(int ID, string Fecha, string Curso,
-		string Categoria, string HerramientaAI,
-		string Consulta, string Resultado, string Cambios) :
-		id(ID), fecha(Fecha), curso(Curso),
-		categoria(Categoria), herramientaAI(HerramientaAI),
-		consulta(Consulta), resultado(Resultado), cambios(Cambios),
-		validacion(false) { };
-
-	~RegistroIA() { };
-
+    ~RegistroAI() { }
+    	
     // GETTERS: obtener información
 
     int getID() { return id; }
@@ -48,11 +32,6 @@ public:
     string getResultado() { return resultado; }
     string getCambios() { return cambios; }
     bool getValidacion() { return validacion; }
-
-    bool getValidacion() 
-    { 
-        return validacion;
-    }
 
     void setFecha(string Fecha) { fecha = Fecha; }
     void setCurso(string Curso) { curso = Curso; }
