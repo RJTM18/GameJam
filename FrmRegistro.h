@@ -1,330 +1,384 @@
+
 #pragma once
+#include "pch.h"
+#include "GestorBitacora.h"
+#include "RegistroIA.h"
+#include "GeneradorAleatorio.h"
+#include <string>
+#include <msclr/marshal_cppstd.h>
+
+using namespace std;
+using namespace msclr::interop;
 
 namespace GameJam {
 
-	using namespace System;
-	using namespace System::ComponentModel;
-	using namespace System::Collections;
-	using namespace System::Windows::Forms;
-	using namespace System::Data;
-	using namespace System::Drawing;
+    using namespace System;
+    using namespace System::ComponentModel;
+    using namespace System::Collections;
+    using namespace System::Windows::Forms;
+    using namespace System::Data;
+    using namespace System::Drawing;
 
-	/// <summary>
-	/// Resumen de FrmRegistro
-	/// </summary>
-	public ref class FrmRegistro : public System::Windows::Forms::Form 	{
-	private:
-		GestorBitacora* bitacora;
-		GestorBitacora* gestorB;
+    public ref class FrmRegistro : public System::Windows::Forms::Form
+    {
+    private:
+        GestorBitacora* bitacora;
 
-	public:
-		FrmRegistro(GestorBitacora* bitacora)
-		{
-			InitializeComponent();
-			this->bitacora = bitacora;
-		}
+    public:
+        FrmRegistro(GestorBitacora* gestor)
+        {
+            InitializeComponent();
+            bitacora = gestor;
 
-	protected:
-		/// <summary>
-		/// Limpiar los recursos que se estén usando.
-		/// </summary>
-		~FrmRegistro() {
-			if (components) { delete components; }
-			delete bitacora;
-		}
-	private: System::Windows::Forms::GroupBox^ grpNuevoRegistro;
-	private: System::Windows::Forms::Label^ lblFecha;
-	private: System::Windows::Forms::DateTimePicker^ dtpFecha;
-	private: System::Windows::Forms::ComboBox^ cboCategoria;
-	private: System::Windows::Forms::Label^ lblCategoriaConsulta;
-	private: System::Windows::Forms::Label^ lblQueConsultamos;
-	private: System::Windows::Forms::TextBox^ txtQueConsultamos;
-	private: System::Windows::Forms::TextBox^ txtResultadoIA;
-	private: System::Windows::Forms::Label^ lblResultadoIA;
-	private: System::Windows::Forms::ComboBox^ cboCurso;
-	private: System::Windows::Forms::Label^ lblCurso;
-	private: System::Windows::Forms::TextBox^ txtQueSeCambio;
-	private: System::Windows::Forms::Label^ lblQueSeCambio;
-	private: System::Windows::Forms::ComboBox^ comboBox1;
-	private: System::Windows::Forms::Label^ lblHerramienta;
-	private: System::Windows::Forms::ComboBox^ cboComoSeValido;
-	private: System::Windows::Forms::Label^ lblComoSeValido;
-	private: System::Windows::Forms::Button^ btnGuardar;
-	private: System::Windows::Forms::Button^ btnLimpiar;
-	private: System::Windows::Forms::Button^ btnGenerarDatos;
-	private: System::Windows::Forms::Button^ btnVerDetalle;
+            cboCurso->Items->Clear();
+            cboCurso->Items->Add(L"Algoritmos");
+            cboCurso->Items->Add(L"Calculo I");
+            cboCurso->Items->Add(L"Matematica Discreta");
 
+            comboBox1->Items->Add(L"ChatGPT");
+            comboBox1->Items->Add(L"Gemini");
+            comboBox1->Items->Add(L"Copilot");
+            comboBox1->Items->Add(L"Claude");
 
+            cboComoSeValido->Items->Add(L"Comprobando el resultado");
+            cboComoSeValido->Items->Add(L"Ejecutando el programa");
+            cboComoSeValido->Items->Add(L"Comparando con apuntes");
+        }
 
+    protected:
+        ~FrmRegistro()
+        {
+            if (components)
+            {
+                delete components;
+            }
+        }
 
-	protected:
+    private:
+        System::Windows::Forms::GroupBox^ grpNuevoRegistro;
+        System::Windows::Forms::Label^ lblFecha;
+        System::Windows::Forms::DateTimePicker^ dtpFecha;
+        System::Windows::Forms::ComboBox^ cboCategoria;
+        System::Windows::Forms::Label^ lblCategoriaConsulta;
+        System::Windows::Forms::Label^ lblQueConsultamos;
+        System::Windows::Forms::TextBox^ txtQueConsultamos;
+        System::Windows::Forms::TextBox^ txtResultadoIA;
+        System::Windows::Forms::Label^ lblResultadoIA;
+        System::Windows::Forms::ComboBox^ cboCurso;
+        System::Windows::Forms::Label^ lblCurso;
+        System::Windows::Forms::TextBox^ txtQueSeCambio;
+        System::Windows::Forms::Label^ lblQueSeCambio;
+        System::Windows::Forms::ComboBox^ comboBox1;
+        System::Windows::Forms::Label^ lblHerramienta;
+        System::Windows::Forms::ComboBox^ cboComoSeValido;
+        System::Windows::Forms::Label^ lblComoSeValido;
+        System::Windows::Forms::Button^ btnGuardar;
+        System::Windows::Forms::Button^ btnLimpiar;
+        System::Windows::Forms::Button^ btnGenerarDatos;
+        System::Windows::Forms::Button^ btnVerDetalle;
 
-	protected:
-
-	private:
-		/// <summary>
-		/// Variable del diseñador necesaria.
-		/// </summary>
-		System::ComponentModel::Container^ components;
+        System::ComponentModel::Container^ components;
 
 #pragma region Windows Form Designer generated code
-		/// <summary>
-		/// Método necesario para admitir el Diseñador. No se puede modificar
-		/// el contenido de este método con el editor de código.
-		/// </summary>
-		void InitializeComponent(void)
-		{
-			this->grpNuevoRegistro = (gcnew System::Windows::Forms::GroupBox());
-			this->lblFecha = (gcnew System::Windows::Forms::Label());
-			this->dtpFecha = (gcnew System::Windows::Forms::DateTimePicker());
-			this->lblCategoriaConsulta = (gcnew System::Windows::Forms::Label());
-			this->cboCategoria = (gcnew System::Windows::Forms::ComboBox());
-			this->lblQueConsultamos = (gcnew System::Windows::Forms::Label());
-			this->txtQueConsultamos = (gcnew System::Windows::Forms::TextBox());
-			this->lblResultadoIA = (gcnew System::Windows::Forms::Label());
-			this->txtResultadoIA = (gcnew System::Windows::Forms::TextBox());
-			this->lblQueSeCambio = (gcnew System::Windows::Forms::Label());
-			this->txtQueSeCambio = (gcnew System::Windows::Forms::TextBox());
-			this->lblCurso = (gcnew System::Windows::Forms::Label());
-			this->cboCurso = (gcnew System::Windows::Forms::ComboBox());
-			this->lblHerramienta = (gcnew System::Windows::Forms::Label());
-			this->comboBox1 = (gcnew System::Windows::Forms::ComboBox());
-			this->lblComoSeValido = (gcnew System::Windows::Forms::Label());
-			this->cboComoSeValido = (gcnew System::Windows::Forms::ComboBox());
-			this->btnGuardar = (gcnew System::Windows::Forms::Button());
-			this->btnLimpiar = (gcnew System::Windows::Forms::Button());
-			this->btnGenerarDatos = (gcnew System::Windows::Forms::Button());
-			this->btnVerDetalle = (gcnew System::Windows::Forms::Button());
-			this->grpNuevoRegistro->SuspendLayout();
-			this->SuspendLayout();
-			// 
-			// grpNuevoRegistro
-			// 
-			this->grpNuevoRegistro->Controls->Add(this->cboComoSeValido);
-			this->grpNuevoRegistro->Controls->Add(this->lblComoSeValido);
-			this->grpNuevoRegistro->Controls->Add(this->comboBox1);
-			this->grpNuevoRegistro->Controls->Add(this->lblHerramienta);
-			this->grpNuevoRegistro->Controls->Add(this->cboCurso);
-			this->grpNuevoRegistro->Controls->Add(this->lblCurso);
-			this->grpNuevoRegistro->Controls->Add(this->txtQueSeCambio);
-			this->grpNuevoRegistro->Controls->Add(this->lblQueSeCambio);
-			this->grpNuevoRegistro->Controls->Add(this->txtResultadoIA);
-			this->grpNuevoRegistro->Controls->Add(this->lblResultadoIA);
-			this->grpNuevoRegistro->Controls->Add(this->txtQueConsultamos);
-			this->grpNuevoRegistro->Controls->Add(this->lblQueConsultamos);
-			this->grpNuevoRegistro->Controls->Add(this->cboCategoria);
-			this->grpNuevoRegistro->Controls->Add(this->lblCategoriaConsulta);
-			this->grpNuevoRegistro->Controls->Add(this->dtpFecha);
-			this->grpNuevoRegistro->Controls->Add(this->lblFecha);
-			this->grpNuevoRegistro->Location = System::Drawing::Point(14, 15);
-			this->grpNuevoRegistro->Name = L"grpNuevoRegistro";
-			this->grpNuevoRegistro->Size = System::Drawing::Size(655, 272);
-			this->grpNuevoRegistro->TabIndex = 0;
-			this->grpNuevoRegistro->TabStop = false;
-			this->grpNuevoRegistro->Text = L"Nuevo registro";
-			// 
-			// lblFecha
-			// 
-			this->lblFecha->AutoSize = true;
-			this->lblFecha->Location = System::Drawing::Point(10, 22);
-			this->lblFecha->Name = L"lblFecha";
-			this->lblFecha->Size = System::Drawing::Size(37, 13);
-			this->lblFecha->TabIndex = 0;
-			this->lblFecha->Text = L"Fecha";
-			this->lblFecha->Click += gcnew System::EventHandler(this, &FrmRegistro::label1_Click);
-			// 
-			// dtpFecha
-			// 
-			this->dtpFecha->Location = System::Drawing::Point(13, 38);
-			this->dtpFecha->Name = L"dtpFecha";
-			this->dtpFecha->Size = System::Drawing::Size(200, 20);
-			this->dtpFecha->TabIndex = 1;
-			// 
-			// lblCategoriaConsulta
-			// 
-			this->lblCategoriaConsulta->AutoSize = true;
-			this->lblCategoriaConsulta->Location = System::Drawing::Point(10, 70);
-			this->lblCategoriaConsulta->Name = L"lblCategoriaConsulta";
-			this->lblCategoriaConsulta->Size = System::Drawing::Size(123, 13);
-			this->lblCategoriaConsulta->TabIndex = 2;
-			this->lblCategoriaConsulta->Text = L"Categoría de la consulta";
-			// 
-			// cboCategoria
-			// 
-			this->cboCategoria->DropDownStyle = System::Windows::Forms::ComboBoxStyle::DropDownList;
-			this->cboCategoria->FormattingEnabled = true;
-			this->cboCategoria->Items->AddRange(gcnew cli::array< System::Object^  >(9) {
-				L"Tarea", L"Examen", L"LB1", L"EA1", L"Reto",
-					L"Proyecto/Trabajo", L"Teoría/Consulta conceptual", L"Depuración de errores", L"Otro"
-			});
-			this->cboCategoria->Location = System::Drawing::Point(13, 86);
-			this->cboCategoria->Name = L"cboCategoria";
-			this->cboCategoria->Size = System::Drawing::Size(200, 21);
-			this->cboCategoria->TabIndex = 3;
-			// 
-			// lblQueConsultamos
-			// 
-			this->lblQueConsultamos->AutoSize = true;
-			this->lblQueConsultamos->Location = System::Drawing::Point(10, 119);
-			this->lblQueConsultamos->Name = L"lblQueConsultamos";
-			this->lblQueConsultamos->Size = System::Drawing::Size(89, 13);
-			this->lblQueConsultamos->TabIndex = 4;
-			this->lblQueConsultamos->Text = L"Qué consultamos";
-			this->lblQueConsultamos->Click += gcnew System::EventHandler(this, &FrmRegistro::label1_Click_1);
-			// 
-			// txtQueConsultamos
-			// 
-			this->txtQueConsultamos->Location = System::Drawing::Point(14, 136);
-			this->txtQueConsultamos->Multiline = true;
-			this->txtQueConsultamos->Name = L"txtQueConsultamos";
-			this->txtQueConsultamos->Size = System::Drawing::Size(620, 20);
-			this->txtQueConsultamos->TabIndex = 1;
-			// 
-			// lblResultadoIA
-			// 
-			this->lblResultadoIA->AutoSize = true;
-			this->lblResultadoIA->Location = System::Drawing::Point(10, 169);
-			this->lblResultadoIA->Name = L"lblResultadoIA";
-			this->lblResultadoIA->Size = System::Drawing::Size(143, 13);
-			this->lblResultadoIA->TabIndex = 5;
-			this->lblResultadoIA->Text = L"Resultado de la IA (resumen)";
-			// 
-			// txtResultadoIA
-			// 
-			this->txtResultadoIA->Location = System::Drawing::Point(14, 189);
-			this->txtResultadoIA->Multiline = true;
-			this->txtResultadoIA->Name = L"txtResultadoIA";
-			this->txtResultadoIA->Size = System::Drawing::Size(620, 20);
-			this->txtResultadoIA->TabIndex = 6;
-			// 
-			// lblQueSeCambio
-			// 
-			this->lblQueSeCambio->AutoSize = true;
-			this->lblQueSeCambio->Location = System::Drawing::Point(10, 220);
-			this->lblQueSeCambio->Name = L"lblQueSeCambio";
-			this->lblQueSeCambio->Size = System::Drawing::Size(78, 13);
-			this->lblQueSeCambio->TabIndex = 7;
-			this->lblQueSeCambio->Text = L"Qué se cambió";
-			// 
-			// txtQueSeCambio
-			// 
-			this->txtQueSeCambio->Location = System::Drawing::Point(14, 237);
-			this->txtQueSeCambio->Name = L"txtQueSeCambio";
-			this->txtQueSeCambio->Size = System::Drawing::Size(329, 20);
-			this->txtQueSeCambio->TabIndex = 8;
-			// 
-			// lblCurso
-			// 
-			this->lblCurso->AutoSize = true;
-			this->lblCurso->Location = System::Drawing::Point(391, 22);
-			this->lblCurso->Name = L"lblCurso";
-			this->lblCurso->Size = System::Drawing::Size(34, 13);
-			this->lblCurso->TabIndex = 9;
-			this->lblCurso->Text = L"Curso";
-			// 
-			// cboCurso
-			// 
-			this->cboCurso->DropDownStyle = System::Windows::Forms::ComboBoxStyle::DropDownList;
-			this->cboCurso->FormattingEnabled = true;
-			this->cboCurso->Items->AddRange(gcnew cli::array< System::Object^  >(4) { L"Algoritmos", L"Matemática", L"Física", L"Lenguaje" });
-			this->cboCurso->Location = System::Drawing::Point(394, 37);
-			this->cboCurso->Name = L"cboCurso";
-			this->cboCurso->Size = System::Drawing::Size(240, 21);
-			this->cboCurso->TabIndex = 10;
-			// 
-			// lblHerramienta
-			// 
-			this->lblHerramienta->AutoSize = true;
-			this->lblHerramienta->Location = System::Drawing::Point(391, 70);
-			this->lblHerramienta->Name = L"lblHerramienta";
-			this->lblHerramienta->Size = System::Drawing::Size(92, 13);
-			this->lblHerramienta->TabIndex = 11;
-			this->lblHerramienta->Text = L"Herramienta de IA";
-			// 
-			// comboBox1
-			// 
-			this->comboBox1->DropDownStyle = System::Windows::Forms::ComboBoxStyle::DropDownList;
-			this->comboBox1->FormattingEnabled = true;
-			this->comboBox1->Location = System::Drawing::Point(394, 86);
-			this->comboBox1->Name = L"comboBox1";
-			this->comboBox1->Size = System::Drawing::Size(240, 21);
-			this->comboBox1->TabIndex = 12;
-			// 
-			// lblComoSeValido
-			// 
-			this->lblComoSeValido->AutoSize = true;
-			this->lblComoSeValido->Location = System::Drawing::Point(391, 220);
-			this->lblComoSeValido->Name = L"lblComoSeValido";
-			this->lblComoSeValido->Size = System::Drawing::Size(79, 13);
-			this->lblComoSeValido->TabIndex = 13;
-			this->lblComoSeValido->Text = L"Cómo se validó";
-			// 
-			// cboComoSeValido
-			// 
-			this->cboComoSeValido->DropDownStyle = System::Windows::Forms::ComboBoxStyle::DropDownList;
-			this->cboComoSeValido->FormattingEnabled = true;
-			this->cboComoSeValido->Location = System::Drawing::Point(394, 236);
-			this->cboComoSeValido->Name = L"cboComoSeValido";
-			this->cboComoSeValido->Size = System::Drawing::Size(240, 21);
-			this->cboComoSeValido->TabIndex = 14;
-			// 
-			// btnGuardar
-			// 
-			this->btnGuardar->Location = System::Drawing::Point(27, 303);
-			this->btnGuardar->Name = L"btnGuardar";
-			this->btnGuardar->Size = System::Drawing::Size(86, 23);
-			this->btnGuardar->TabIndex = 1;
-			this->btnGuardar->Text = L"Guardar";
-			this->btnGuardar->UseVisualStyleBackColor = true;
-			// 
-			// btnLimpiar
-			// 
-			this->btnLimpiar->Location = System::Drawing::Point(119, 303);
-			this->btnLimpiar->Name = L"btnLimpiar";
-			this->btnLimpiar->Size = System::Drawing::Size(75, 23);
-			this->btnLimpiar->TabIndex = 2;
-			this->btnLimpiar->Text = L"Limpiar";
-			this->btnLimpiar->UseVisualStyleBackColor = true;
-			// 
-			// btnGenerarDatos
-			// 
-			this->btnGenerarDatos->Location = System::Drawing::Point(200, 303);
-			this->btnGenerarDatos->Name = L"btnGenerarDatos";
-			this->btnGenerarDatos->Size = System::Drawing::Size(174, 23);
-			this->btnGenerarDatos->TabIndex = 3;
-			this->btnGenerarDatos->Text = L"Generar datos aleatorios";
-			this->btnGenerarDatos->UseVisualStyleBackColor = true;
-			// 
-			// btnVerDetalle
-			// 
-			this->btnVerDetalle->Location = System::Drawing::Point(594, 303);
-			this->btnVerDetalle->Name = L"btnVerDetalle";
-			this->btnVerDetalle->Size = System::Drawing::Size(75, 23);
-			this->btnVerDetalle->TabIndex = 4;
-			this->btnVerDetalle->Text = L"Ver Detalle";
-			this->btnVerDetalle->UseVisualStyleBackColor = true;
-			// 
-			// FrmRegistro
-			// 
-			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
-			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(792, 353);
-			this->Controls->Add(this->btnVerDetalle);
-			this->Controls->Add(this->btnGenerarDatos);
-			this->Controls->Add(this->btnLimpiar);
-			this->Controls->Add(this->btnGuardar);
-			this->Controls->Add(this->grpNuevoRegistro);
-			this->Name = L"FrmRegistro";
-			this->Text = L"AI-TRACE — Registro de Bitácora de Uso de IA";
-			this->grpNuevoRegistro->ResumeLayout(false);
-			this->grpNuevoRegistro->PerformLayout();
-			this->ResumeLayout(false);
 
-		}
+        void InitializeComponent(void)
+        {
+            this->grpNuevoRegistro = (gcnew System::Windows::Forms::GroupBox());
+            this->lblFecha = (gcnew System::Windows::Forms::Label());
+            this->dtpFecha = (gcnew System::Windows::Forms::DateTimePicker());
+            this->cboCategoria = (gcnew System::Windows::Forms::ComboBox());
+            this->lblCategoriaConsulta = (gcnew System::Windows::Forms::Label());
+            this->lblQueConsultamos = (gcnew System::Windows::Forms::Label());
+            this->txtQueConsultamos = (gcnew System::Windows::Forms::TextBox());
+            this->txtResultadoIA = (gcnew System::Windows::Forms::TextBox());
+            this->lblResultadoIA = (gcnew System::Windows::Forms::Label());
+            this->cboCurso = (gcnew System::Windows::Forms::ComboBox());
+            this->lblCurso = (gcnew System::Windows::Forms::Label());
+            this->txtQueSeCambio = (gcnew System::Windows::Forms::TextBox());
+            this->lblQueSeCambio = (gcnew System::Windows::Forms::Label());
+            this->comboBox1 = (gcnew System::Windows::Forms::ComboBox());
+            this->lblHerramienta = (gcnew System::Windows::Forms::Label());
+            this->cboComoSeValido = (gcnew System::Windows::Forms::ComboBox());
+            this->lblComoSeValido = (gcnew System::Windows::Forms::Label());
+            this->btnGuardar = (gcnew System::Windows::Forms::Button());
+            this->btnLimpiar = (gcnew System::Windows::Forms::Button());
+            this->btnGenerarDatos = (gcnew System::Windows::Forms::Button());
+            this->btnVerDetalle = (gcnew System::Windows::Forms::Button());
+
+            this->grpNuevoRegistro->SuspendLayout();
+            this->SuspendLayout();
+
+            // GRUPO PRINCIPAL
+            this->grpNuevoRegistro->Controls->Add(this->cboComoSeValido);
+            this->grpNuevoRegistro->Controls->Add(this->lblComoSeValido);
+            this->grpNuevoRegistro->Controls->Add(this->comboBox1);
+            this->grpNuevoRegistro->Controls->Add(this->lblHerramienta);
+            this->grpNuevoRegistro->Controls->Add(this->cboCurso);
+            this->grpNuevoRegistro->Controls->Add(this->lblCurso);
+            this->grpNuevoRegistro->Controls->Add(this->txtQueSeCambio);
+            this->grpNuevoRegistro->Controls->Add(this->lblQueSeCambio);
+            this->grpNuevoRegistro->Controls->Add(this->txtResultadoIA);
+            this->grpNuevoRegistro->Controls->Add(this->lblResultadoIA);
+            this->grpNuevoRegistro->Controls->Add(this->txtQueConsultamos);
+            this->grpNuevoRegistro->Controls->Add(this->lblQueConsultamos);
+            this->grpNuevoRegistro->Controls->Add(this->cboCategoria);
+            this->grpNuevoRegistro->Controls->Add(this->lblCategoriaConsulta);
+            this->grpNuevoRegistro->Controls->Add(this->dtpFecha);
+            this->grpNuevoRegistro->Controls->Add(this->lblFecha);
+
+            this->grpNuevoRegistro->Location = Point(14, 15);
+            this->grpNuevoRegistro->Name = L"grpNuevoRegistro";
+            this->grpNuevoRegistro->Size = Drawing::Size(655, 272);
+            this->grpNuevoRegistro->Text = L"Nuevo registro";
+
+            // FECHA
+            this->lblFecha->Location = Point(10, 22);
+            this->lblFecha->AutoSize = true;
+            this->lblFecha->Text = L"Fecha";
+
+            this->dtpFecha->Location = Point(13, 38);
+            this->dtpFecha->Size = Drawing::Size(200, 20);
+
+            // CATEGORIA
+            this->lblCategoriaConsulta->Location = Point(10, 70);
+            this->lblCategoriaConsulta->AutoSize = true;
+            this->lblCategoriaConsulta->Text = L"Categoría de la consulta";
+
+            this->cboCategoria->Location = Point(13, 86);
+            this->cboCategoria->Size = Drawing::Size(200, 21);
+            this->cboCategoria->DropDownStyle = ComboBoxStyle::DropDownList;
+
+            this->cboCategoria->Items->AddRange(
+                gcnew cli::array<Object^>{
+                L"Tarea", L"Examen", L"LB1", L"EA1",
+                    L"Reto", L"Proyecto/Trabajo",
+                    L"Teoría/Consulta conceptual",
+                    L"Depuración de errores", L"Otro"
+            });
+
+            // CONSULTA
+            this->lblQueConsultamos->Location = Point(10, 119);
+            this->lblQueConsultamos->AutoSize = true;
+            this->lblQueConsultamos->Text = L"Qué consultamos";
+
+            this->txtQueConsultamos->Location = Point(14, 136);
+            this->txtQueConsultamos->Size = Drawing::Size(620, 20);
+            this->txtQueConsultamos->Multiline = true;
+
+            // RESULTADO
+            this->lblResultadoIA->Location = Point(10, 169);
+            this->lblResultadoIA->AutoSize = true;
+            this->lblResultadoIA->Text = L"Resultado de la IA (resumen)";
+
+            this->txtResultadoIA->Location = Point(14, 189);
+            this->txtResultadoIA->Size = Drawing::Size(620, 20);
+            this->txtResultadoIA->Multiline = true;
+
+            // CAMBIOS
+            this->lblQueSeCambio->Location = Point(10, 220);
+            this->lblQueSeCambio->AutoSize = true;
+            this->lblQueSeCambio->Text = L"Qué se cambió";
+
+            this->txtQueSeCambio->Location = Point(14, 237);
+            this->txtQueSeCambio->Size = Drawing::Size(329, 20);
+
+            // CURSO
+            this->lblCurso->Location = Point(391, 22);
+            this->lblCurso->AutoSize = true;
+            this->lblCurso->Text = L"Curso";
+
+            this->cboCurso->Location = Point(394, 37);
+            this->cboCurso->Size = Drawing::Size(240, 21);
+            this->cboCurso->DropDownStyle = ComboBoxStyle::DropDownList;
+
+            // HERRAMIENTA
+            this->lblHerramienta->Location = Point(391, 70);
+            this->lblHerramienta->AutoSize = true;
+            this->lblHerramienta->Text = L"Herramienta de IA";
+
+            this->comboBox1->Location = Point(394, 86);
+            this->comboBox1->Size = Drawing::Size(240, 21);
+            this->comboBox1->DropDownStyle = ComboBoxStyle::DropDownList;
+
+            // VALIDACION
+            this->lblComoSeValido->Location = Point(391, 220);
+            this->lblComoSeValido->AutoSize = true;
+            this->lblComoSeValido->Text = L"Cómo se validó";
+
+            this->cboComoSeValido->Location = Point(394, 236);
+            this->cboComoSeValido->Size = Drawing::Size(240, 21);
+            this->cboComoSeValido->DropDownStyle = ComboBoxStyle::DropDownList;
+
+            // BOTONES
+            this->btnGuardar->Location = Point(27, 303);
+            this->btnGuardar->Size = Drawing::Size(86, 23);
+            this->btnGuardar->Text = L"Guardar";
+
+            this->btnLimpiar->Location = Point(119, 303);
+            this->btnLimpiar->Size = Drawing::Size(75, 23);
+            this->btnLimpiar->Text = L"Limpiar";
+
+            this->btnGenerarDatos->Location = Point(200, 303);
+            this->btnGenerarDatos->Size = Drawing::Size(174, 23);
+            this->btnGenerarDatos->Text = L"Generar datos aleatorios";
+
+            this->btnVerDetalle->Location = Point(594, 303);
+            this->btnVerDetalle->Size = Drawing::Size(75, 23);
+            this->btnVerDetalle->Text = L"Ver Detalle";
+
+            // EVENTOS
+            this->btnGuardar->Click += gcnew EventHandler(
+                this, &FrmRegistro::btnGuardar_Click);
+
+            this->btnLimpiar->Click += gcnew EventHandler(
+                this, &FrmRegistro::btnLimpiar_Click);
+
+            this->btnGenerarDatos->Click += gcnew EventHandler(
+                this, &FrmRegistro::btnGenerarDatos_Click);
+
+            this->btnVerDetalle->Click += gcnew EventHandler(
+                this, &FrmRegistro::btnVerDetalle_Click);
+
+            // FORMULARIO
+            this->ClientSize = Drawing::Size(792, 353);
+            this->Controls->Add(this->btnVerDetalle);
+            this->Controls->Add(this->btnGenerarDatos);
+            this->Controls->Add(this->btnLimpiar);
+            this->Controls->Add(this->btnGuardar);
+            this->Controls->Add(this->grpNuevoRegistro);
+
+            this->Name = L"FrmRegistro";
+            this->Text = L"AI-TRACE - Registro de Bitácora de Uso de IA";
+
+            this->grpNuevoRegistro->ResumeLayout(false);
+            this->grpNuevoRegistro->PerformLayout();
+            this->ResumeLayout(false);
+        }
+
 #pragma endregion
-	private: System::Void label1_Click(System::Object^ sender, System::EventArgs^ e) {
-	}
-	private: System::Void label1_Click_1(System::Object^ sender, System::EventArgs^ e) {
-	}
-	};
+
+    private: System::Void btnGuardar_Click(
+        System::Object^ sender, System::EventArgs^ e)
+    {
+        if (cboCurso->SelectedIndex == -1 ||
+            cboCategoria->SelectedIndex == -1 ||
+            comboBox1->SelectedIndex == -1 ||
+            cboComoSeValido->SelectedIndex == -1 ||
+            String::IsNullOrWhiteSpace(txtQueConsultamos->Text))
+        {
+            MessageBox::Show(L"Complete los campos obligatorios");
+            return;
+        }
+
+        int id = 1;
+
+        for (int i = 0; i < bitacora->ObtenerTotal(); i++)
+        {
+            RegistroAI* registro = bitacora->ObtenerRegistro(i);
+
+            if (registro->getID() >= id)
+            {
+                id = registro->getID() + 1;
+            }
+        }
+
+        string fecha = marshal_as<string>(
+            dtpFecha->Value.ToString("dd/MM/yyyy"));
+
+        string curso = marshal_as<string>(cboCurso->Text);
+        string categoria = marshal_as<string>(cboCategoria->Text);
+        string herramienta = marshal_as<string>(comboBox1->Text);
+        string consulta = marshal_as<string>(txtQueConsultamos->Text);
+        string resultado = marshal_as<string>(txtResultadoIA->Text);
+        string cambios = marshal_as<string>(txtQueSeCambio->Text);
+        string validacion = marshal_as<string>(cboComoSeValido->Text);
+
+        RegistroAI* nuevo = new RegistroAI(
+            id, fecha, curso, categoria, herramienta,
+            consulta, resultado, cambios, validacion);
+
+        if (bitacora->Agregar(nuevo))
+        {
+            MessageBox::Show(L"Registro guardado correctamente");
+        }
+        else
+        {
+            delete nuevo;
+            MessageBox::Show(L"No se pudo guardar el registro");
+        }
+    }
+
+    private: System::Void btnLimpiar_Click(
+        System::Object^ sender, System::EventArgs^ e)
+    {
+        dtpFecha->Value = DateTime::Today;
+        cboCurso->SelectedIndex = -1;
+        cboCategoria->SelectedIndex = -1;
+        comboBox1->SelectedIndex = -1;
+        cboComoSeValido->SelectedIndex = -1;
+
+        txtQueConsultamos->Clear();
+        txtResultadoIA->Clear();
+        txtQueSeCambio->Clear();
+    }
+
+    private: System::Void btnGenerarDatos_Click(
+        System::Object^ sender, System::EventArgs^ e)
+    {
+        int siguienteID = 1;
+
+        for (int i = 0; i < bitacora->ObtenerTotal(); i++)
+        {
+            RegistroAI* registro = bitacora->ObtenerRegistro(i);
+
+            if (registro->getID() >= siguienteID)
+            {
+                siguienteID = registro->getID() + 1;
+            }
+        }
+
+        GeneradorAleatorio generador(100, siguienteID);
+        generador.GenerarDatos(*bitacora);
+
+        MessageBox::Show(
+            L"Total de registros: " +
+            bitacora->ObtenerTotal().ToString());
+    }
+
+    private: System::Void btnVerDetalle_Click(
+        System::Object^ sender, System::EventArgs^ e)
+    {
+        int total = bitacora->ObtenerTotal();
+
+        if (total == 0)
+        {
+            MessageBox::Show(L"No hay registros guardados");
+            return;
+        }
+
+        String^ mensaje = L"ULTIMOS REGISTROS\n\n";
+
+        int inicio = total - 10;
+
+        if (inicio < 0)
+        {
+            inicio = 0;
+        }
+
+        for (int i = inicio; i < total; i++)
+        {
+            RegistroAI* registro = bitacora->ObtenerRegistro(i);
+
+            mensaje += L"ID: " + registro->getID().ToString() + L"\n";
+
+            mensaje += L"Curso: " +
+                gcnew String(registro->getCurso().c_str()) + L"\n";
+
+            mensaje += L"Consulta: " +
+                gcnew String(registro->getConsulta().c_str()) + L"\n\n";
+        }
+
+        MessageBox::Show(mensaje, L"Detalle de registros");
+    }
+    };
 }
