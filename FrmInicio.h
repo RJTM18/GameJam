@@ -33,7 +33,6 @@ namespace GameJam {
 		/// </summary>
 		~FrmInicio() {
 			if (components) { delete components; }
-			delete bitacora;
 		}
 	private: System::Windows::Forms::MenuStrip^ menuPrincipal;
 	protected:
@@ -101,7 +100,7 @@ namespace GameJam {
 			this->listadoDeRegistrosToolStripMenuItem->Name = L"listadoDeRegistrosToolStripMenuItem";
 			this->listadoDeRegistrosToolStripMenuItem->Size = System::Drawing::Size(157, 24);
 			this->listadoDeRegistrosToolStripMenuItem->Text = L"Listado de Registros";
-			this->listadoDeRegistrosToolStripMenuItem->Click += gcnew System::EventHandler(this, &FrmInicio::mnuListado_click);
+			// this->listadoDeRegistrosToolStripMenuItem->Click += gcnew System::EventHandler(this, &FrmInicio::mnuListado_click);
 			// 
 			// dashBoardToolStripMenuItem
 			// 
@@ -129,7 +128,6 @@ namespace GameJam {
 			this->generarDatosToolStripMenuItem->Name = L"generarDatosToolStripMenuItem";
 			this->generarDatosToolStripMenuItem->Size = System::Drawing::Size(118, 24);
 			this->generarDatosToolStripMenuItem->Text = L"Generar Datos";
-			this->generarDatosToolStripMenuItem->Click += gcnew System::EventHandler(this, &FrmInicio::generarDatosToolStripMenuItem_Click);
 			// 
 			// instruccionesToolStripMenuItem
 			// 
@@ -165,7 +163,6 @@ namespace GameJam {
 			this->Margin = System::Windows::Forms::Padding(4);
 			this->Name = L"FrmInicio";
 			this->Text = L"FrmInicio";
-			this->Load += gcnew System::EventHandler(this, &FrmInicio::FrmInicio_Load);
 			this->menuPrincipal->ResumeLayout(false);
 			this->menuPrincipal->PerformLayout();
 			this->ResumeLayout(false);
@@ -190,13 +187,16 @@ namespace GameJam {
 		registro->MdiParent = this;
 		registro->Show();
 	}
+	/*
 	private: System::Void mnuListado_click(System::Object^ sender, System::EventArgs^ e) {
 		FrmListado^ listado = gcnew FrmListado(bitacora);
 		listado->MdiParent = this;
 		listado->Show();
 	}
+	*/
 	private: System::Void mnuHallazgos_click(System::Object^ sender, System::EventArgs^ e) {
 	}
+
 	private: System::Void mnuIndicadores_click(System::Object^ sender, System::EventArgs^ e) {
 		FrmIndicadores^ indicador = gcnew FrmIndicadores(bitacora);
 		indicador->MdiParent = this;
@@ -207,13 +207,9 @@ namespace GameJam {
 		prompts->MdiParent = this;
 		prompts->Show();
 	}
-private: System::Void FrmInicio_Load(System::Object^ sender, System::EventArgs^ e) {
-}
+	
 	private: System::Void mnuSalir_Click(System::Object^ sender, System::EventArgs^ e) {
 		this->Close();
 	}
-private: System::Void generarDatosToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
-	   
-}
 };
 }

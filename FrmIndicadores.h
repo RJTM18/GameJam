@@ -248,7 +248,7 @@ namespace GameJam {
 		}
 #pragma endregion
 	private: System::Void FrmIndicadores_Load(System::Object^ sender, System::EventArgs^ e) {
-		Estadisticas datos(bitacora);
+		Estadistica datos(bitacora);
 		datos.analizar();
 		int validados = 0;
 		int total = datos.getTotalConsultas();
