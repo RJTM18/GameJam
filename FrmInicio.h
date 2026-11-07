@@ -3,6 +3,7 @@
 #include "FrmRegistro.h"
 #include "FrmPrompts.h"
 #include "FrmListado.h"
+#include "FrmIndicadores.h"
 namespace GameJam {
 
 	using namespace System;
@@ -173,7 +174,7 @@ namespace GameJam {
 		registro->Show();
 	}
 	private: System::Void mnuListado_click(System::Object^ sender, System::EventArgs^ e) {
-		FrmListado^ listado = gcnew FrmListado();
+		FrmListado^ listado = gcnew FrmListado(bitacora);
 		listado->MdiParent = this;
 		listado->Show();
 	}

@@ -200,6 +200,9 @@
     <EmbeddedResource Include="FrmIndicadores.resx">
       <DependentUpon>FrmIndicadores.h</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FrmPrompts.resx">
+      <DependentUpon>FrmPrompts.h</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmRegistro.resx">
       <DependentUpon>FrmRegistro.h</DependentUpon>
     </EmbeddedResource>
