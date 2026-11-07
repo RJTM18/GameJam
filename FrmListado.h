@@ -103,9 +103,10 @@ namespace GameJam {
 			// lblDetalleCurso
 			// 
 			this->lblDetalleCurso->AutoSize = true;
-			this->lblDetalleCurso->Location = System::Drawing::Point(9, 9);
+			this->lblDetalleCurso->Location = System::Drawing::Point(12, 11);
+			this->lblDetalleCurso->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
 			this->lblDetalleCurso->Name = L"lblDetalleCurso";
-			this->lblDetalleCurso->Size = System::Drawing::Size(34, 13);
+			this->lblDetalleCurso->Size = System::Drawing::Size(42, 16);
 			this->lblDetalleCurso->TabIndex = 0;
 			this->lblDetalleCurso->Text = L"Curso";
 			// 
@@ -117,17 +118,19 @@ namespace GameJam {
 				L"Todos", L"Algoritmos", L"Matemática", L"Física",
 					L"Lenguaje"
 			});
-			this->cboDetalleCurso->Location = System::Drawing::Point(12, 25);
+			this->cboDetalleCurso->Location = System::Drawing::Point(16, 31);
+			this->cboDetalleCurso->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->cboDetalleCurso->Name = L"cboDetalleCurso";
-			this->cboDetalleCurso->Size = System::Drawing::Size(153, 21);
+			this->cboDetalleCurso->Size = System::Drawing::Size(203, 24);
 			this->cboDetalleCurso->TabIndex = 1;
 			// 
 			// lblDetalleCategoría
 			// 
 			this->lblDetalleCategoría->AutoSize = true;
-			this->lblDetalleCategoría->Location = System::Drawing::Point(171, 12);
+			this->lblDetalleCategoría->Location = System::Drawing::Point(228, 15);
+			this->lblDetalleCategoría->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
 			this->lblDetalleCategoría->Name = L"lblDetalleCategoría";
-			this->lblDetalleCategoría->Size = System::Drawing::Size(54, 13);
+			this->lblDetalleCategoría->Size = System::Drawing::Size(66, 16);
 			this->lblDetalleCategoría->TabIndex = 2;
 			this->lblDetalleCategoría->Text = L"Categoría";
 			// 
@@ -139,17 +142,19 @@ namespace GameJam {
 				L"Todas", L"Tarea", L"Examen", L"LB1",
 					L"EA1", L"Reto", L"Proyecto/Trabajo", L"Teoría/Consulta conceptual", L"Depuracion de errores", L"Otro"
 			});
-			this->cboDetalleCategoría->Location = System::Drawing::Point(174, 25);
+			this->cboDetalleCategoría->Location = System::Drawing::Point(232, 31);
+			this->cboDetalleCategoría->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->cboDetalleCategoría->Name = L"cboDetalleCategoría";
-			this->cboDetalleCategoría->Size = System::Drawing::Size(154, 21);
+			this->cboDetalleCategoría->Size = System::Drawing::Size(204, 24);
 			this->cboDetalleCategoría->TabIndex = 3;
 			// 
 			// lblDetalleHerramienta
 			// 
 			this->lblDetalleHerramienta->AutoSize = true;
-			this->lblDetalleHerramienta->Location = System::Drawing::Point(334, 12);
+			this->lblDetalleHerramienta->Location = System::Drawing::Point(445, 15);
+			this->lblDetalleHerramienta->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
 			this->lblDetalleHerramienta->Name = L"lblDetalleHerramienta";
-			this->lblDetalleHerramienta->Size = System::Drawing::Size(64, 13);
+			this->lblDetalleHerramienta->Size = System::Drawing::Size(81, 16);
 			this->lblDetalleHerramienta->TabIndex = 4;
 			this->lblDetalleHerramienta->Text = L"Herramienta";
 			// 
@@ -161,25 +166,28 @@ namespace GameJam {
 				L"Todas", L"ChatGPT", L"Claude", L"Copilot",
 					L"Gemini"
 			});
-			this->cboDetalleHerramienta->Location = System::Drawing::Point(337, 25);
+			this->cboDetalleHerramienta->Location = System::Drawing::Point(449, 31);
+			this->cboDetalleHerramienta->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->cboDetalleHerramienta->Name = L"cboDetalleHerramienta";
-			this->cboDetalleHerramienta->Size = System::Drawing::Size(164, 21);
+			this->cboDetalleHerramienta->Size = System::Drawing::Size(217, 24);
 			this->cboDetalleHerramienta->TabIndex = 5;
 			// 
 			// btnDetalleBuscar
 			// 
-			this->btnDetalleBuscar->Location = System::Drawing::Point(512, 25);
+			this->btnDetalleBuscar->Location = System::Drawing::Point(683, 31);
+			this->btnDetalleBuscar->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->btnDetalleBuscar->Name = L"btnDetalleBuscar";
-			this->btnDetalleBuscar->Size = System::Drawing::Size(105, 23);
+			this->btnDetalleBuscar->Size = System::Drawing::Size(140, 28);
 			this->btnDetalleBuscar->TabIndex = 6;
 			this->btnDetalleBuscar->Text = L"Buscar";
 			this->btnDetalleBuscar->UseVisualStyleBackColor = true;
 			// 
 			// btnDetalleLimpiar
 			// 
-			this->btnDetalleLimpiar->Location = System::Drawing::Point(623, 25);
+			this->btnDetalleLimpiar->Location = System::Drawing::Point(831, 31);
+			this->btnDetalleLimpiar->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->btnDetalleLimpiar->Name = L"btnDetalleLimpiar";
-			this->btnDetalleLimpiar->Size = System::Drawing::Size(105, 23);
+			this->btnDetalleLimpiar->Size = System::Drawing::Size(140, 28);
 			this->btnDetalleLimpiar->TabIndex = 7;
 			this->btnDetalleLimpiar->Text = L"Limpiar";
 			this->btnDetalleLimpiar->UseVisualStyleBackColor = true;
@@ -202,38 +210,38 @@ namespace GameJam {
 			// 
 			// columnHeader1
 			// 
-			this->columnHeader1->Text = L"ID";
-			this->columnHeader1->Width = 100;
+			this->colNumero->HeaderText = L"#";
+			this->colNumero->Name = L"colNumero";
 			// 
 			// columnHeader2
 			// 
-			this->columnHeader2->Text = L"Fecha";
-			this->columnHeader2->Width = 100;
+			this->colFecha->HeaderText = L"Fecha";
+			this->colFecha->Name = L"colFecha";
 			// 
 			// columnHeader3
 			// 
-			this->columnHeader3->Text = L"Curso";
-			this->columnHeader3->Width = 100;
+			this->colCurso->HeaderText = L"Curso";
+			this->colCurso->Name = L"colCurso";
 			// 
 			// columnHeader4
 			// 
-			this->columnHeader4->Text = L"Categoria";
-			this->columnHeader4->Width = 100;
+			this->colCategoria->HeaderText = L"Categoría";
+			this->colCategoria->Name = L"colCategoria";
 			// 
 			// columnHeader5
 			// 
-			this->columnHeader5->Text = L"Herramienta de IA";
-			this->columnHeader5->Width = 125;
+			this->colHerramienta->HeaderText = L"Herramienta";
+			this->colHerramienta->Name = L"colHerramienta";
 			// 
 			// columnHeader6
 			// 
-			this->columnHeader6->Text = L"Que Consultamos\?";
-			this->columnHeader6->Width = 125;
+			this->colConsulta->HeaderText = L"Qué consultamos";
+			this->colConsulta->Name = L"colConsulta";
 			// 
 			// columnHeader7
 			// 
-			this->columnHeader7->Text = L"Validado";
-			this->columnHeader7->Width = 100;
+			this->colValidado->HeaderText = L"Validado";
+			this->colValidado->Name = L"colValidado";
 			// 
 			// lblTotalRegistros
 			// 
@@ -283,7 +291,7 @@ namespace GameJam {
 			// 
 			// FrmListado
 			// 
-			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
+			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(813, 454);
 			this->Controls->Add(this->btnGoDashBoard);
@@ -299,8 +307,10 @@ namespace GameJam {
 			this->Controls->Add(this->lblDetalleCategoría);
 			this->Controls->Add(this->cboDetalleCurso);
 			this->Controls->Add(this->lblDetalleCurso);
+			this->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->Name = L"FrmListado";
 			this->Text = L"AI-TRACE — Detalle y Análisis";
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dgvRegistros))->EndInit();
 			this->ResumeLayout(false);
 			this->PerformLayout();
 
