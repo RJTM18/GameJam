@@ -9,15 +9,26 @@
 //Por default, validacion sera false.
 
 class RegistroAI {
+
 public:
 
     RegistroAI(int ID, string Fecha, string Curso,
         string Categoria, string HerramientaAI,
-        string Consulta, string Resultado, string Cambios) :
-        id(ID), fecha(Fecha), curso(Curso),
-        categoria(Categoria), herramientaAI(HerramientaAI),
-        consulta(Consulta), resultado(Resultado),
-        cambios(Cambios), validacion(false) { }
+        string Consulta, string Resultado,
+        string Cambios, string ComoSeValido) :
+
+        id (ID),
+        fecha (Fecha),
+        curso (Curso),
+        categoria (Categoria),
+        herramientaAI (HerramientaAI),
+        consulta (Consulta),
+        resultado (Resultado),
+        cambios (Cambios),
+        comoSeValido (ComoSeValido),
+        validacion(false)
+    {
+    }
 
     ~RegistroAI() { }
     	
@@ -31,6 +42,7 @@ public:
     string getConsulta() { return consulta; }
     string getResultado() { return resultado; }
     string getCambios() { return cambios; }
+    string getComoSeValido() { return comoSeValido; }
     bool getValidacion() { return validacion; }
 
     void setFecha(string Fecha) { fecha = Fecha; }
@@ -41,6 +53,7 @@ public:
     void setResultado(string Resultado) { resultado = Resultado; }
     void setCambios(string Cambios) { cambios = Cambios; }
     void setValidacion(bool Validacion) { validacion = Validacion; }
+    void setComoSeValido(string ComoSeValido) { comoSeValido = ComoSeValido; }
 
 private:
 
@@ -52,5 +65,6 @@ private:
     string consulta;
     string resultado;
     string cambios;
+    string comoSeValido;
     bool validacion;
 };

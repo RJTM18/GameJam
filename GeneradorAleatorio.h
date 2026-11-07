@@ -140,11 +140,6 @@ public:
 
         string resultado;
         string cambios;
-
-
-        string resultado;
-        string cambios;
-
         if (consulta == "Como funciona este codigo C++")
         {
             resultado = "La IA explico las instrucciones del codigo";
