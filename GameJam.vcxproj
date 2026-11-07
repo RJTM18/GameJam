@@ -192,6 +192,9 @@
     <EmbeddedResource Include="FmrRegistro.resx">
       <DependentUpon>FmrRegistro.h</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FrmDashboard.resx">
+      <DependentUpon>FrmDashboard.h</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmInicio.resx">
       <DependentUpon>FrmInicio.h</DependentUpon>
     </EmbeddedResource>
