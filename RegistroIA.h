@@ -3,10 +3,12 @@
 #include "pch.h"
 #include <string>
 
-using namespace std;
+//Registro IA.
+//Aquellos en minuscula son los atributos de la clase.
+//En mayuscula, los parametros del contructor.
+//Por default, validacion sera false.
 
-class RegistroAI
-{
+class RegistroAI {
 public:
 
     RegistroAI(int ID, string Fecha, string Curso,
@@ -24,6 +26,17 @@ public:
     {
 
     }
+
+	RegistroIA(int ID, string Fecha, string Curso,
+		string Categoria, string HerramientaAI,
+		string Consulta, string Resultado, string Cambios) :
+		id(ID), fecha(Fecha), curso(Curso),
+		categoria(Categoria), herramientaAI(HerramientaAI),
+		consulta(Consulta), resultado(Resultado), cambios(Cambios),
+		validacion(false) { };
+
+    // GETTERS: obtener información
+	~RegistroIA() { };
 
     int getID() 
     {
