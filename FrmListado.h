@@ -1,19 +1,22 @@
-
 #pragma once
-#include "pch.h"
 #include "GestorBitacora.h"
-#include "RegistroIA.h"
+#include "FrmRegistro.h"
 
 namespace GameJam {
 
-    using namespace System;
-    using namespace System::Windows::Forms;
-    using namespace System::Drawing;
+	using namespace System;
+	using namespace System::ComponentModel;
+	using namespace System::Collections;
+	using namespace System::Windows::Forms;
+	using namespace System::Data;
+	using namespace System::Drawing;
 
-    public ref class FrmListado : public Form
-    {
-    private:
-        GestorBitacora* gestorB;
+	/// <summary>
+	/// Summary for FrmListado
+	/// </summary>
+	public ref class FrmListado : public System::Windows::Forms::Form {
+	private:
+		GestorBitacora* gestorB;
 
 	public:
 		FrmListado(GestorBitacora* gestor) {
@@ -49,13 +52,13 @@ namespace GameJam {
 	private: System::Windows::Forms::Label^ lblNoVerificados;
 	private: System::Windows::Forms::Button^ btnGoDashBoard;
 
-            cboDetalleCurso = gcnew ComboBox();
-            cboDetalleCategoria = gcnew ComboBox();
-            cboDetalleHerramienta = gcnew ComboBox();
+	protected:
 
-            btnDetalleBuscar = gcnew Button();
-            btnDetalleLimpiar = gcnew Button();
-            btnGoDashBoard = gcnew Button();
+	private:
+		/// <summary>
+		/// Required designer variable.
+		/// </summary>
+		System::ComponentModel::Container^ components;
 
 #pragma region Windows Form Designer generated code
 		/// <summary>
@@ -287,9 +290,7 @@ namespace GameJam {
 			this->ResumeLayout(false);
 			this->PerformLayout();
 
-        void ActualizarLista()
-        {
-            lvRegistros->Items->Clear();
+		}
 
 #pragma endregion 
 
@@ -307,12 +308,10 @@ namespace GameJam {
 			lvRegistros->Items->Add(fila);
 		}
 
-        System::Void btnDetalleBuscar_Click(
-            System::Object^ sender,
-            System::EventArgs^ e)
-        {
-            ActualizarLista();
-        }
+		lblTotalRegistros->Text = "Total de Registros: " + gestorB->ObtenerTotal().ToString();
+		lblVerificados->Text = "Verificados: " + gestorB->getTotalVerificados().ToString();
+		lblNoVerificados->Text = "No verificados: " + (gestorB->ObtenerTotal() - gestorB->getTotalVerificados()).ToString();
+	}
 
-};
+	};
 }
