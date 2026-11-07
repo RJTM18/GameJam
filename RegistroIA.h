@@ -17,32 +17,58 @@ public:
         consulta(Consulta), resultado(Resultado),
         cambios(Cambios), validacion(false)
     {
+
     }
 
-    ~RegistroAI() {}
+    ~RegistroAI() 
+    {
 
-    // GETTERS: obtener información
+    }
 
-    int getID() { return id; }
+    int getID() 
+    {
+        return id;
+    }
 
-    string getFecha() { return fecha; }
+    string getFecha() 
+    { 
+        return fecha; 
+    }
 
-    string getCurso() { return curso; }
+    string getCurso() 
+    { 
+        return curso;
+    }
 
-    string getCategoria() { return categoria; }
+    string getCategoria() 
+    { 
+        return categoria; 
+    }
 
-    string getHerramientaAI() { return herramientaAI; }
+    string getHerramientaAI() 
+    { 
+        return herramientaAI; 
+    }
 
-    string getConsulta() { return consulta; }
+    string getConsulta() 
+    { 
+        return consulta; 
+    }
 
-    string getResultado() { return resultado; }
+    string getResultado() 
+    { 
+        return resultado; 
+    }
 
-    string getCambios() { return cambios; }
+    string getCambios() 
+    { 
+        return cambios; 
+    }
 
-    bool getValidacion() { return validacion; }
-
-
-    // SETTERS: modificar información
+    bool getValidacion() 
+    { 
+        return validacion;
+    }
 
     void setFecha(string Fecha)
     {
@@ -83,7 +109,6 @@ public:
     {
         validacion = Validacion;
     }
-
 private:
 
     int id;
