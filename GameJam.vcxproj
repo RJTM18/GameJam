@@ -198,6 +198,9 @@
     <EmbeddedResource Include="FrmInicio.resx">
       <DependentUpon>FrmInicio.h</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FrmListado.resx">
+      <DependentUpon>FrmListado.h</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
