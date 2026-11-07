@@ -13,6 +13,9 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Header Files\Classes">
+      <UniqueIdentifier>{254203f0-d7ec-42cc-8a02-a3bf20ae2cd5}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="app.rc">
@@ -26,22 +29,40 @@
     <ClInclude Include="pch.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="GestorBitacora.h">
+    <ClInclude Include="FrmRegistro.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="RegistroIA.h">
+    <ClInclude Include="FrmDashboard.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="PalabrasClave.h">
+    <ClInclude Include="FrmIndicadores.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Estadisticas.h">
+    <ClInclude Include="FrmInicio.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="GeneradorAleatorio.h">
+    <ClInclude Include="FrmListado.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Analizador.h">
+      <Filter>Header Files\Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="Estadisticas.h">
+      <Filter>Header Files\Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="GeneradorAleatorio.h">
+      <Filter>Header Files\Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="GestorBitacora.h">
+      <Filter>Header Files\Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="PalabrasClave.h">
+      <Filter>Header Files\Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="RegistroIA.h">
+      <Filter>Header Files\Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="FormPrompts.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="FrmRegistro.h">
@@ -83,6 +104,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="FrmListado.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="FormPrompts.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
