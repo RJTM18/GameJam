@@ -32,6 +32,18 @@
     <ClInclude Include="RegistroIA.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="PalabrasClave.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Estadisticas.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GeneradorAleatorio.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Analizador.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
