@@ -19,28 +19,22 @@ namespace GameJam {
 		GestorBitacora* gestorB;
 
 	public:
-		FrmListado(void)
-		{
+		FrmListado(GestorBitacora* gestor) {
 			InitializeComponent();
+			gestorB = gestor;
 		}
 
 	protected:
-		/// <summary>
-		/// Clean up any resources being used.
-		/// </summary>
-		~FrmListado() 		{
-			if (components)
-			{
-				delete components;
-			}
+		~FrmListado() {
+			if (components) { delete components; }
 			delete gestorB;
 		}
 	private: System::Windows::Forms::Label^ lblDetalleCurso;
 	protected:
 
 	private: System::Windows::Forms::ComboBox^ cboDetalleCurso;
-	private: System::Windows::Forms::Label^ lblDetalleCategoría;
-	private: System::Windows::Forms::ComboBox^ cboDetalleCategoría;
+	private: System::Windows::Forms::Label^ lblDetalleCategoria;
+	private: System::Windows::Forms::ComboBox^ cboDetalleCategoria;
 	private: System::Windows::Forms::Label^ lblDetalleHerramienta;
 	private: System::Windows::Forms::ComboBox^ cboDetalleHerramienta;
 	private: System::Windows::Forms::Button^ btnDetalleBuscar;
@@ -75,8 +69,8 @@ namespace GameJam {
 		{
 			this->lblDetalleCurso = (gcnew System::Windows::Forms::Label());
 			this->cboDetalleCurso = (gcnew System::Windows::Forms::ComboBox());
-			this->lblDetalleCategoría = (gcnew System::Windows::Forms::Label());
-			this->cboDetalleCategoría = (gcnew System::Windows::Forms::ComboBox());
+			this->lblDetalleCategoria = (gcnew System::Windows::Forms::Label());
+			this->cboDetalleCategoria = (gcnew System::Windows::Forms::ComboBox());
 			this->lblDetalleHerramienta = (gcnew System::Windows::Forms::Label());
 			this->cboDetalleHerramienta = (gcnew System::Windows::Forms::ComboBox());
 			this->btnDetalleBuscar = (gcnew System::Windows::Forms::Button());
@@ -119,29 +113,29 @@ namespace GameJam {
 			this->cboDetalleCurso->Size = System::Drawing::Size(203, 24);
 			this->cboDetalleCurso->TabIndex = 1;
 			// 
-			// lblDetalleCategoría
+			// lblDetalleCategoria
 			// 
-			this->lblDetalleCategoría->AutoSize = true;
-			this->lblDetalleCategoría->Location = System::Drawing::Point(228, 15);
-			this->lblDetalleCategoría->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
-			this->lblDetalleCategoría->Name = L"lblDetalleCategoría";
-			this->lblDetalleCategoría->Size = System::Drawing::Size(66, 16);
-			this->lblDetalleCategoría->TabIndex = 2;
-			this->lblDetalleCategoría->Text = L"Categoría";
+			this->lblDetalleCategoria->AutoSize = true;
+			this->lblDetalleCategoria->Location = System::Drawing::Point(228, 15);
+			this->lblDetalleCategoria->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
+			this->lblDetalleCategoria->Name = L"lblDetalleCategoria";
+			this->lblDetalleCategoria->Size = System::Drawing::Size(66, 16);
+			this->lblDetalleCategoria->TabIndex = 2;
+			this->lblDetalleCategoria->Text = L"Categoría";
 			// 
-			// cboDetalleCategoría
+			// cboDetalleCategoria
 			// 
-			this->cboDetalleCategoría->DropDownStyle = System::Windows::Forms::ComboBoxStyle::DropDownList;
-			this->cboDetalleCategoría->FormattingEnabled = true;
-			this->cboDetalleCategoría->Items->AddRange(gcnew cli::array< System::Object^  >(10) {
+			this->cboDetalleCategoria->DropDownStyle = System::Windows::Forms::ComboBoxStyle::DropDownList;
+			this->cboDetalleCategoria->FormattingEnabled = true;
+			this->cboDetalleCategoria->Items->AddRange(gcnew cli::array< System::Object^  >(10) {
 				L"Todas", L"Tarea", L"Examen", L"LB1",
 					L"EA1", L"Reto", L"Proyecto/Trabajo", L"Teoría/Consulta conceptual", L"Depuracion de errores", L"Otro"
 			});
-			this->cboDetalleCategoría->Location = System::Drawing::Point(232, 31);
-			this->cboDetalleCategoría->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
-			this->cboDetalleCategoría->Name = L"cboDetalleCategoría";
-			this->cboDetalleCategoría->Size = System::Drawing::Size(204, 24);
-			this->cboDetalleCategoría->TabIndex = 3;
+			this->cboDetalleCategoria->Location = System::Drawing::Point(232, 31);
+			this->cboDetalleCategoria->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->cboDetalleCategoria->Name = L"cboDetalleCategoria";
+			this->cboDetalleCategoria->Size = System::Drawing::Size(204, 24);
+			this->cboDetalleCategoria->TabIndex = 3;
 			// 
 			// lblDetalleHerramienta
 			// 
@@ -202,41 +196,29 @@ namespace GameJam {
 			this->lvRegistros->TabIndex = 8;
 			this->lvRegistros->UseCompatibleStateImageBehavior = false;
 			this->lvRegistros->View = System::Windows::Forms::View::Details;
-			// 
+
 			// columnHeader1
-			// 
-			this->colNumero->HeaderText = L"#";
-			this->colNumero->Name = L"colNumero";
-			// 
+			this->columnHeader1->Text = L"#";
+			this->columnHeader1->Width = 40;
 			// columnHeader2
-			// 
-			this->colFecha->HeaderText = L"Fecha";
-			this->colFecha->Name = L"colFecha";
-			// 
+			this->columnHeader2->Text = L"Fecha";
+			this->columnHeader2->Width = 90;
 			// columnHeader3
-			// 
-			this->colCurso->HeaderText = L"Curso";
-			this->colCurso->Name = L"colCurso";
-			// 
+			this->columnHeader3->Text = L"Curso";
+			this->columnHeader3->Width = 120;
 			// columnHeader4
-			// 
-			this->colCategoria->HeaderText = L"Categoría";
-			this->colCategoria->Name = L"colCategoria";
-			// 
+			this->columnHeader4->Text = L"Categoría";
+			this->columnHeader4->Width = 130;
 			// columnHeader5
-			// 
-			this->colHerramienta->HeaderText = L"Herramienta";
-			this->colHerramienta->Name = L"colHerramienta";
-			// 
+			this->columnHeader5->Text = L"Herramienta";
+			this->columnHeader5->Width = 100;
 			// columnHeader6
-			// 
-			this->colConsulta->HeaderText = L"Qué consultamos";
-			this->colConsulta->Name = L"colConsulta";
-			// 
+			this->columnHeader6->Text = L"Qué consultamos";
+			this->columnHeader6->Width = 200;
 			// columnHeader7
-			// 
-			this->colValidado->HeaderText = L"Validado";
-			this->colValidado->Name = L"colValidado";
+			this->columnHeader7->Text = L"Validado";
+			this->columnHeader7->Width = 70;
+
 			// 
 			// lblTotalRegistros
 			// 
@@ -298,26 +280,25 @@ namespace GameJam {
 			this->Controls->Add(this->btnDetalleBuscar);
 			this->Controls->Add(this->cboDetalleHerramienta);
 			this->Controls->Add(this->lblDetalleHerramienta);
-			this->Controls->Add(this->cboDetalleCategoría);
-			this->Controls->Add(this->lblDetalleCategoría);
+			this->Controls->Add(this->cboDetalleCategoria);
+			this->Controls->Add(this->lblDetalleCategoria);
 			this->Controls->Add(this->cboDetalleCurso);
 			this->Controls->Add(this->lblDetalleCurso);
 			this->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->Name = L"FrmListado";
 			this->Text = L"AI-TRACE — Detalle y Análisis";
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->lvRegistros))->EndInit();
 			this->ResumeLayout(false);
 			this->PerformLayout();
 
 		}
 
-#pragma endregion Metodos privados
+#pragma endregion 
 
 	private: void ActualizarLista() {
 		lvRegistros->Items->Clear();
 		for (int i = 0; i < gestorB->ObtenerTotal(); i++) {
 			RegistroAI* r = gestorB->ObtenerRegistro(i);
-			ListViewItem^ fila = gcnew ListViewItem(marshal_as<String^>(r->getID()));
+			ListViewItem^ fila = gcnew ListViewItem(marshal_as<String^>(Convert::ToString(r->getID())));
 			fila->SubItems->Add(marshal_as<String^>(r->getFecha()));
 			fila->SubItems->Add(marshal_as<String^>(r->getCurso()));
 			fila->SubItems->Add(marshal_as<String^>(r->getCategoria()));
@@ -330,10 +311,6 @@ namespace GameJam {
 		lblTotalRegistros->Text = "Total de Registros: " + gestorB->ObtenerTotal().ToString();
 		lblVerificados->Text = "Verificados: " + gestorB->getTotalVerificados().ToString();
 		lblNoVerificados->Text = "No verificados: " + (gestorB->ObtenerTotal() - gestorB->getTotalVerificados()).ToString();
-	}
-
-#pragma endregion
-	private: System::Void dataGridView1_CellContentClick(System::Object^ sender, System::Windows::Forms::DataGridViewCellEventArgs^ e) {
 	}
 
 };

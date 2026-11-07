@@ -258,7 +258,7 @@ namespace GameJam {
 	    "Calculo I", "Algoritmos", "Matematica Discreta"
 		};
 
-		for (int i = 0; i < 5; i++)
+		for (int i = 0; i < 3; i++)
 		{
 			double porcentaje = datos.CalcularPorcentaje(cursos[i]);
 
