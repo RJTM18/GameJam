@@ -188,6 +188,21 @@ public:
         }
 
 
+        string comoSeValido;
+
+        if (curso == "Algoritmos")
+        {
+            comoSeValido = "Compile y ejecute el programa en Visual Studio";
+        }
+        else if (curso == "Calculo I")
+        {
+            comoSeValido = "Comprobe el resultado resolviendo el ejercicio";
+        }
+        else
+        {
+            comoSeValido = "Compare la solucion con mis apuntes de clase";
+        }
+
         RegistroAI* nuevo = new RegistroAI
         (
             id,
@@ -197,7 +212,8 @@ public:
             herramienta,
             consulta,
             resultado,
-            cambios
+            cambios,
+            comoSeValido
         );
 
         return nuevo;
