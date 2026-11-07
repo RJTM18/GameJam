@@ -141,6 +141,21 @@
   <ItemGroup>
     <ClInclude Include="Analizador.h" />
     <ClInclude Include="Estadisticas.h" />
+    <ClInclude Include="FmrRegistro.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="FrmDashboard.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="FrmIndicadores.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="FrmInicio.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="FrmListado.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
     <ClInclude Include="GeneradorAleatorio.h" />
     <ClInclude Include="GestorBitacora.h" />
     <ClInclude Include="PalabrasClave.h" />
@@ -150,6 +165,11 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AssemblyInfo.cpp" />
+    <ClCompile Include="FmrRegistro.cpp" />
+    <ClCompile Include="FrmDashboard.cpp" />
+    <ClCompile Include="FrmIndicadores.cpp" />
+    <ClCompile Include="FrmInicio.cpp" />
+    <ClCompile Include="FrmListado.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="pch.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
@@ -167,6 +187,14 @@
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="FmrRegistro.resx">
+      <DependentUpon>FmrRegistro.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmInicio.resx">
+      <DependentUpon>FrmInicio.h</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
