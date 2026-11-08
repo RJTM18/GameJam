@@ -22,12 +22,12 @@ namespace GameJam {
     public ref class FrmRegistro : public System::Windows::Forms::Form
     {
     private:
-        GestorBitacora* bitacora;
+        GestorBitacora* gestorB;
 
     public:
         FrmRegistro(GestorBitacora* gestor) {
             InitializeComponent();
-            bitacora = gestor;
+            gestorB = gestor;
 
             cboCurso->Items->Clear();
             cboCurso->Items->Add(L"Algoritmos");
@@ -146,7 +146,8 @@ namespace GameJam {
 
             this->cboCategoria->Location = Point(13, 86);
             this->cboCategoria->Size = Drawing::Size(200, 21);
-            this->cboCategoria->DropDownStyle = ComboBoxStyle::DropDownList;
+            this->cboCategoria->DropDownStyle =
+                System::Windows::Forms::ComboBoxStyle::DropDown;
 
             this->cboCategoria->Items->AddRange
             (
@@ -196,7 +197,7 @@ namespace GameJam {
 
             this->cboCurso->Location = Point(394, 37);
             this->cboCurso->Size = Drawing::Size(240, 21);
-            this->cboCurso->DropDownStyle = ComboBoxStyle::DropDownList;
+            this->cboCurso->DropDownStyle = ComboBoxStyle::DropDown;
 
         
             this->lblHerramienta->Location = Point(391, 70);
@@ -205,7 +206,7 @@ namespace GameJam {
 
             this->comboBox1->Location = Point(394, 86);
             this->comboBox1->Size = Drawing::Size(240, 21);
-            this->comboBox1->DropDownStyle = ComboBoxStyle::DropDownList;
+            this->comboBox1->DropDownStyle = ComboBoxStyle::DropDown;
 
             
             this->lblComoSeValido->Location = Point(391, 220);
@@ -214,7 +215,7 @@ namespace GameJam {
 
             this->cboComoSeValido->Location = Point(394, 236);
             this->cboComoSeValido->Size = Drawing::Size(240, 21);
-            this->cboComoSeValido->DropDownStyle = ComboBoxStyle::DropDownList;
+            this->cboComoSeValido->DropDownStyle = ComboBoxStyle::DropDown;
 
             
             this->btnGuardar->Location = Point(27, 303);
@@ -263,34 +264,18 @@ namespace GameJam {
 
 #pragma endregion
 
-    private: System::Void btnGuardar_Click(
-        System::Object^ sender, System::EventArgs^ e)
-    {
+    private: System::Void btnGuardar_Click(System::Object^ sender, System::EventArgs^ e) {
         if (cboCurso->SelectedIndex == -1 ||
             cboCategoria->SelectedIndex == -1 ||
             comboBox1->SelectedIndex == -1 ||
             cboComoSeValido->SelectedIndex == -1 ||
-            String::IsNullOrWhiteSpace(txtQueConsultamos->Text))
-        {
+            String::IsNullOrWhiteSpace(txtQueConsultamos->Text)) {
             MessageBox::Show(L"Complete los campos obligatorios");
             return;
         }
 
-        int id = 1;
-
-        for (int i = 0; i < bitacora->ObtenerTotal(); i++)
-        {
-            RegistroAI* registro = bitacora->ObtenerRegistro(i);
-
-            if (registro->getID() >= id)
-            {
-                id = registro->getID() + 1;
-            }
-        }
-
-        string fecha = marshal_as<string>(
-            dtpFecha->Value.ToString("dd/MM/yyyy"));
-
+        int nuevaID = gestorB->getUltimoIDRegistro() + 1;
+        string fecha = marshal_as<string>(dtpFecha->Value.ToString("dd/MM/yyyy"));
         string curso = marshal_as<string>(cboCurso->Text);
         string categoria = marshal_as<string>(cboCategoria->Text);
         string herramienta = marshal_as<string>(comboBox1->Text);
@@ -299,17 +284,12 @@ namespace GameJam {
         string cambios = marshal_as<string>(txtQueSeCambio->Text);
         string validacion = marshal_as<string>(cboComoSeValido->Text);
 
-        RegistroAI* nuevo = new RegistroAI
-        (
-            id, fecha, curso, categoria, herramienta,
+        RegistroAI* nuevo = new RegistroAI (
+            nuevaID, fecha, curso, categoria, herramienta,
             consulta, resultado, cambios, validacion);
 
-        if (bitacora->Agregar(nuevo))
-        {
-            MessageBox::Show(L"Registro guardado correctamente");
-        }
-        else
-        {
+        if (gestorB->Agregar(nuevo)) { MessageBox::Show(L"Registro guardado correctamente"); }
+        else {
             delete nuevo;
             MessageBox::Show(L"No se pudo guardar el registro");
         }
@@ -334,16 +314,16 @@ namespace GameJam {
     private: System::Void btnGenerarDatos_Click(System::Object^ sender, System::EventArgs^ e) {
         int siguienteID = 1;
 
-        for (int i = 0; i < bitacora->ObtenerTotal(); i++) {
-            RegistroAI* registro = bitacora->ObtenerRegistro(i);
+        for (int i = 0; i < gestorB->ObtenerTotal(); i++) {
+            RegistroAI* registro = gestorB->ObtenerRegistro(i);
             if (registro->getID() >= siguienteID) { siguienteID = registro->getID() + 1; }
         }
 
         GeneradorAleatorio generador(100, siguienteID);
-        generador.GenerarDatos(*bitacora);
+        generador.GenerarDatos(*gestorB);
 
         MessageBox::Show(L"Total de registros: " + 
-            Convert::ToString(bitacora->ObtenerTotal().ToString())
+            Convert::ToString(gestorB->ObtenerTotal().ToString())
         );
 
         // FrmListado^ listado(bitacora)
@@ -352,36 +332,9 @@ namespace GameJam {
 
     //cambiarlo
     private: System::Void btnVerDetalle_Click(System::Object^ sender, System::EventArgs^ e) {
-        int total = bitacora->ObtenerTotal();
-
-        if (total == 0) {
-            MessageBox::Show(L"No hay registros guardados");
-            return;
-        }
-
-        String^ mensaje = L"ULTIMOS REGISTROS\n\n";
-
-        int inicio = total - 10;
-
-        if (inicio < 0)
-        {
-            inicio = 0;
-        }
-
-        for (int i = inicio; i < total; i++)
-        {
-            RegistroAI* registro = bitacora->ObtenerRegistro(i);
-
-            mensaje += L"ID: " + Convert::ToString(registro->getID()) + L"\n";
-
-            mensaje += L"Curso: " +
-                gcnew String(registro->getCurso().c_str()) + L"\n";
-
-            mensaje += L"Consulta: " +
-                gcnew String(registro->getConsulta().c_str()) + L"\n\n";
-        }
-
-        MessageBox::Show(mensaje, L"Detalle de registros");
+        FrmListado^ listado = gcnew FrmListado(gestorB);
+        listado->MdiParent = this->MdiParent;
+        listado->Show();
     }
     };
 }

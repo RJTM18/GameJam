@@ -1,5 +1,5 @@
 #pragma once
-#include "GestorBitacora.h"
+#include "gestorBitacora.h"
 #include "FrmRegistro.h"
 #include "FrmPrompts.h"
 #include "FrmListado.h"
@@ -23,11 +23,11 @@ namespace GameJam {
 	/// </summary>
 	public ref class FrmInicio : public System::Windows::Forms::Form {
 	private:
-		GestorBitacora* bitacora;
+		GestorBitacora* gestorB;
 	public:
 		FrmInicio(void) {
 			InitializeComponent();
-			bitacora = new GestorBitacora();
+			gestorB = new GestorBitacora();
 		}
 
 	protected:
@@ -180,42 +180,42 @@ namespace GameJam {
 
 		int siguienteID = 1;
 
-		for (int i = 0; i < bitacora->ObtenerTotal(); i++) {
-			RegistroAI* r = bitacora->ObtenerRegistro(i);
+		for (int i = 0; i < gestorB->ObtenerTotal(); i++) {
+			RegistroAI* r = gestorB->ObtenerRegistro(i);
 
 			if (r->getID() >= siguienteID)
 				siguienteID = r->getID() + 1;
 		}
 
 		GeneradorAleatorio generador(100, siguienteID);
-		generador.GenerarDatos(*bitacora);
+		generador.GenerarDatos(*gestorB);
 
 		MessageBox::Show(L"Se han generaron 100 registros correctamente");
 	}
 
 	private: System::Void mnuCreadores_Click(System::Object^ sender, System::EventArgs^ e) {
-		FrmCreadores^ creadores = gcnew FrmCreadores(bitacora);
+		FrmCreadores^ creadores = gcnew FrmCreadores(gestorB);
 		creadores->MdiParent = this;
 		creadores->Show();
 	}
 
 	private: System::Void mnuInstrucciones_Click(System::Object^ sender, System::EventArgs^ e) {
-		FrmInstrucciones^ instrucciones = gcnew FrmInstrucciones(bitacora);
+		FrmInstrucciones^ instrucciones = gcnew FrmInstrucciones(gestorB);
 		instrucciones->MdiParent = this;
 		instrucciones->Show();
 	}
 
 	private: System::Void mnuRegistro_Click(System::Object^ sender, System::EventArgs^ e) {
-		FrmRegistro^ registro = gcnew FrmRegistro(bitacora);
+		FrmRegistro^ registro = gcnew FrmRegistro(gestorB);
 		registro->MdiParent = this;
 		registro->Show();
 	}
-
-		private: System::Void mnuListado_click(System::Object^ sender, System::EventArgs^ e) {
-			FrmListado^ listado = gcnew FrmListado(bitacora);
-			listado->MdiParent = this;
-			listado->Show();
-		}
+	
+	private: System::Void mnuListado_click(System::Object^ sender, System::EventArgs^ e) {
+		FrmListado^ listado = gcnew FrmListado(gestorB);
+		listado->MdiParent = this;
+		listado->Show();
+	}
 
 	private: System::Void mnuHallazgos_click(System::Object^ sender, System::EventArgs^ e) {
 		// Instanciamos el Dashboard pasándole el puntero de la bitácora en memoria
@@ -228,13 +228,13 @@ namespace GameJam {
 
 
 	private: System::Void mnuIndicadores_click(System::Object^ sender, System::EventArgs^ e) {
-		FrmIndicadores^ indicador = gcnew FrmIndicadores(bitacora);
+		FrmIndicadores^ indicador = gcnew FrmIndicadores(gestorB);
 		indicador->MdiParent = this;
 		indicador->Show();
 	}
 
 	private: System::Void mnuPrompts_click(System::Object^ sender, System::EventArgs^ e) {
-		FormPrompts^ prompts = gcnew FormPrompts(bitacora);
+		FormPrompts^ prompts = gcnew FormPrompts(gestorB);
 		prompts->MdiParent = this;
 		prompts->Show();
 	}
@@ -244,9 +244,9 @@ namespace GameJam {
 	}
 
 	private: System::Void FrmInicio_Click(System::Object^ sender, System::EventArgs^ e) {
-		int siguienteID = bitacora->ObtenerTotal() + 1;
+		int siguienteID = gestorB->ObtenerTotal() + 1;
 		GeneradorAleatorio generador(100, siguienteID);
-		generador.GenerarDatos(*bitacora);
+		generador.GenerarDatos(*gestorB);
 
 		MessageBox::Show(L"se generaron 100 registros!");
 	}

@@ -14,12 +14,19 @@ class GestorBitacora {
 
     vector<RegistroAI*> getRegistros() { return registros; }
 
+    //Retorna la cantidad total de registros
     int getTotalVerificados() {
         int contador = 0;
         for (int i = 0; i < (int)registros.size(); i++) {
             if (registros[i]->getValidacion()) contador++;
         }
         return contador;
+    }
+
+    //Retorna la ultima ID
+    int getUltimoIDRegistro() {
+        if (registros.empty()) return 0;
+        return registros.back()->getID();
     }
 
     bool Agregar(RegistroAI* nuevo) {
