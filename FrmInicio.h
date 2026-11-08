@@ -6,6 +6,7 @@
 #include "FrmIndicadores.h"
 #include "FrmInstrucciones.h"
 #include "FrmCreadores.h"
+#include "FrmDashboard.h"
 #include <msclr/marshal_cppstd.h>
 #include "GeneradorAleatorio.h"
 namespace GameJam {
@@ -82,90 +83,90 @@ namespace GameJam {
 			this->menuPrincipal->ImageScalingSize = System::Drawing::Size(20, 20);
 			this->menuPrincipal->Items->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(9) {
 				this->asdToolStripMenuItem,
-				this->listadoDeRegistrosToolStripMenuItem, this->dashBoardToolStripMenuItem, this->indicadoresToolStripMenuItem, this->promptsToolStripMenuItem,
-				this->generarDatosToolStripMenuItem, this->instruccionesToolStripMenuItem, this->creadoresToolStripMenuItem, this->mnuSalir
+					this->listadoDeRegistrosToolStripMenuItem, this->dashBoardToolStripMenuItem, this->indicadoresToolStripMenuItem, this->promptsToolStripMenuItem,
+					this->generarDatosToolStripMenuItem, this->instruccionesToolStripMenuItem, this->creadoresToolStripMenuItem, this->mnuSalir
 			});
 			this->menuPrincipal->Location = System::Drawing::Point(0, 0);
 			this->menuPrincipal->Name = L"menuPrincipal";
-			this->menuPrincipal->Size = System::Drawing::Size(1924, 28);
+			this->menuPrincipal->Padding = System::Windows::Forms::Padding(4, 2, 0, 2);
+			this->menuPrincipal->Size = System::Drawing::Size(1443, 24);
 			this->menuPrincipal->TabIndex = 0;
 			// 
 			// asdToolStripMenuItem
 			// 
 			this->asdToolStripMenuItem->Name = L"asdToolStripMenuItem";
-			this->asdToolStripMenuItem->Size = System::Drawing::Size(78, 24);
+			this->asdToolStripMenuItem->Size = System::Drawing::Size(62, 20);
 			this->asdToolStripMenuItem->Text = L"Registro";
 			this->asdToolStripMenuItem->Click += gcnew System::EventHandler(this, &FrmInicio::mnuRegistro_Click);
 			// 
 			// listadoDeRegistrosToolStripMenuItem
 			// 
 			this->listadoDeRegistrosToolStripMenuItem->Name = L"listadoDeRegistrosToolStripMenuItem";
-			this->listadoDeRegistrosToolStripMenuItem->Size = System::Drawing::Size(157, 24);
+			this->listadoDeRegistrosToolStripMenuItem->Size = System::Drawing::Size(124, 20);
 			this->listadoDeRegistrosToolStripMenuItem->Text = L"Listado de Registros";
 			this->listadoDeRegistrosToolStripMenuItem->Click += gcnew System::EventHandler(this, &FrmInicio::mnuListado_click);
 			// 
 			// dashBoardToolStripMenuItem
 			// 
 			this->dashBoardToolStripMenuItem->Name = L"dashBoardToolStripMenuItem";
-			this->dashBoardToolStripMenuItem->Size = System::Drawing::Size(89, 24);
+			this->dashBoardToolStripMenuItem->Size = System::Drawing::Size(70, 20);
 			this->dashBoardToolStripMenuItem->Text = L"Hallazgos";
 			this->dashBoardToolStripMenuItem->Click += gcnew System::EventHandler(this, &FrmInicio::mnuHallazgos_click);
 			// 
 			// indicadoresToolStripMenuItem
 			// 
 			this->indicadoresToolStripMenuItem->Name = L"indicadoresToolStripMenuItem";
-			this->indicadoresToolStripMenuItem->Size = System::Drawing::Size(100, 24);
+			this->indicadoresToolStripMenuItem->Size = System::Drawing::Size(80, 20);
 			this->indicadoresToolStripMenuItem->Text = L"Indicadores";
 			this->indicadoresToolStripMenuItem->Click += gcnew System::EventHandler(this, &FrmInicio::mnuIndicadores_click);
 			// 
 			// promptsToolStripMenuItem
 			// 
 			this->promptsToolStripMenuItem->Name = L"promptsToolStripMenuItem";
-			this->promptsToolStripMenuItem->Size = System::Drawing::Size(78, 24);
+			this->promptsToolStripMenuItem->Size = System::Drawing::Size(64, 20);
 			this->promptsToolStripMenuItem->Text = L"Prompts";
 			this->promptsToolStripMenuItem->Click += gcnew System::EventHandler(this, &FrmInicio::mnuPrompts_click);
 			// 
 			// generarDatosToolStripMenuItem
 			// 
 			this->generarDatosToolStripMenuItem->Name = L"generarDatosToolStripMenuItem";
-			this->generarDatosToolStripMenuItem->Size = System::Drawing::Size(118, 24);
+			this->generarDatosToolStripMenuItem->Size = System::Drawing::Size(93, 20);
 			this->generarDatosToolStripMenuItem->Text = L"Generar Datos";
-			this->generarDatosToolStripMenuItem->Click +=
-				gcnew System::EventHandler(this, &FrmInicio::mnuGenerarDatos_Click);
+			this->generarDatosToolStripMenuItem->Click += gcnew System::EventHandler(this, &FrmInicio::mnuGenerarDatos_Click);
 			// 
 			// instruccionesToolStripMenuItem
 			// 
 			this->instruccionesToolStripMenuItem->Name = L"instruccionesToolStripMenuItem";
-			this->instruccionesToolStripMenuItem->Size = System::Drawing::Size(108, 24);
+			this->instruccionesToolStripMenuItem->Size = System::Drawing::Size(89, 20);
 			this->instruccionesToolStripMenuItem->Text = L"Instrucciones";
 			this->instruccionesToolStripMenuItem->Click += gcnew System::EventHandler(this, &FrmInicio::mnuInstrucciones_Click);
 			// 
 			// creadoresToolStripMenuItem
 			// 
 			this->creadoresToolStripMenuItem->Name = L"creadoresToolStripMenuItem";
-			this->creadoresToolStripMenuItem->Size = System::Drawing::Size(90, 24);
+			this->creadoresToolStripMenuItem->Size = System::Drawing::Size(72, 20);
 			this->creadoresToolStripMenuItem->Text = L"Creadores";
 			this->creadoresToolStripMenuItem->Click += gcnew System::EventHandler(this, &FrmInicio::mnuCreadores_Click);
 			// 
 			// mnuSalir
 			// 
 			this->mnuSalir->Name = L"mnuSalir";
-			this->mnuSalir->Size = System::Drawing::Size(52, 24);
+			this->mnuSalir->Size = System::Drawing::Size(41, 20);
 			this->mnuSalir->Text = L"Salir";
 			this->mnuSalir->TextAlign = System::Drawing::ContentAlignment::TopCenter;
 			this->mnuSalir->Click += gcnew System::EventHandler(this, &FrmInicio::mnuSalir_Click);
 			// 
 			// FrmInicio
 			// 
-			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
+			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(1924, 777);
+			this->ClientSize = System::Drawing::Size(1443, 631);
 			this->Controls->Add(this->menuPrincipal);
 			this->IsMdiContainer = true;
 			this->MainMenuStrip = this->menuPrincipal;
-			this->Margin = System::Windows::Forms::Padding(4);
 			this->Name = L"FrmInicio";
 			this->Text = L"FrmInicio";
+			this->Load += gcnew System::EventHandler(this, &FrmInicio::FrmInicio_Load);
 			this->Click += gcnew System::EventHandler(this, &FrmInicio::FrmInicio_Click);
 			this->menuPrincipal->ResumeLayout(false);
 			this->menuPrincipal->PerformLayout();
@@ -209,15 +210,22 @@ namespace GameJam {
 		registro->MdiParent = this;
 		registro->Show();
 	}
-	
-	private: System::Void mnuListado_click(System::Object^ sender, System::EventArgs^ e) {
-		FrmListado^ listado = gcnew FrmListado(bitacora);
-		listado->MdiParent = this;
-		listado->Show();
-	}
+
+		private: System::Void mnuListado_click(System::Object^ sender, System::EventArgs^ e) {
+			FrmListado^ listado = gcnew FrmListado(bitacora);
+			listado->MdiParent = this;
+			listado->Show();
+		}
 
 	private: System::Void mnuHallazgos_click(System::Object^ sender, System::EventArgs^ e) {
+		// Instanciamos el Dashboard pasándole el puntero de la bitácora en memoria
+		FrmDashboard^ dashboard = gcnew FrmDashboard(bitacora);
+
+		// Lo configuramos como hijo MDI para que se abra dentro del formulario principal
+		dashboard->MdiParent = this;
+		dashboard->Show();
 	}
+
 
 	private: System::Void mnuIndicadores_click(System::Object^ sender, System::EventArgs^ e) {
 		FrmIndicadores^ indicador = gcnew FrmIndicadores(bitacora);
@@ -242,5 +250,7 @@ namespace GameJam {
 
 		MessageBox::Show(L"se generaron 100 registros!");
 	}
+private: System::Void FrmInicio_Load(System::Object^ sender, System::EventArgs^ e) {
+}
 };
 }

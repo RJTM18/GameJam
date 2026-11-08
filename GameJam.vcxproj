@@ -140,6 +140,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Analizador.h" />
+    <ClInclude Include="BarrasCategoria.h" />
     <ClInclude Include="Estadisticas.h" />
     <ClInclude Include="FrmCreadores.h">
       <FileType>CppForm</FileType>
@@ -167,7 +168,9 @@
     </ClInclude>
     <ClInclude Include="GeneradorAleatorio.h" />
     <ClInclude Include="GestorBitacora.h" />
+    <ClInclude Include="GraficoNativo.h" />
     <ClInclude Include="PalabrasClave.h" />
+    <ClInclude Include="PastelCurso.h" />
     <ClInclude Include="pch.h" />
     <ClInclude Include="RegistroIA.h" />
     <ClInclude Include="Resource.h" />

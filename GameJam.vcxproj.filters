@@ -86,6 +86,15 @@
     <ClInclude Include="FrmCreadores.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="BarrasCategoria.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="PastelCurso.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GraficoNativo.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
