@@ -332,36 +332,9 @@ namespace GameJam {
 
     //cambiarlo
     private: System::Void btnVerDetalle_Click(System::Object^ sender, System::EventArgs^ e) {
-        int total = gestorB->ObtenerTotal();
-
-        if (total == 0) {
-            MessageBox::Show(L"No hay registros guardados");
-            return;
-        }
-
-        String^ mensaje = L"ULTIMOS REGISTROS\n\n";
-
-        int inicio = total - 10;
-
-        if (inicio < 0)
-        {
-            inicio = 0;
-        }
-
-        for (int i = inicio; i < total; i++)
-        {
-            RegistroAI* registro = gestorB->ObtenerRegistro(i);
-
-            mensaje += L"ID: " + Convert::ToString(registro->getID()) + L"\n";
-
-            mensaje += L"Curso: " +
-                gcnew String(registro->getCurso().c_str()) + L"\n";
-
-            mensaje += L"Consulta: " +
-                gcnew String(registro->getConsulta().c_str()) + L"\n\n";
-        }
-
-        MessageBox::Show(mensaje, L"Detalle de registros");
+        FrmListado^ listado = gcnew FrmListado(gestorB);
+        listado->MdiParent = this->MdiParent;
+        listado->Show();
     }
     };
 }
