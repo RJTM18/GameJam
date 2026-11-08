@@ -68,9 +68,10 @@ namespace GameJam {
 			// 
 			// btnVolver
 			// 
-			this->btnVolver->Location = System::Drawing::Point(364, 542);
+			this->btnVolver->Location = System::Drawing::Point(273, 440);
+			this->btnVolver->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			this->btnVolver->Name = L"btnVolver";
-			this->btnVolver->Size = System::Drawing::Size(220, 58);
+			this->btnVolver->Size = System::Drawing::Size(165, 47);
 			this->btnVolver->TabIndex = 1;
 			this->btnVolver->Text = L"Volver";
 			this->btnVolver->UseVisualStyleBackColor = true;
@@ -80,23 +81,25 @@ namespace GameJam {
 			// 
 			this->richTextBox1->Font = (gcnew System::Drawing::Font(L"Segoe UI", 10.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->richTextBox1->Location = System::Drawing::Point(12, 12);
+			this->richTextBox1->Location = System::Drawing::Point(9, 10);
+			this->richTextBox1->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			this->richTextBox1->Name = L"richTextBox1";
 			this->richTextBox1->ReadOnly = true;
 			this->richTextBox1->ScrollBars = System::Windows::Forms::RichTextBoxScrollBars::Vertical;
-			this->richTextBox1->Size = System::Drawing::Size(939, 513);
+			this->richTextBox1->Size = System::Drawing::Size(705, 418);
 			this->richTextBox1->TabIndex = 0;
 			this->richTextBox1->Text = resources->GetString(L"richTextBox1.Text");
 			// 
 			// FrmInstrucciones
 			// 
-			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
+			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(963, 646);
+			this->ClientSize = System::Drawing::Size(722, 525);
 			this->Controls->Add(this->btnVolver);
 			this->Controls->Add(this->richTextBox1);
+			this->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			this->Name = L"FrmInstrucciones";
-			this->Text = L"FrmInstrucciones";
+			this->Text = L"Instrucciones";
 			this->Load += gcnew System::EventHandler(this, &FrmInstrucciones::FrmInstrucciones_Load);
 			this->ResumeLayout(false);
 
