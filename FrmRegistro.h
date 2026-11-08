@@ -1,4 +1,3 @@
-
 #pragma once
 #include "pch.h"
 #include "GestorBitacora.h"
@@ -6,6 +5,7 @@
 #include "GeneradorAleatorio.h"
 #include <string>
 #include <msclr/marshal_cppstd.h>
+#include "FrmListado.h"
 
 using namespace std;
 using namespace msclr::interop;
@@ -25,8 +25,7 @@ namespace GameJam {
         GestorBitacora* bitacora;
 
     public:
-        FrmRegistro(GestorBitacora* gestor)
-        {
+        FrmRegistro(GestorBitacora* gestor) {
             InitializeComponent();
             bitacora = gestor;
 
@@ -346,15 +345,16 @@ namespace GameJam {
         MessageBox::Show(L"Total de registros: " + 
             Convert::ToString(bitacora->ObtenerTotal().ToString())
         );
+
+        // FrmListado^ listado(bitacora)
+        // listado->ActualizarLista();
     }
 
-    private: System::Void btnVerDetalle_Click(
-        System::Object^ sender, System::EventArgs^ e)
-    {
+    //cambiarlo
+    private: System::Void btnVerDetalle_Click(System::Object^ sender, System::EventArgs^ e) {
         int total = bitacora->ObtenerTotal();
 
-        if (total == 0)
-        {
+        if (total == 0) {
             MessageBox::Show(L"No hay registros guardados");
             return;
         }
