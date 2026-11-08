@@ -22,12 +22,12 @@ namespace GameJam {
     public ref class FrmRegistro : public System::Windows::Forms::Form
     {
     private:
-        GestorBitacora* bitacora;
+        GestorBitacora* gestorB;
 
     public:
         FrmRegistro(GestorBitacora* gestor) {
             InitializeComponent();
-            bitacora = gestor;
+            gestorB = gestor;
 
             cboCurso->Items->Clear();
             cboCurso->Items->Add(L"Algoritmos");
@@ -279,9 +279,9 @@ namespace GameJam {
 
         int id = 1;
 
-        for (int i = 0; i < bitacora->ObtenerTotal(); i++)
+        for (int i = 0; i < gestorB->ObtenerTotal(); i++)
         {
-            RegistroAI* registro = bitacora->ObtenerRegistro(i);
+            RegistroAI* registro = gestorB->ObtenerRegistro(i);
 
             if (registro->getID() >= id)
             {
@@ -305,7 +305,7 @@ namespace GameJam {
             id, fecha, curso, categoria, herramienta,
             consulta, resultado, cambios, validacion);
 
-        if (bitacora->Agregar(nuevo))
+        if (gestorB->Agregar(nuevo))
         {
             MessageBox::Show(L"Registro guardado correctamente");
         }
@@ -335,16 +335,16 @@ namespace GameJam {
     private: System::Void btnGenerarDatos_Click(System::Object^ sender, System::EventArgs^ e) {
         int siguienteID = 1;
 
-        for (int i = 0; i < bitacora->ObtenerTotal(); i++) {
-            RegistroAI* registro = bitacora->ObtenerRegistro(i);
+        for (int i = 0; i < gestorB->ObtenerTotal(); i++) {
+            RegistroAI* registro = gestorB->ObtenerRegistro(i);
             if (registro->getID() >= siguienteID) { siguienteID = registro->getID() + 1; }
         }
 
         GeneradorAleatorio generador(100, siguienteID);
-        generador.GenerarDatos(*bitacora);
+        generador.GenerarDatos(*gestorB);
 
         MessageBox::Show(L"Total de registros: " + 
-            Convert::ToString(bitacora->ObtenerTotal().ToString())
+            Convert::ToString(gestorB->ObtenerTotal().ToString())
         );
 
         // FrmListado^ listado(bitacora)
@@ -353,7 +353,7 @@ namespace GameJam {
 
     //cambiarlo
     private: System::Void btnVerDetalle_Click(System::Object^ sender, System::EventArgs^ e) {
-        int total = bitacora->ObtenerTotal();
+        int total = gestorB->ObtenerTotal();
 
         if (total == 0) {
             MessageBox::Show(L"No hay registros guardados");
@@ -371,7 +371,7 @@ namespace GameJam {
 
         for (int i = inicio; i < total; i++)
         {
-            RegistroAI* registro = bitacora->ObtenerRegistro(i);
+            RegistroAI* registro = gestorB->ObtenerRegistro(i);
 
             mensaje += L"ID: " + Convert::ToString(registro->getID()) + L"\n";
 
