@@ -1,7 +1,7 @@
 #pragma once
 #include "GestorBitacora.h"
 #include "FrmRegistro.h"
-
+#include <msclr/marshal_cppstd.h>
 namespace GameJam {
 
 	using namespace System;
@@ -293,7 +293,7 @@ namespace GameJam {
 		}
 
 #pragma endregion 
-
+	/**
 	private: void ActualizarLista() {
 		lvRegistros->Items->Clear();
 		for (int i = 0; i < gestorB->ObtenerTotal(); i++) {
@@ -311,7 +311,7 @@ namespace GameJam {
 		lblTotalRegistros->Text = "Total de Registros: " + gestorB->ObtenerTotal().ToString();
 		lblVerificados->Text = "Verificados: " + gestorB->getTotalVerificados().ToString();
 		lblNoVerificados->Text = "No verificados: " + (gestorB->ObtenerTotal() - gestorB->getTotalVerificados()).ToString();
-	}
+	/**/
 
 	};
 }

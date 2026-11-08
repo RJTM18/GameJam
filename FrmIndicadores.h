@@ -4,6 +4,7 @@
 #include <string>
 #include "RegistroIA.h"
 #include "Estadisticas.h"
+#include <msclr/marshal_cppstd.h>
 namespace GameJam {
 	using namespace System::Windows::Forms::DataVisualization::Charting;
 	using namespace System;
@@ -248,7 +249,7 @@ namespace GameJam {
 		}
 #pragma endregion
 	private: System::Void FrmIndicadores_Load(System::Object^ sender, System::EventArgs^ e) {
-		Estadistica datos(bitacora);
+		Estadisticas datos(bitacora);
 		datos.analizar();
 		int validados = 0;
 		int total = datos.getTotalConsultas();

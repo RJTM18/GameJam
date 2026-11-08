@@ -3,6 +3,7 @@
 #include "GestorBitacora.h"
 #include "PalabrasClave.h"
 #include <string>
+#include <msclr/marshal_cppstd.h>
 namespace GameJam {
 	using namespace System::Windows::Forms::DataVisualization::Charting;
 	using namespace System;

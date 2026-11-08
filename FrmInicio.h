@@ -6,6 +6,8 @@
 #include "FrmIndicadores.h"
 #include "FrmInstrucciones.h"
 #include "FrmCreadores.h"
+#include <msclr/marshal_cppstd.h>
+#include "GeneradorAleatorio.h"
 namespace GameJam {
 
 	using namespace System;
@@ -100,7 +102,6 @@ namespace GameJam {
 			this->listadoDeRegistrosToolStripMenuItem->Name = L"listadoDeRegistrosToolStripMenuItem";
 			this->listadoDeRegistrosToolStripMenuItem->Size = System::Drawing::Size(157, 24);
 			this->listadoDeRegistrosToolStripMenuItem->Text = L"Listado de Registros";
-			// this->listadoDeRegistrosToolStripMenuItem->Click += gcnew System::EventHandler(this, &FrmInicio::mnuListado_click);
 			// 
 			// dashBoardToolStripMenuItem
 			// 
@@ -128,6 +129,8 @@ namespace GameJam {
 			this->generarDatosToolStripMenuItem->Name = L"generarDatosToolStripMenuItem";
 			this->generarDatosToolStripMenuItem->Size = System::Drawing::Size(118, 24);
 			this->generarDatosToolStripMenuItem->Text = L"Generar Datos";
+			this->generarDatosToolStripMenuItem->Click +=
+				gcnew System::EventHandler(this, &FrmInicio::mnuGenerarDatos_Click);
 			// 
 			// instruccionesToolStripMenuItem
 			// 
@@ -141,8 +144,7 @@ namespace GameJam {
 			this->creadoresToolStripMenuItem->Name = L"creadoresToolStripMenuItem";
 			this->creadoresToolStripMenuItem->Size = System::Drawing::Size(90, 24);
 			this->creadoresToolStripMenuItem->Text = L"Creadores";
-			this->creadoresToolStripMenuItem->Click +=
-				gcnew System::EventHandler(this, &FrmInicio::mnuCreadores_Click);
+			this->creadoresToolStripMenuItem->Click += gcnew System::EventHandler(this, &FrmInicio::mnuCreadores_Click);
 			// 
 			// mnuSalir
 			// 
@@ -163,6 +165,7 @@ namespace GameJam {
 			this->Margin = System::Windows::Forms::Padding(4);
 			this->Name = L"FrmInicio";
 			this->Text = L"FrmInicio";
+			this->Click += gcnew System::EventHandler(this, &FrmInicio::FrmInicio_Click);
 			this->menuPrincipal->ResumeLayout(false);
 			this->menuPrincipal->PerformLayout();
 			this->ResumeLayout(false);
@@ -170,6 +173,25 @@ namespace GameJam {
 
 		}
 #pragma endregion
+		private: System::Void mnuGenerarDatos_Click(
+			System::Object^ sender, System::EventArgs^ e) {
+
+			int siguienteID = 1;
+
+			for (int i = 0; i < bitacora->ObtenerTotal(); i++) {
+				RegistroAI* r = bitacora->ObtenerRegistro(i);
+
+				if (r->getID() >= siguienteID)
+					siguienteID = r->getID() + 1;
+			}
+
+			GeneradorAleatorio generador(100, siguienteID);
+			generador.GenerarDatos(*bitacora);
+
+			MessageBox::Show(L"Se han generaron 100 registros correctamente");
+		}
+
+
 		private: System::Void mnuCreadores_Click(System::Object^ sender, System::EventArgs^ e) {
 			FrmCreadores^ creadores = gcnew FrmCreadores(bitacora);
 			creadores->MdiParent = this;
@@ -211,5 +233,12 @@ namespace GameJam {
 	private: System::Void mnuSalir_Click(System::Object^ sender, System::EventArgs^ e) {
 		this->Close();
 	}
+private: System::Void FrmInicio_Click(System::Object^ sender, System::EventArgs^ e) {
+	int siguienteID = bitacora->ObtenerTotal() + 1;
+	GeneradorAleatorio generador(100, siguienteID);
+	generador.GenerarDatos(*bitacora);
+
+	MessageBox::Show(L"se generaron 100 registros!");
+}
 };
 }
