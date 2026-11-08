@@ -265,34 +265,62 @@ namespace GameJam {
 	private: System::Void FrmIndicadores_Load(System::Object^ sender, System::EventArgs^ e) {
 		Estadisticas datos(bitacora);
 		datos.analizar();
+
 		int validados = 0;
-		int total = datos.getTotalConsultas();
+		int total = bitacora->ObtenerTotal();
 
 		lblTotalRegistros->Text = Convert::ToString(total);
 
-		for (int i = 0; i < bitacora->ObtenerTotal(); i++)
+		for (int i = 0; i < total; i++)
 		{
 			if (!bitacora->ObtenerRegistro(i)->getComoSeValido().empty())
+			{
 				validados++;
-
-			double porcentaje = total > 0 ? validados * 100.0 / total : 0;
-
-			lblValidados->Text = Convert::ToString(porcentaje) + L"%";
-			lblNoValidados->Text = Convert::ToString(100 - porcentaje) + L"%";
+			}
 		}
+
+		double porcentajeValidado = 0;
+
+		double porcentajeNoValidado = 0;
+
+		if (total > 0)
+		{
+			porcentajeValidado = validados * 100.0 / total;
+			porcentajeNoValidado = 100 - porcentajeValidado;
+		}
+
+		lblValidados->Text = Convert::ToString(porcentajeValidado) + "%";
+
+		lblNoValidados->Text = Convert::ToString(porcentajeNoValidado) + "%";
 
 		ChartIndicadores->Series[0]->Points->Clear();
 
-		string cursos[3] = {
-			"Calculo I", "Algoritmos", "Matematica Discreta"
+		string herramientas[3] = {
+			"ChatGPT",
+			"Gemini",
+			"Copilot"
 		};
 
 		for (int i = 0; i < 3; i++)
 		{
-			double porcentaje = datos.CalcularPorcentaje(cursos[i]);
+			int cantidad = 0;
+
+			for (int j = 0; j < total; j++)
+			{
+				if (bitacora->ObtenerRegistro(j)->getHerramientaAI()
+					== herramientas[i])
+				{
+					cantidad++;
+				}
+			}
+
+			double porcentaje = total > 0
+				? cantidad * 100.0 / total : 0;
 
 			ChartIndicadores->Series[0]->Points->AddXY(
-				gcnew String(cursos[i].c_str()), porcentaje);
+				gcnew String(herramientas[i].c_str()),
+				porcentaje
+			);
 		}
 
 		lblHallazgos->Text =
