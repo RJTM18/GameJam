@@ -169,9 +169,9 @@ namespace GameJam {
 				static_cast<System::Byte>(0)));
 			this->label8->Location = System::Drawing::Point(79, 378);
 			this->label8->Name = L"label8";
-			this->label8->Size = System::Drawing::Size(149, 32);
+			this->label8->Size = System::Drawing::Size(475, 32);
 			this->label8->TabIndex = 7;
-			this->label8->Text = L"Algoritmos";
+			this->label8->Text = L"Algoritmos (1ACC0265-2620-13989)";
 			// 
 			// label9
 			// 

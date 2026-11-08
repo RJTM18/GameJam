@@ -70,9 +70,9 @@ namespace GameJam {
 		/// </summary>
 		void InitializeComponent(void)
 		{
-			System::Windows::Forms::DataVisualization::Charting::ChartArea^ chartArea1 = (gcnew System::Windows::Forms::DataVisualization::Charting::ChartArea());
-			System::Windows::Forms::DataVisualization::Charting::Legend^ legend1 = (gcnew System::Windows::Forms::DataVisualization::Charting::Legend());
-			System::Windows::Forms::DataVisualization::Charting::Series^ series1 = (gcnew System::Windows::Forms::DataVisualization::Charting::Series());
+			System::Windows::Forms::DataVisualization::Charting::ChartArea^ chartArea2 = (gcnew System::Windows::Forms::DataVisualization::Charting::ChartArea());
+			System::Windows::Forms::DataVisualization::Charting::Legend^ legend2 = (gcnew System::Windows::Forms::DataVisualization::Charting::Legend());
+			System::Windows::Forms::DataVisualization::Charting::Series^ series2 = (gcnew System::Windows::Forms::DataVisualization::Charting::Series());
 			this->label1 = (gcnew System::Windows::Forms::Label());
 			this->label2 = (gcnew System::Windows::Forms::Label());
 			this->label3 = (gcnew System::Windows::Forms::Label());
@@ -94,7 +94,7 @@ namespace GameJam {
 				static_cast<System::Byte>(0)));
 			this->label1->Location = System::Drawing::Point(305, 25);
 			this->label1->Name = L"label1";
-			this->label1->Size = System::Drawing::Size(400, 39);
+			this->label1->Size = System::Drawing::Size(384, 38);
 			this->label1->TabIndex = 0;
 			this->label1->Text = L"AI-TRACE | Dashboard 2";
 			this->label1->TextAlign = System::Drawing::ContentAlignment::TopCenter;
@@ -142,7 +142,7 @@ namespace GameJam {
 				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
 			this->lblTotalRegistros->Location = System::Drawing::Point(95, 129);
 			this->lblTotalRegistros->Name = L"lblTotalRegistros";
-			this->lblTotalRegistros->Size = System::Drawing::Size(74, 39);
+			this->lblTotalRegistros->Size = System::Drawing::Size(71, 38);
 			this->lblTotalRegistros->TabIndex = 4;
 			this->lblTotalRegistros->Text = L"100";
 			this->lblTotalRegistros->TextAlign = System::Drawing::ContentAlignment::TopCenter;
@@ -154,7 +154,7 @@ namespace GameJam {
 				static_cast<System::Byte>(0)));
 			this->lblValidados->Location = System::Drawing::Point(467, 129);
 			this->lblValidados->Name = L"lblValidados";
-			this->lblValidados->Size = System::Drawing::Size(66, 39);
+			this->lblValidados->Size = System::Drawing::Size(64, 38);
 			this->lblValidados->TabIndex = 5;
 			this->lblValidados->Text = L"0%";
 			this->lblValidados->TextAlign = System::Drawing::ContentAlignment::TopCenter;
@@ -166,10 +166,11 @@ namespace GameJam {
 				static_cast<System::Byte>(0)));
 			this->lblNoValidados->Location = System::Drawing::Point(852, 129);
 			this->lblNoValidados->Name = L"lblNoValidados";
-			this->lblNoValidados->Size = System::Drawing::Size(66, 39);
+			this->lblNoValidados->Size = System::Drawing::Size(64, 38);
 			this->lblNoValidados->TabIndex = 6;
 			this->lblNoValidados->Text = L"0%";
 			this->lblNoValidados->TextAlign = System::Drawing::ContentAlignment::TopCenter;
+			this->lblNoValidados->Click += gcnew System::EventHandler(this, &FrmIndicadores::lblNoValidados_Click);
 			// 
 			// label8
 			// 
@@ -180,21 +181,21 @@ namespace GameJam {
 			this->label8->Name = L"label8";
 			this->label8->Size = System::Drawing::Size(309, 20);
 			this->label8->TabIndex = 7;
-			this->label8->Text = L"Porcentaje de consulta según validación";
+			this->label8->Text = L"Porcentaje de consulta segun validacion";
 			this->label8->TextAlign = System::Drawing::ContentAlignment::TopCenter;
 			// 
 			// ChartIndicadores
 			// 
-			chartArea1->Name = L"ChartArea1";
-			this->ChartIndicadores->ChartAreas->Add(chartArea1);
-			legend1->Name = L"Legend1";
-			this->ChartIndicadores->Legends->Add(legend1);
-			this->ChartIndicadores->Location = System::Drawing::Point(235, 191);
+			chartArea2->Name = L"ChartArea1";
+			this->ChartIndicadores->ChartAreas->Add(chartArea2);
+			legend2->Name = L"Legend1";
+			this->ChartIndicadores->Legends->Add(legend2);
+			this->ChartIndicadores->Location = System::Drawing::Point(230, 191);
 			this->ChartIndicadores->Name = L"ChartIndicadores";
-			series1->ChartArea = L"ChartArea1";
-			series1->Legend = L"Legend1";
-			series1->Name = L"Series1";
-			this->ChartIndicadores->Series->Add(series1);
+			series2->ChartArea = L"ChartArea1";
+			series2->Legend = L"Legend1";
+			series2->Name = L"Series1";
+			this->ChartIndicadores->Series->Add(series2);
 			this->ChartIndicadores->Size = System::Drawing::Size(593, 432);
 			this->ChartIndicadores->TabIndex = 8;
 			this->ChartIndicadores->Text = L"chart1";
@@ -285,5 +286,7 @@ namespace GameJam {
 			L"Registros encontrados: " + Convert::ToString(total);
 
 	}
-	};
+	private: System::Void lblNoValidados_Click(System::Object^ sender, System::EventArgs^ e) {
+	}
+};
 }
