@@ -1,6 +1,5 @@
 #pragma once
 #include "GestorBitacora.h"
-#include "FrmRegistro.h"
 #include <msclr/marshal_cppstd.h>
 
 namespace GameJam {
@@ -39,7 +38,7 @@ namespace GameJam {
 	private: System::Windows::Forms::Label^ lblDetalleHerramienta;
 	private: System::Windows::Forms::ComboBox^ cboDetalleHerramienta;
 	private: System::Windows::Forms::Button^ btnDetalleBuscar;
-	private: System::Windows::Forms::Button^ btnDetalleLimpiar;
+
 	private: System::Windows::Forms::ListView^ lvRegistros;
 	private: System::Windows::Forms::ColumnHeader^ columnHeader1;
 	private: System::Windows::Forms::ColumnHeader^ columnHeader2;
@@ -52,6 +51,7 @@ namespace GameJam {
 	private: System::Windows::Forms::Label^ lblVerificados;
 	private: System::Windows::Forms::Label^ lblNoVerificados;
 	private: System::Windows::Forms::Button^ btnGoDashBoard;
+	private: System::Windows::Forms::Button^ btnLimpiar;
 
 	protected:
 
@@ -75,7 +75,6 @@ namespace GameJam {
 			this->lblDetalleHerramienta = (gcnew System::Windows::Forms::Label());
 			this->cboDetalleHerramienta = (gcnew System::Windows::Forms::ComboBox());
 			this->btnDetalleBuscar = (gcnew System::Windows::Forms::Button());
-			this->btnDetalleLimpiar = (gcnew System::Windows::Forms::Button());
 			this->lvRegistros = (gcnew System::Windows::Forms::ListView());
 			this->columnHeader1 = (gcnew System::Windows::Forms::ColumnHeader());
 			this->columnHeader2 = (gcnew System::Windows::Forms::ColumnHeader());
@@ -88,6 +87,7 @@ namespace GameJam {
 			this->lblVerificados = (gcnew System::Windows::Forms::Label());
 			this->lblNoVerificados = (gcnew System::Windows::Forms::Label());
 			this->btnGoDashBoard = (gcnew System::Windows::Forms::Button());
+			this->btnLimpiar = (gcnew System::Windows::Forms::Button());
 			this->SuspendLayout();
 			// 
 			// lblDetalleCurso
@@ -104,7 +104,7 @@ namespace GameJam {
 			this->cboDetalleCurso->DropDownStyle = System::Windows::Forms::ComboBoxStyle::DropDownList;
 			this->cboDetalleCurso->FormattingEnabled = true;
 			this->cboDetalleCurso->Items->AddRange(gcnew cli::array< System::Object^  >(5) {
-				L"Todos", L"Algoritmos", L"Matemática", L"Física",
+				L"Todos", L"Algoritmos", L"Matematica", L"Fisica",
 					L"Lenguaje"
 			});
 			this->cboDetalleCurso->Location = System::Drawing::Point(12, 25);
@@ -117,9 +117,9 @@ namespace GameJam {
 			this->lblDetalleCategoria->AutoSize = true;
 			this->lblDetalleCategoria->Location = System::Drawing::Point(171, 12);
 			this->lblDetalleCategoria->Name = L"lblDetalleCategoria";
-			this->lblDetalleCategoria->Size = System::Drawing::Size(54, 13);
+			this->lblDetalleCategoria->Size = System::Drawing::Size(52, 13);
 			this->lblDetalleCategoria->TabIndex = 2;
-			this->lblDetalleCategoria->Text = L"Categoría";
+			this->lblDetalleCategoria->Text = L"Categoria";
 			// 
 			// cboDetalleCategoria
 			// 
@@ -127,7 +127,7 @@ namespace GameJam {
 			this->cboDetalleCategoria->FormattingEnabled = true;
 			this->cboDetalleCategoria->Items->AddRange(gcnew cli::array< System::Object^  >(10) {
 				L"Todas", L"Tarea", L"Examen", L"LB1",
-					L"EA1", L"Reto", L"Proyecto/Trabajo", L"Teoría/Consulta conceptual", L"Depuracion de errores", L"Otro"
+					L"EA1", L"Reto", L"Proyecto/Trabajo", L"Teoria/Consulta conceptual", L"Depuracion de errores", L"Otro"
 			});
 			this->cboDetalleCategoria->Location = System::Drawing::Point(174, 25);
 			this->cboDetalleCategoria->Name = L"cboDetalleCategoria";
@@ -164,15 +164,7 @@ namespace GameJam {
 			this->btnDetalleBuscar->TabIndex = 6;
 			this->btnDetalleBuscar->Text = L"Buscar";
 			this->btnDetalleBuscar->UseVisualStyleBackColor = true;
-			// 
-			// btnDetalleLimpiar
-			// 
-			this->btnDetalleLimpiar->Location = System::Drawing::Point(627, 25);
-			this->btnDetalleLimpiar->Name = L"btnDetalleLimpiar";
-			this->btnDetalleLimpiar->Size = System::Drawing::Size(105, 23);
-			this->btnDetalleLimpiar->TabIndex = 7;
-			this->btnDetalleLimpiar->Text = L"Limpiar";
-			this->btnDetalleLimpiar->UseVisualStyleBackColor = true;
+			this->btnDetalleBuscar->Click += gcnew System::EventHandler(this, &FrmListado::btnBuscar_Click);
 			// 
 			// lvRegistros
 			// 
@@ -208,7 +200,7 @@ namespace GameJam {
 			// 
 			// columnHeader4
 			// 
-			this->columnHeader4->Text = L"Categoría";
+			this->columnHeader4->Text = L"Categoria";
 			this->columnHeader4->Width = 130;
 			// 
 			// columnHeader5
@@ -218,7 +210,7 @@ namespace GameJam {
 			// 
 			// columnHeader6
 			// 
-			this->columnHeader6->Text = L"Qué consultamos";
+			this->columnHeader6->Text = L"Que consultamos";
 			this->columnHeader6->Width = 163;
 			// 
 			// columnHeader7
@@ -244,7 +236,7 @@ namespace GameJam {
 			this->lblVerificados->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->lblVerificados->ForeColor = System::Drawing::Color::Green;
-			this->lblVerificados->Location = System::Drawing::Point(172, 329);
+			this->lblVerificados->Location = System::Drawing::Point(213, 329);
 			this->lblVerificados->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
 			this->lblVerificados->Name = L"lblVerificados";
 			this->lblVerificados->Size = System::Drawing::Size(115, 20);
@@ -257,7 +249,7 @@ namespace GameJam {
 			this->lblNoVerificados->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->lblNoVerificados->ForeColor = System::Drawing::Color::Red;
-			this->lblNoVerificados->Location = System::Drawing::Point(288, 329);
+			this->lblNoVerificados->Location = System::Drawing::Point(359, 329);
 			this->lblNoVerificados->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
 			this->lblNoVerificados->Name = L"lblNoVerificados";
 			this->lblNoVerificados->Size = System::Drawing::Size(142, 20);
@@ -275,18 +267,29 @@ namespace GameJam {
 			this->btnGoDashBoard->TabIndex = 12;
 			this->btnGoDashBoard->Text = L"Ir a Dashboard";
 			this->btnGoDashBoard->UseVisualStyleBackColor = true;
+			this->btnGoDashBoard->Click += gcnew System::EventHandler(this, &FrmListado::btnLimpiar_Click);
+			// 
+			// btnLimpiar
+			// 
+			this->btnLimpiar->Location = System::Drawing::Point(623, 25);
+			this->btnLimpiar->Name = L"btnLimpiar";
+			this->btnLimpiar->Size = System::Drawing::Size(109, 23);
+			this->btnLimpiar->TabIndex = 13;
+			this->btnLimpiar->Text = L"Limpiar";
+			this->btnLimpiar->UseVisualStyleBackColor = true;
+			this->btnLimpiar->Click += gcnew System::EventHandler(this, &FrmListado::btnLimpiar_Click);
 			// 
 			// FrmListado
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(758, 369);
+			this->ClientSize = System::Drawing::Size(868, 369);
+			this->Controls->Add(this->btnLimpiar);
 			this->Controls->Add(this->btnGoDashBoard);
 			this->Controls->Add(this->lblNoVerificados);
 			this->Controls->Add(this->lblVerificados);
 			this->Controls->Add(this->lblTotalRegistros);
 			this->Controls->Add(this->lvRegistros);
-			this->Controls->Add(this->btnDetalleLimpiar);
 			this->Controls->Add(this->btnDetalleBuscar);
 			this->Controls->Add(this->cboDetalleHerramienta);
 			this->Controls->Add(this->lblDetalleHerramienta);
@@ -312,7 +315,7 @@ namespace GameJam {
 		return gcnew String(texto.c_str());
 	}
 
-	protected: void ActualizarLista() {
+	private: void ActualizarLista() {
 		lvRegistros->Items->Clear();
 		for (int i = 0; i < gestorB->ObtenerTotal(); i++) {
 			RegistroAI* r = gestorB->ObtenerRegistro(i);
@@ -329,8 +332,34 @@ namespace GameJam {
 			lblVerificados->Text = "Verificados: " + gestorB->getTotalVerificados().ToString();
 			lblNoVerificados->Text = "No verificados: " + (gestorB->ObtenerTotal() - gestorB->getTotalVerificados()).ToString();
 			};
-
-		//botonActualizar
 		};
-	};
+
+	private: System::Void btnBuscar_Click(System::Object^ sender, System::EventArgs^ e) {
+		/*
+		if (cboDetalleCurso->SelectedIndex < 0) { MessageBox::Show("Seleccione Curso"); return; }
+		if (cboDetalleCategoria->SelectedIndex < 0) { MessageBox::Show("Seleccione Categoria"); return; }
+		if (cboDetalleHerramienta->SelectedIndex < 0) { MessageBox::Show("Seleccione Herramienta de IA"); return; }
+
+		string cursoSelec = marshal_as<string>(cboDetalleCurso->SelectedIndex);
+		string categoriaSelec = marshal_as<string>(cboDetalleCategoria->SelectedIndex);
+		string HerramientaIASelec = marshal_as<string>(cboDetalleHerramienta->SelectedIndex);
+
+		vector<RegistroAI*> registros = gestorB->getRegistros();
+		vector<RegistroAI*> nuevaLista;
+
+		for (int i = 0; i < gestorB->getUltimoIDRegistro(); i++) {
+			if (cursoSelec == registros[i]->getCurso() or
+				cursoSelec == registros[i]->getCurso() or
+				cursoSelec == registros[i]->getCurso()) {
+				nuevaLista.push_back(registros[i]);
+			}
+		}
+		*/
+	}
+	private: System::Void btnLimpiar_Click(System::Object^ sender, System::EventArgs^ e) {
+		cboDetalleCategoria->SelectedIndex = -1;
+		cboDetalleCurso->SelectedIndex = -1;
+		cboDetalleHerramienta->SelectedIndex = -1;
+	}
+};
 };

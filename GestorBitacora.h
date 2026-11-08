@@ -14,6 +14,7 @@ class GestorBitacora {
 
     vector<RegistroAI*> getRegistros() { return registros; }
 
+    //Retorna la cantidad total de registros
     int getTotalVerificados() {
         int contador = 0;
         for (int i = 0; i < (int)registros.size(); i++) {
