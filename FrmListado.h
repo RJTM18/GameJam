@@ -107,7 +107,7 @@ namespace GameJam {
 			this->cboDetalleCurso->FormattingEnabled = true;
 			this->cboDetalleCurso->Items->AddRange(gcnew cli::array< System::Object^  >(4) {
 				L"Todos", L"Algoritmos", L"Matematica Discreta",
-					L"Calculo 1"
+					L"Calculo I"
 			});
 			this->cboDetalleCurso->Location = System::Drawing::Point(12, 25);
 			this->cboDetalleCurso->Name = L"cboDetalleCurso";
@@ -386,7 +386,7 @@ namespace GameJam {
 			bool _Categoria = (categoriaSelec == "Todos" || r->getCategoria() == categoriaSelec);
 			bool _Herramienta = (HerramientaIASelec == "Todos" || r->getHerramientaAI() == HerramientaIASelec);
 
-			if (_Curso || _Categoria || _Herramienta) nuevaLista.push_back(registros[i]);
+			if (_Curso && _Categoria && _Herramienta) nuevaLista.push_back(registros[i]);
 		}
 		ModificarLista(nuevaLista);
 	}

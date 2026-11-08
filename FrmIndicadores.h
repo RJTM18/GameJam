@@ -70,9 +70,9 @@ namespace GameJam {
 		/// </summary>
 		void InitializeComponent(void)
 		{
-			System::Windows::Forms::DataVisualization::Charting::ChartArea^ chartArea2 = (gcnew System::Windows::Forms::DataVisualization::Charting::ChartArea());
-			System::Windows::Forms::DataVisualization::Charting::Legend^ legend2 = (gcnew System::Windows::Forms::DataVisualization::Charting::Legend());
-			System::Windows::Forms::DataVisualization::Charting::Series^ series2 = (gcnew System::Windows::Forms::DataVisualization::Charting::Series());
+			System::Windows::Forms::DataVisualization::Charting::ChartArea^ chartArea1 = (gcnew System::Windows::Forms::DataVisualization::Charting::ChartArea());
+			System::Windows::Forms::DataVisualization::Charting::Legend^ legend1 = (gcnew System::Windows::Forms::DataVisualization::Charting::Legend());
+			System::Windows::Forms::DataVisualization::Charting::Series^ series1 = (gcnew System::Windows::Forms::DataVisualization::Charting::Series());
 			this->label1 = (gcnew System::Windows::Forms::Label());
 			this->label2 = (gcnew System::Windows::Forms::Label());
 			this->label3 = (gcnew System::Windows::Forms::Label());
@@ -92,9 +92,10 @@ namespace GameJam {
 			this->label1->AutoSize = true;
 			this->label1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 19.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label1->Location = System::Drawing::Point(305, 25);
+			this->label1->Location = System::Drawing::Point(229, 20);
+			this->label1->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
 			this->label1->Name = L"label1";
-			this->label1->Size = System::Drawing::Size(384, 38);
+			this->label1->Size = System::Drawing::Size(318, 31);
 			this->label1->TabIndex = 0;
 			this->label1->Text = L"AI-TRACE | Dashboard 2";
 			this->label1->TextAlign = System::Drawing::ContentAlignment::TopCenter;
@@ -104,9 +105,10 @@ namespace GameJam {
 			this->label2->AutoSize = true;
 			this->label2->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label2->Location = System::Drawing::Point(69, 99);
+			this->label2->Location = System::Drawing::Point(52, 80);
+			this->label2->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
 			this->label2->Name = L"label2";
-			this->label2->Size = System::Drawing::Size(140, 20);
+			this->label2->Size = System::Drawing::Size(119, 17);
 			this->label2->TabIndex = 1;
 			this->label2->Text = L"Total de registros";
 			this->label2->TextAlign = System::Drawing::ContentAlignment::TopCenter;
@@ -116,9 +118,10 @@ namespace GameJam {
 			this->label3->AutoSize = true;
 			this->label3->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label3->Location = System::Drawing::Point(459, 99);
+			this->label3->Location = System::Drawing::Point(344, 80);
+			this->label3->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
 			this->label3->Name = L"label3";
-			this->label3->Size = System::Drawing::Size(82, 20);
+			this->label3->Size = System::Drawing::Size(70, 17);
 			this->label3->TabIndex = 2;
 			this->label3->Text = L"Validados";
 			this->label3->TextAlign = System::Drawing::ContentAlignment::TopCenter;
@@ -128,9 +131,10 @@ namespace GameJam {
 			this->label4->AutoSize = true;
 			this->label4->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label4->Location = System::Drawing::Point(839, 99);
+			this->label4->Location = System::Drawing::Point(629, 80);
+			this->label4->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
 			this->label4->Name = L"label4";
-			this->label4->Size = System::Drawing::Size(87, 20);
+			this->label4->Size = System::Drawing::Size(74, 17);
 			this->label4->TabIndex = 3;
 			this->label4->Text = L"Sin validar";
 			this->label4->TextAlign = System::Drawing::ContentAlignment::TopCenter;
@@ -140,9 +144,10 @@ namespace GameJam {
 			this->lblTotalRegistros->AutoSize = true;
 			this->lblTotalRegistros->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 19.8F, System::Drawing::FontStyle::Regular,
 				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
-			this->lblTotalRegistros->Location = System::Drawing::Point(95, 129);
+			this->lblTotalRegistros->Location = System::Drawing::Point(71, 105);
+			this->lblTotalRegistros->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
 			this->lblTotalRegistros->Name = L"lblTotalRegistros";
-			this->lblTotalRegistros->Size = System::Drawing::Size(71, 38);
+			this->lblTotalRegistros->Size = System::Drawing::Size(59, 31);
 			this->lblTotalRegistros->TabIndex = 4;
 			this->lblTotalRegistros->Text = L"100";
 			this->lblTotalRegistros->TextAlign = System::Drawing::ContentAlignment::TopCenter;
@@ -152,21 +157,24 @@ namespace GameJam {
 			this->lblValidados->AutoSize = true;
 			this->lblValidados->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 19.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->lblValidados->Location = System::Drawing::Point(467, 129);
+			this->lblValidados->Location = System::Drawing::Point(350, 105);
+			this->lblValidados->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
 			this->lblValidados->Name = L"lblValidados";
-			this->lblValidados->Size = System::Drawing::Size(64, 38);
+			this->lblValidados->Size = System::Drawing::Size(53, 31);
 			this->lblValidados->TabIndex = 5;
 			this->lblValidados->Text = L"0%";
 			this->lblValidados->TextAlign = System::Drawing::ContentAlignment::TopCenter;
+			this->lblValidados->Click += gcnew System::EventHandler(this, &FrmIndicadores::lblValidados_Click);
 			// 
 			// lblNoValidados
 			// 
 			this->lblNoValidados->AutoSize = true;
 			this->lblNoValidados->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 19.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->lblNoValidados->Location = System::Drawing::Point(852, 129);
+			this->lblNoValidados->Location = System::Drawing::Point(639, 105);
+			this->lblNoValidados->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
 			this->lblNoValidados->Name = L"lblNoValidados";
-			this->lblNoValidados->Size = System::Drawing::Size(64, 38);
+			this->lblNoValidados->Size = System::Drawing::Size(53, 31);
 			this->lblNoValidados->TabIndex = 6;
 			this->lblNoValidados->Text = L"0%";
 			this->lblNoValidados->TextAlign = System::Drawing::ContentAlignment::TopCenter;
@@ -177,26 +185,28 @@ namespace GameJam {
 			this->label8->AutoSize = true;
 			this->label8->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label8->Location = System::Drawing::Point(69, 168);
+			this->label8->Location = System::Drawing::Point(52, 136);
+			this->label8->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
 			this->label8->Name = L"label8";
-			this->label8->Size = System::Drawing::Size(309, 20);
+			this->label8->Size = System::Drawing::Size(263, 17);
 			this->label8->TabIndex = 7;
 			this->label8->Text = L"Porcentaje de consulta segun validacion";
 			this->label8->TextAlign = System::Drawing::ContentAlignment::TopCenter;
 			// 
 			// ChartIndicadores
 			// 
-			chartArea2->Name = L"ChartArea1";
-			this->ChartIndicadores->ChartAreas->Add(chartArea2);
-			legend2->Name = L"Legend1";
-			this->ChartIndicadores->Legends->Add(legend2);
-			this->ChartIndicadores->Location = System::Drawing::Point(230, 191);
+			chartArea1->Name = L"ChartArea1";
+			this->ChartIndicadores->ChartAreas->Add(chartArea1);
+			legend1->Name = L"Legend1";
+			this->ChartIndicadores->Legends->Add(legend1);
+			this->ChartIndicadores->Location = System::Drawing::Point(172, 155);
+			this->ChartIndicadores->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			this->ChartIndicadores->Name = L"ChartIndicadores";
-			series2->ChartArea = L"ChartArea1";
-			series2->Legend = L"Legend1";
-			series2->Name = L"Series1";
-			this->ChartIndicadores->Series->Add(series2);
-			this->ChartIndicadores->Size = System::Drawing::Size(593, 432);
+			series1->ChartArea = L"ChartArea1";
+			series1->Legend = L"Legend1";
+			series1->Name = L"Series1";
+			this->ChartIndicadores->Series->Add(series1);
+			this->ChartIndicadores->Size = System::Drawing::Size(445, 351);
 			this->ChartIndicadores->TabIndex = 8;
 			this->ChartIndicadores->Text = L"chart1";
 			// 
@@ -205,9 +215,10 @@ namespace GameJam {
 			this->hallazgo->AutoSize = true;
 			this->hallazgo->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->hallazgo->Location = System::Drawing::Point(46, 626);
+			this->hallazgo->Location = System::Drawing::Point(34, 509);
+			this->hallazgo->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
 			this->hallazgo->Name = L"hallazgo";
-			this->hallazgo->Size = System::Drawing::Size(84, 20);
+			this->hallazgo->Size = System::Drawing::Size(70, 17);
 			this->hallazgo->TabIndex = 9;
 			this->hallazgo->Text = L"Hallazgos";
 			this->hallazgo->TextAlign = System::Drawing::ContentAlignment::TopCenter;
@@ -217,18 +228,19 @@ namespace GameJam {
 			this->lblHallazgos->AutoSize = true;
 			this->lblHallazgos->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->lblHallazgos->Location = System::Drawing::Point(46, 665);
+			this->lblHallazgos->Location = System::Drawing::Point(34, 540);
+			this->lblHallazgos->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
 			this->lblHallazgos->Name = L"lblHallazgos";
-			this->lblHallazgos->Size = System::Drawing::Size(21, 20);
+			this->lblHallazgos->Size = System::Drawing::Size(20, 17);
 			this->lblHallazgos->TabIndex = 10;
 			this->lblHallazgos->Text = L"...";
 			this->lblHallazgos->TextAlign = System::Drawing::ContentAlignment::TopCenter;
 			// 
 			// FrmIndicadores
 			// 
-			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
+			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(1083, 726);
+			this->ClientSize = System::Drawing::Size(812, 590);
 			this->Controls->Add(this->lblHallazgos);
 			this->Controls->Add(this->hallazgo);
 			this->Controls->Add(this->ChartIndicadores);
@@ -240,6 +252,7 @@ namespace GameJam {
 			this->Controls->Add(this->label3);
 			this->Controls->Add(this->label2);
 			this->Controls->Add(this->label1);
+			this->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			this->Name = L"FrmIndicadores";
 			this->Text = L"FrmIndicadores";
 			this->Load += gcnew System::EventHandler(this, &FrmIndicadores::FrmIndicadores_Load);
@@ -288,5 +301,7 @@ namespace GameJam {
 	}
 	private: System::Void lblNoValidados_Click(System::Object^ sender, System::EventArgs^ e) {
 	}
+private: System::Void lblValidados_Click(System::Object^ sender, System::EventArgs^ e) {
+}
 };
 }

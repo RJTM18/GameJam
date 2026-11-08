@@ -46,7 +46,7 @@ namespace GameJam {
 	private: System::Windows::Forms::ToolStripMenuItem^ dashBoardToolStripMenuItem;
 	private: System::Windows::Forms::ToolStripMenuItem^ indicadoresToolStripMenuItem;
 	private: System::Windows::Forms::ToolStripMenuItem^ promptsToolStripMenuItem;
-
+	private: System::Windows::Forms::ToolStripMenuItem^ generarDatosToolStripMenuItem;
 	private: System::Windows::Forms::ToolStripMenuItem^ instruccionesToolStripMenuItem;
 	private: System::Windows::Forms::ToolStripMenuItem^ creadoresToolStripMenuItem;
 	private: System::Windows::Forms::ToolStripMenuItem^ mnuSalir;
@@ -56,7 +56,7 @@ namespace GameJam {
 		/// <summary>
 		/// Required designer variable.
 		/// </summary>
-		System::ComponentModel::Container ^components;
+		System::ComponentModel::Container^ components;
 
 #pragma region Windows Form Designer generated code
 		/// <summary>
@@ -71,6 +71,7 @@ namespace GameJam {
 			this->dashBoardToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->indicadoresToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->promptsToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
+			this->generarDatosToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->instruccionesToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->creadoresToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->mnuSalir = (gcnew System::Windows::Forms::ToolStripMenuItem());
@@ -80,10 +81,10 @@ namespace GameJam {
 			// menuPrincipal
 			// 
 			this->menuPrincipal->ImageScalingSize = System::Drawing::Size(20, 20);
-			this->menuPrincipal->Items->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(8) {
+			this->menuPrincipal->Items->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(9) {
 				this->asdToolStripMenuItem,
 					this->listadoDeRegistrosToolStripMenuItem, this->dashBoardToolStripMenuItem, this->indicadoresToolStripMenuItem, this->promptsToolStripMenuItem,
-					this->instruccionesToolStripMenuItem, this->creadoresToolStripMenuItem, this->mnuSalir
+					this->generarDatosToolStripMenuItem, this->instruccionesToolStripMenuItem, this->creadoresToolStripMenuItem, this->mnuSalir
 			});
 			this->menuPrincipal->Location = System::Drawing::Point(0, 0);
 			this->menuPrincipal->Name = L"menuPrincipal";
@@ -126,6 +127,13 @@ namespace GameJam {
 			this->promptsToolStripMenuItem->Text = L"Prompts";
 			this->promptsToolStripMenuItem->Click += gcnew System::EventHandler(this, &FrmInicio::mnuPrompts_click);
 			// 
+			// generarDatosToolStripMenuItem
+			// 
+			this->generarDatosToolStripMenuItem->Name = L"generarDatosToolStripMenuItem";
+			this->generarDatosToolStripMenuItem->Size = System::Drawing::Size(93, 20);
+			this->generarDatosToolStripMenuItem->Text = L"Generar Datos";
+			this->generarDatosToolStripMenuItem->Click += gcnew System::EventHandler(this, &FrmInicio::mnuGenerarDatos_Click);
+			// 
 			// instruccionesToolStripMenuItem
 			// 
 			this->instruccionesToolStripMenuItem->Name = L"instruccionesToolStripMenuItem";
@@ -167,6 +175,24 @@ namespace GameJam {
 
 		}
 #pragma endregion
+	private: System::Void mnuGenerarDatos_Click(
+		System::Object^ sender, System::EventArgs^ e) {
+
+		int siguienteID = 1;
+
+		for (int i = 0; i < gestorB->ObtenerTotal(); i++) {
+			RegistroAI* r = gestorB->ObtenerRegistro(i);
+
+			if (r->getID() >= siguienteID)
+				siguienteID = r->getID() + 1;
+		}
+
+		GeneradorAleatorio generador(100, siguienteID);
+		generador.GenerarDatos(*gestorB);
+
+		MessageBox::Show(L"Se han generaron 100 registros correctamente");
+	}
+
 	private: System::Void mnuCreadores_Click(System::Object^ sender, System::EventArgs^ e) {
 		FrmCreadores^ creadores = gcnew FrmCreadores(gestorB);
 		creadores->MdiParent = this;
@@ -184,7 +210,7 @@ namespace GameJam {
 		registro->MdiParent = this;
 		registro->Show();
 	}
-	
+
 	private: System::Void mnuListado_click(System::Object^ sender, System::EventArgs^ e) {
 		FrmListado^ listado = gcnew FrmListado(gestorB);
 		listado->MdiParent = this;
@@ -200,6 +226,7 @@ namespace GameJam {
 		dashboard->Show();
 	}
 
+
 	private: System::Void mnuIndicadores_click(System::Object^ sender, System::EventArgs^ e) {
 		FrmIndicadores^ indicador = gcnew FrmIndicadores(gestorB);
 		indicador->MdiParent = this;
@@ -211,7 +238,7 @@ namespace GameJam {
 		prompts->MdiParent = this;
 		prompts->Show();
 	}
-	
+
 	private: System::Void mnuSalir_Click(System::Object^ sender, System::EventArgs^ e) {
 		this->Close();
 	}
@@ -223,7 +250,7 @@ namespace GameJam {
 
 		MessageBox::Show(L"se generaron 100 registros!");
 	}
-private: System::Void FrmInicio_Load(System::Object^ sender, System::EventArgs^ e) {
-}
-};
+	private: System::Void FrmInicio_Load(System::Object^ sender, System::EventArgs^ e) {
+	}
+	};
 }
