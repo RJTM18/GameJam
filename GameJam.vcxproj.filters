@@ -95,6 +95,12 @@
     <ClInclude Include="GraficoNativo.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="FrmEditarRegistro.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="FrmEliminarRegistro.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -128,6 +134,12 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="FrmCreadores.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="FrmEditarRegistro.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="FrmEliminarRegistro.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

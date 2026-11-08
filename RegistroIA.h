@@ -8,10 +8,8 @@
 //En mayuscula, los parametros del contructor.
 //Por default, validacion sera false.
 
-class RegistroAI 
-{
-
- public:
+class RegistroAI {
+public:
 
     RegistroAI(int ID, string Fecha, string Curso,
         string Categoria, string HerramientaAI,

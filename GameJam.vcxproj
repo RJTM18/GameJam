@@ -145,6 +145,12 @@
     <ClInclude Include="FrmCreadores.h">
       <FileType>CppForm</FileType>
     </ClInclude>
+    <ClInclude Include="FrmEditarRegistro.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="FrmEliminarRegistro.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
     <ClInclude Include="FrmInstrucciones.h">
       <FileType>CppForm</FileType>
     </ClInclude>
@@ -178,6 +184,8 @@
   <ItemGroup>
     <ClCompile Include="AssemblyInfo.cpp" />
     <ClCompile Include="FrmCreadores.cpp" />
+    <ClCompile Include="FrmEditarRegistro.cpp" />
+    <ClCompile Include="FrmEliminarRegistro.cpp" />
     <ClCompile Include="FrmInstrucciones.cpp" />
     <ClCompile Include="FrmPrompts.cpp" />
     <ClCompile Include="FrmRegistro.cpp" />

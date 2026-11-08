@@ -286,7 +286,7 @@ namespace GameJam {
 		string cursos[3] = {
 			"Calculo I", "Algoritmos", "Matematica Discreta"
 		};
-
+	
 		for (int i = 0; i < 3; i++)
 		{
 			double porcentaje = datos.CalcularPorcentaje(cursos[i]);
