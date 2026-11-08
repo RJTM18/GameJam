@@ -21,14 +21,15 @@ namespace GameJam {
 	public:
 		FrmListado(GestorBitacora* gestor) {
 			InitializeComponent();
-			ActualizarLista();
 			gestorB = gestor;
+			ActualizarLista();
 		}
 
 	protected:
 		~FrmListado() {
 			if (components) { delete components; }
 		}
+
 	private: System::Windows::Forms::Label^ lblDetalleCurso;
 	protected:
 
