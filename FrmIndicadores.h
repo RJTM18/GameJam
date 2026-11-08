@@ -200,7 +200,7 @@ namespace GameJam {
 			legend1->Name = L"Legend1";
 			this->ChartIndicadores->Legends->Add(legend1);
 			this->ChartIndicadores->Location = System::Drawing::Point(172, 155);
-			this->ChartIndicadores->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->ChartIndicadores->Margin = System::Windows::Forms::Padding(2);
 			this->ChartIndicadores->Name = L"ChartIndicadores";
 			series1->ChartArea = L"ChartArea1";
 			series1->Legend = L"Legend1";
@@ -252,9 +252,9 @@ namespace GameJam {
 			this->Controls->Add(this->label3);
 			this->Controls->Add(this->label2);
 			this->Controls->Add(this->label1);
-			this->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->Margin = System::Windows::Forms::Padding(2);
 			this->Name = L"FrmIndicadores";
-			this->Text = L"FrmIndicadores";
+			this->Text = L"AI TRACE - Dashboard 2 : Metricas e Indicadores del Equipo";
 			this->Load += gcnew System::EventHandler(this, &FrmIndicadores::FrmIndicadores_Load);
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->ChartIndicadores))->EndInit();
 			this->ResumeLayout(false);
@@ -265,34 +265,62 @@ namespace GameJam {
 	private: System::Void FrmIndicadores_Load(System::Object^ sender, System::EventArgs^ e) {
 		Estadisticas datos(bitacora);
 		datos.analizar();
+
 		int validados = 0;
-		int total = datos.getTotalConsultas();
+		int total = bitacora->ObtenerTotal();
 
 		lblTotalRegistros->Text = Convert::ToString(total);
 
-		for (int i = 0; i < bitacora->ObtenerTotal(); i++)
+		for (int i = 0; i < total; i++)
 		{
-			if (!bitacora->ObtenerRegistro(i)->getComoSeValido().empty())
+			if (bitacora->ObtenerRegistro(i)->getValidacion() == true)
+			{
 				validados++;
-
-			double porcentaje = total > 0 ? validados * 100.0 / total : 0;
-
-			lblValidados->Text = Convert::ToString(porcentaje) + L"%";
-			lblNoValidados->Text = Convert::ToString(100 - porcentaje) + L"%";
+			}
 		}
+
+		double porcentajeValidado = 0;
+
+		double porcentajeNoValidado = 0;
+
+		if (total > 0)
+		{
+			porcentajeValidado = validados * 100.0 / total;
+			porcentajeNoValidado = 100 - porcentajeValidado;
+		}
+
+		lblValidados->Text = Convert::ToString(porcentajeValidado) + "%";
+
+		lblNoValidados->Text = Convert::ToString(porcentajeNoValidado) + "%";
 
 		ChartIndicadores->Series[0]->Points->Clear();
 
-		string cursos[3] = {
-			"Calculo I", "Algoritmos", "Matematica Discreta"
+		string herramientas[3] = {
+			"ChatGPT",
+			"Gemini",
+			"Copilot"
 		};
 	
 		for (int i = 0; i < 3; i++)
 		{
-			double porcentaje = datos.CalcularPorcentaje(cursos[i]);
+			int cantidad = 0;
+
+			for (int j = 0; j < total; j++)
+			{
+				if (bitacora->ObtenerRegistro(j)->getHerramientaAI()
+					== herramientas[i])
+				{
+					cantidad++;
+				}
+			}
+
+			double porcentaje = total > 0
+				? cantidad * 100.0 / total : 0;
 
 			ChartIndicadores->Series[0]->Points->AddXY(
-				gcnew String(cursos[i].c_str()), porcentaje);
+				gcnew String(herramientas[i].c_str()),
+				porcentaje
+			);
 		}
 
 		lblHallazgos->Text =

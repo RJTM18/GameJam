@@ -83,9 +83,10 @@ namespace GameJam {
 			this->lblTitulo->AutoSize = true;
 			this->lblTitulo->Font = (gcnew System::Drawing::Font(L"Microsoft YaHei UI", 16.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->lblTitulo->Location = System::Drawing::Point(25, 25);
+			this->lblTitulo->Location = System::Drawing::Point(19, 20);
+			this->lblTitulo->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
 			this->lblTitulo->Name = L"lblTitulo";
-			this->lblTitulo->Size = System::Drawing::Size(337, 36);
+			this->lblTitulo->Size = System::Drawing::Size(269, 30);
 			this->lblTitulo->TabIndex = 0;
 			this->lblTitulo->Text = L"AI TRACE - Dashboard 3";
 			this->lblTitulo->Click += gcnew System::EventHandler(this, &FormPrompts::lblTitulo_Click);
@@ -95,9 +96,10 @@ namespace GameJam {
 			this->label1->AutoSize = true;
 			this->label1->Font = (gcnew System::Drawing::Font(L"Microsoft YaHei UI", 9, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label1->Location = System::Drawing::Point(27, 61);
+			this->label1->Location = System::Drawing::Point(20, 50);
+			this->label1->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
 			this->label1->Name = L"label1";
-			this->label1->Size = System::Drawing::Size(226, 20);
+			this->label1->Size = System::Drawing::Size(186, 17);
 			this->label1->TabIndex = 1;
 			this->label1->Text = L"palabras clave de los prompts";
 			this->label1->Click += gcnew System::EventHandler(this, &FormPrompts::label1_Click);
@@ -108,13 +110,14 @@ namespace GameJam {
 			this->chartPalabras->ChartAreas->Add(chartArea1);
 			legend1->Name = L"Legend1";
 			this->chartPalabras->Legends->Add(legend1);
-			this->chartPalabras->Location = System::Drawing::Point(31, 96);
+			this->chartPalabras->Location = System::Drawing::Point(23, 78);
+			this->chartPalabras->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			this->chartPalabras->Name = L"chartPalabras";
 			series1->ChartArea = L"ChartArea1";
 			series1->Legend = L"Legend1";
 			series1->Name = L"Frecuencia";
 			this->chartPalabras->Series->Add(series1);
-			this->chartPalabras->Size = System::Drawing::Size(703, 459);
+			this->chartPalabras->Size = System::Drawing::Size(527, 373);
 			this->chartPalabras->TabIndex = 2;
 			this->chartPalabras->Text = L"chart1";
 			this->chartPalabras->Click += gcnew System::EventHandler(this, &FormPrompts::chartPalabras_Click);
@@ -126,11 +129,12 @@ namespace GameJam {
 				this->colPalabra,
 					this->colFrecuencia
 			});
-			this->dgvPalabras->Location = System::Drawing::Point(31, 561);
+			this->dgvPalabras->Location = System::Drawing::Point(23, 456);
+			this->dgvPalabras->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			this->dgvPalabras->Name = L"dgvPalabras";
 			this->dgvPalabras->RowHeadersWidth = 51;
 			this->dgvPalabras->RowTemplate->Height = 24;
-			this->dgvPalabras->Size = System::Drawing::Size(703, 142);
+			this->dgvPalabras->Size = System::Drawing::Size(527, 115);
 			this->dgvPalabras->TabIndex = 3;
 			// 
 			// colPalabra
@@ -154,9 +158,10 @@ namespace GameJam {
 			this->lblHallazgos0->AutoSize = true;
 			this->lblHallazgos0->Font = (gcnew System::Drawing::Font(L"Microsoft YaHei UI", 9, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->lblHallazgos0->Location = System::Drawing::Point(27, 722);
+			this->lblHallazgos0->Location = System::Drawing::Point(20, 587);
+			this->lblHallazgos0->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
 			this->lblHallazgos0->Name = L"lblHallazgos0";
-			this->lblHallazgos0->Size = System::Drawing::Size(79, 20);
+			this->lblHallazgos0->Size = System::Drawing::Size(65, 17);
 			this->lblHallazgos0->TabIndex = 4;
 			this->lblHallazgos0->Text = L"Hallazgos";
 			this->lblHallazgos0->Click += gcnew System::EventHandler(this, &FormPrompts::lblHallazgos0_Click);
@@ -166,9 +171,10 @@ namespace GameJam {
 			this->lblHallazgos->AutoSize = true;
 			this->lblHallazgos->Font = (gcnew System::Drawing::Font(L"Microsoft YaHei UI", 9, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->lblHallazgos->Location = System::Drawing::Point(27, 742);
+			this->lblHallazgos->Location = System::Drawing::Point(20, 603);
+			this->lblHallazgos->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
 			this->lblHallazgos->Name = L"lblHallazgos";
-			this->lblHallazgos->Size = System::Drawing::Size(21, 20);
+			this->lblHallazgos->Size = System::Drawing::Size(17, 17);
 			this->lblHallazgos->TabIndex = 5;
 			this->lblHallazgos->Text = L"...";
 			// 
@@ -176,9 +182,10 @@ namespace GameJam {
 			// 
 			this->btnAnalisis->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->btnAnalisis->Location = System::Drawing::Point(454, 709);
+			this->btnAnalisis->Location = System::Drawing::Point(340, 576);
+			this->btnAnalisis->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			this->btnAnalisis->Name = L"btnAnalisis";
-			this->btnAnalisis->Size = System::Drawing::Size(280, 80);
+			this->btnAnalisis->Size = System::Drawing::Size(210, 65);
 			this->btnAnalisis->TabIndex = 6;
 			this->btnAnalisis->Text = L"Actualizar analisis";
 			this->btnAnalisis->UseVisualStyleBackColor = true;
@@ -186,9 +193,9 @@ namespace GameJam {
 			// 
 			// FormPrompts
 			// 
-			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
+			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(826, 795);
+			this->ClientSize = System::Drawing::Size(620, 646);
 			this->Controls->Add(this->btnAnalisis);
 			this->Controls->Add(this->lblHallazgos);
 			this->Controls->Add(this->lblHallazgos0);
@@ -196,8 +203,9 @@ namespace GameJam {
 			this->Controls->Add(this->chartPalabras);
 			this->Controls->Add(this->label1);
 			this->Controls->Add(this->lblTitulo);
+			this->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			this->Name = L"FormPrompts";
-			this->Text = L"FormPrompts";
+			this->Text = L"AI TRACE - Dashboard 3 : Palabras Clave";
 			this->Load += gcnew System::EventHandler(this, &FormPrompts::FormPrompts_Load);
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->chartPalabras))->EndInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dgvPalabras))->EndInit();

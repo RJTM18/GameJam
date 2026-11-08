@@ -300,7 +300,7 @@ namespace GameJam {
 			this->Controls->Add(this->cboDetalleCurso);
 			this->Controls->Add(this->lblDetalleCurso);
 			this->Name = L"FrmListado";
-			this->Text = L"AI-TRACE — Detalle y Análisis";
+			this->Text = L"AI-TRACE - Detalle y Analisis";
 			this->ResumeLayout(false);
 			this->PerformLayout();
 

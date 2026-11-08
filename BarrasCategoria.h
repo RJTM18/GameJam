@@ -20,7 +20,7 @@ public:
 
         int conteos[9] = { 0 };
 
-        // Recorrido algorítmico manual (Exigido en la rúbrica para puntaje completo, sin LINQ)
+        
         for (int i = 0; i < totalReg; i++) {
         string catReg = bitacora->ObtenerRegistro(i)->getCategoria();
             for (int c = 0; c < 9; c++) {

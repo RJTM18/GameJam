@@ -73,8 +73,9 @@ namespace GameJam {
 			   this->groupBox1->Size = System::Drawing::Size(426, 390);
 			   this->groupBox1->TabIndex = 0;
 			   this->groupBox1->TabStop = false;
-			   this->groupBox1->Text = L"Registros por categoría (DrawRectangle)";
+			   this->groupBox1->Text = L"Registros por categoria (DrawRectangle)";
 			   this->groupBox1->Paint += gcnew System::Windows::Forms::PaintEventHandler(this, &FrmDashboard::groupBox1_Paint);
+			   this->groupBox1->Enter += gcnew System::EventHandler(this, &FrmDashboard::groupBox1_Enter);
 			   // 
 			   // lbelCategoriaMasUsada
 			   // 
@@ -83,9 +84,9 @@ namespace GameJam {
 				   System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
 			   this->lbelCategoriaMasUsada->Location = System::Drawing::Point(15, 364);
 			   this->lbelCategoriaMasUsada->Name = L"lbelCategoriaMasUsada";
-			   this->lbelCategoriaMasUsada->Size = System::Drawing::Size(131, 13);
+			   this->lbelCategoriaMasUsada->Size = System::Drawing::Size(129, 13);
 			   this->lbelCategoriaMasUsada->TabIndex = 0;
-			   this->lbelCategoriaMasUsada->Text = L"Categoría más usada:";
+			   this->lbelCategoriaMasUsada->Text = L"Categoria mas usada:";
 			   // 
 			   // groupBox2
 			   // 
@@ -131,7 +132,7 @@ namespace GameJam {
 			   this->Controls->Add(this->groupBox1);
 			   this->Name = L"FrmDashboard";
 			   this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
-			   this->Text = L"AI TRACE — Dashboard 1 : Hallazgos Principales";
+			   this->Text = L"AI TRACE - Dashboard 1 : Hallazgos Principales";
 			   this->Load += gcnew System::EventHandler(this, &FrmDashboard::FrmDashboard_Load);
 			   this->groupBox1->ResumeLayout(false);
 			   this->groupBox1->PerformLayout();
@@ -146,7 +147,7 @@ namespace GameJam {
 	private: System::Void FrmDashboard_Load(System::Object^ sender, System::EventArgs^ e) {
 		int totalReg = bitacora->ObtenerTotal();
 		if (totalReg == 0) {
-			lbelCategoriaMasUsada->Text = L"Categoría más usada: Sin registros cargados";
+			lbelCategoriaMasUsada->Text = L"Categoria mas usada: Sin registros cargados";
 			lblCursoMayor->Text = L"Curso con mayor uso: Sin registros cargados";
 			lblMesMayor->Text = L"Mes de mayor uso: Sin registros cargados";
 			return;
@@ -165,7 +166,7 @@ namespace GameJam {
 		for (int j = 1; j < 9; j++) {
 			if (conteoCat[j] > conteoCat[maxCat]) maxCat = j;
 		}
-		lbelCategoriaMasUsada->Text = L"Categoría más usada: " + gcnew String(categorias[maxCat].c_str()) + L" (" + conteoCat[maxCat] + L" consultas)";
+		lbelCategoriaMasUsada->Text = L"Categoria mas usada: " + gcnew String(categorias[maxCat].c_str()) + L" (" + conteoCat[maxCat] + L" consultas)";
 
 		// --- HALLAZGO 2: Curso Con Mayor Uso ---
 		std::string cursos[3] = { "Algoritmos", "Calculo I", "Matematica Discreta" };
@@ -217,5 +218,7 @@ namespace GameJam {
 	}
 	private: System::Void groupBox2_Enter(System::Object^ sender, System::EventArgs^ e) {
 	}
+private: System::Void groupBox1_Enter(System::Object^ sender, System::EventArgs^ e) {
+}
 };
 }
