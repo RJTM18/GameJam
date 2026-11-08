@@ -4,7 +4,7 @@
 #include <string>
 #include "RegistroIA.h"
 #include "GestorBitacora.h"
-
+#include <ctime>
 using namespace std;
 
 class GeneradorAleatorio{
@@ -17,6 +17,7 @@ public:
     GeneradorAleatorio(int Cantidad, int Contador) {
         cantidad = Cantidad;
         contador = Contador;
+        srand(time(nullptr));
     }
 
     string GenerarCurso()
