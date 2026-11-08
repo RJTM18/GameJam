@@ -263,34 +263,18 @@ namespace GameJam {
 
 #pragma endregion
 
-    private: System::Void btnGuardar_Click(
-        System::Object^ sender, System::EventArgs^ e)
-    {
+    private: System::Void btnGuardar_Click(System::Object^ sender, System::EventArgs^ e) {
         if (cboCurso->SelectedIndex == -1 ||
             cboCategoria->SelectedIndex == -1 ||
             comboBox1->SelectedIndex == -1 ||
             cboComoSeValido->SelectedIndex == -1 ||
-            String::IsNullOrWhiteSpace(txtQueConsultamos->Text))
-        {
+            String::IsNullOrWhiteSpace(txtQueConsultamos->Text)) {
             MessageBox::Show(L"Complete los campos obligatorios");
             return;
         }
 
-        int id = 1;
-
-        for (int i = 0; i < gestorB->ObtenerTotal(); i++)
-        {
-            RegistroAI* registro = gestorB->ObtenerRegistro(i);
-
-            if (registro->getID() >= id)
-            {
-                id = registro->getID() + 1;
-            }
-        }
-
-        string fecha = marshal_as<string>(
-            dtpFecha->Value.ToString("dd/MM/yyyy"));
-
+        int nuevaID = gestorB->getUltimoIDRegistro() + 1;
+        string fecha = marshal_as<string>(dtpFecha->Value.ToString("dd/MM/yyyy"));
         string curso = marshal_as<string>(cboCurso->Text);
         string categoria = marshal_as<string>(cboCategoria->Text);
         string herramienta = marshal_as<string>(comboBox1->Text);
@@ -299,17 +283,12 @@ namespace GameJam {
         string cambios = marshal_as<string>(txtQueSeCambio->Text);
         string validacion = marshal_as<string>(cboComoSeValido->Text);
 
-        RegistroAI* nuevo = new RegistroAI
-        (
-            id, fecha, curso, categoria, herramienta,
+        RegistroAI* nuevo = new RegistroAI (
+            nuevaID, fecha, curso, categoria, herramienta,
             consulta, resultado, cambios, validacion);
 
-        if (gestorB->Agregar(nuevo))
-        {
-            MessageBox::Show(L"Registro guardado correctamente");
-        }
-        else
-        {
+        if (gestorB->Agregar(nuevo)) { MessageBox::Show(L"Registro guardado correctamente"); }
+        else {
             delete nuevo;
             MessageBox::Show(L"No se pudo guardar el registro");
         }

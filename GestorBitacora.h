@@ -22,6 +22,12 @@ class GestorBitacora {
         return contador;
     }
 
+    //Retorna la ultima ID
+    int getUltimoIDRegistro() {
+        if (registros.empty()) return 0;
+        return registros.back()->getID();
+    }
+
     bool Agregar(RegistroAI* nuevo) {
         if (nuevo == nullptr) { return false; }
         if (Buscar(nuevo->getID()) != nullptr) { return false; }

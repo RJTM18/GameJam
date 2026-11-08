@@ -21,7 +21,7 @@ namespace GameJam {
 	public:
 		FrmListado(GestorBitacora* gestor) {
 			InitializeComponent();
-			gestorB = gestor;
+			gestorB = gestor; //pase de la direccion del objeto creado en Inicio
 			ActualizarLista();
 		}
 
