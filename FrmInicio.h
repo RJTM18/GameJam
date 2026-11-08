@@ -219,13 +219,12 @@ namespace GameJam {
 
 	private: System::Void mnuHallazgos_click(System::Object^ sender, System::EventArgs^ e) {
 		// Instanciamos el Dashboard pasándole el puntero de la bitácora en memoria
-		FrmDashboard^ dashboard = gcnew FrmDashboard(bitacora);
+		FrmDashboard^ dashboard = gcnew FrmDashboard(gestorB);
 
 		// Lo configuramos como hijo MDI para que se abra dentro del formulario principal
 		dashboard->MdiParent = this;
 		dashboard->Show();
 	}
-
 
 	private: System::Void mnuIndicadores_click(System::Object^ sender, System::EventArgs^ e) {
 		FrmIndicadores^ indicador = gcnew FrmIndicadores(gestorB);

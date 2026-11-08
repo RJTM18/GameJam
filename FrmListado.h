@@ -331,11 +331,41 @@ namespace GameJam {
 			lblTotalRegistros->Text = "Total de Registros: " + gestorB->ObtenerTotal().ToString();
 			lblVerificados->Text = "Verificados: " + gestorB->getTotalVerificados().ToString();
 			lblNoVerificados->Text = "No verificados: " + (gestorB->ObtenerTotal() - gestorB->getTotalVerificados()).ToString();
-			};
-		};
+			}
+		}
+
+	private: int TotalVerificados(vector<RegistroAI*> ListaRegistros) {
+		int contador = 0;
+		for (int i = 0; i < (int)ListaRegistros.size(); i++) {
+			if (ListaRegistros[i]->getValidacion()) contador++;
+		}
+		return contador;
+	}
+
+	//Cambiar lista segun Preferencias Curso/Categoria/Herramienta IA
+	private: void ModificarLista(vector<RegistroAI*> ListaRegistros) {
+		lvRegistros->Items->Clear();
+
+		int totalRegistros = static_cast<int>(ListaRegistros.size());
+
+		for (int i = 0; i < totalRegistros; i++) {
+			RegistroAI* r = ListaRegistros[i];
+			ListViewItem^ fila = gcnew ListViewItem(Convert::ToString(r->getID()));
+			fila->SubItems->Add(gcnew String(r->getFecha().c_str()));
+			fila->SubItems->Add(gcnew String(r->getCurso().c_str()));
+			fila->SubItems->Add(gcnew String(r->getCategoria().c_str()));
+			fila->SubItems->Add(gcnew String(r->getHerramientaAI().c_str()));
+			fila->SubItems->Add(gcnew String(r->getConsulta().c_str()));
+			fila->SubItems->Add(gcnew String(r->getValidacion() ? L"Si" : L"No"));
+			lvRegistros->Items->Add(fila);
+		}
+
+		lblTotalRegistros->Text = "Total de Registros: " + totalRegistros.ToString();
+		lblVerificados->Text = "Verificados: " + TotalVerificados(ListaRegistros).ToString();
+		lblNoVerificados->Text = "No verificados: " + (totalRegistros - TotalVerificados(ListaRegistros)).ToString();
+	}
 
 	private: System::Void btnBuscar_Click(System::Object^ sender, System::EventArgs^ e) {
-		/*
 		if (cboDetalleCurso->SelectedIndex < 0) { MessageBox::Show("Seleccione Curso"); return; }
 		if (cboDetalleCategoria->SelectedIndex < 0) { MessageBox::Show("Seleccione Categoria"); return; }
 		if (cboDetalleHerramienta->SelectedIndex < 0) { MessageBox::Show("Seleccione Herramienta de IA"); return; }
@@ -348,14 +378,15 @@ namespace GameJam {
 		vector<RegistroAI*> nuevaLista;
 
 		for (int i = 0; i < gestorB->getUltimoIDRegistro(); i++) {
-			if (cursoSelec == registros[i]->getCurso() or
-				cursoSelec == registros[i]->getCurso() or
-				cursoSelec == registros[i]->getCurso()) {
+			if ((cursoSelec == registros[i]->getCurso()) ||
+				(cursoSelec == registros[i]->getCurso()) ||
+				(cursoSelec == registros[i]->getCurso())) {
 				nuevaLista.push_back(registros[i]);
 			}
 		}
-		*/
+		ModificarLista(nuevaLista);
 	}
+
 	private: System::Void btnLimpiar_Click(System::Object^ sender, System::EventArgs^ e) {
 		cboDetalleCategoria->SelectedIndex = -1;
 		cboDetalleCurso->SelectedIndex = -1;
