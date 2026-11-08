@@ -214,6 +214,17 @@ public:
             comoSeValido
         );
 
+        int numero = rand() % 2;
+
+        if (numero == 0)
+        {
+            nuevo->setValidacion(true);
+        }
+        else
+        {
+            nuevo->setValidacion(false);
+        }
+
         return nuevo;
     }
 

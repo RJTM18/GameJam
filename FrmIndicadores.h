@@ -273,7 +273,7 @@ namespace GameJam {
 
 		for (int i = 0; i < total; i++)
 		{
-			if (!bitacora->ObtenerRegistro(i)->getComoSeValido().empty())
+			if (bitacora->ObtenerRegistro(i)->getValidacion() == true)
 			{
 				validados++;
 			}
