@@ -146,7 +146,8 @@ namespace GameJam {
 
             this->cboCategoria->Location = Point(13, 86);
             this->cboCategoria->Size = Drawing::Size(200, 21);
-            this->cboCategoria->DropDownStyle = ComboBoxStyle::DropDownList;
+            this->cboCategoria->DropDownStyle =
+                System::Windows::Forms::ComboBoxStyle::DropDown;
 
             this->cboCategoria->Items->AddRange
             (
@@ -196,7 +197,7 @@ namespace GameJam {
 
             this->cboCurso->Location = Point(394, 37);
             this->cboCurso->Size = Drawing::Size(240, 21);
-            this->cboCurso->DropDownStyle = ComboBoxStyle::DropDownList;
+            this->cboCurso->DropDownStyle = ComboBoxStyle::DropDown;
 
         
             this->lblHerramienta->Location = Point(391, 70);
@@ -205,7 +206,7 @@ namespace GameJam {
 
             this->comboBox1->Location = Point(394, 86);
             this->comboBox1->Size = Drawing::Size(240, 21);
-            this->comboBox1->DropDownStyle = ComboBoxStyle::DropDownList;
+            this->comboBox1->DropDownStyle = ComboBoxStyle::DropDown;
 
             
             this->lblComoSeValido->Location = Point(391, 220);
@@ -214,7 +215,7 @@ namespace GameJam {
 
             this->cboComoSeValido->Location = Point(394, 236);
             this->cboComoSeValido->Size = Drawing::Size(240, 21);
-            this->cboComoSeValido->DropDownStyle = ComboBoxStyle::DropDownList;
+            this->cboComoSeValido->DropDownStyle = ComboBoxStyle::DropDown;
 
             
             this->btnGuardar->Location = Point(27, 303);
