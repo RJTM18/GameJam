@@ -1,5 +1,6 @@
 #pragma once
 #include "GestorBitacora.h"
+#include "FrmDashboard.h"
 #include <msclr/marshal_cppstd.h>
 
 namespace GameJam {
@@ -9,6 +10,7 @@ namespace GameJam {
 	using namespace System::Windows::Forms;
 	using namespace System::Data;
 	using namespace System::Drawing;
+	using namespace msclr::interop;
 
 	/// <summary>
 	/// Summary for FrmListado
@@ -103,9 +105,9 @@ namespace GameJam {
 			// 
 			this->cboDetalleCurso->DropDownStyle = System::Windows::Forms::ComboBoxStyle::DropDownList;
 			this->cboDetalleCurso->FormattingEnabled = true;
-			this->cboDetalleCurso->Items->AddRange(gcnew cli::array< System::Object^  >(5) {
-				L"Todos", L"Algoritmos", L"Matematica", L"Fisica",
-					L"Lenguaje"
+			this->cboDetalleCurso->Items->AddRange(gcnew cli::array< System::Object^  >(4) {
+				L"Todos", L"Algoritmos", L"Matematica Discreta",
+					L"Calculo 1"
 			});
 			this->cboDetalleCurso->Location = System::Drawing::Point(12, 25);
 			this->cboDetalleCurso->Name = L"cboDetalleCurso";
@@ -126,7 +128,7 @@ namespace GameJam {
 			this->cboDetalleCategoria->DropDownStyle = System::Windows::Forms::ComboBoxStyle::DropDownList;
 			this->cboDetalleCategoria->FormattingEnabled = true;
 			this->cboDetalleCategoria->Items->AddRange(gcnew cli::array< System::Object^  >(10) {
-				L"Todas", L"Tarea", L"Examen", L"LB1",
+				L"Todos", L"Tarea", L"Examen", L"LB1",
 					L"EA1", L"Reto", L"Proyecto/Trabajo", L"Teoria/Consulta conceptual", L"Depuracion de errores", L"Otro"
 			});
 			this->cboDetalleCategoria->Location = System::Drawing::Point(174, 25);
@@ -148,7 +150,7 @@ namespace GameJam {
 			this->cboDetalleHerramienta->DropDownStyle = System::Windows::Forms::ComboBoxStyle::DropDownList;
 			this->cboDetalleHerramienta->FormattingEnabled = true;
 			this->cboDetalleHerramienta->Items->AddRange(gcnew cli::array< System::Object^  >(5) {
-				L"Todas", L"ChatGPT", L"Claude", L"Copilot",
+				L"Todos", L"ChatGPT", L"Claude", L"Copilot",
 					L"Gemini"
 			});
 			this->cboDetalleHerramienta->Location = System::Drawing::Point(337, 25);
@@ -267,7 +269,7 @@ namespace GameJam {
 			this->btnGoDashBoard->TabIndex = 12;
 			this->btnGoDashBoard->Text = L"Ir a Dashboard";
 			this->btnGoDashBoard->UseVisualStyleBackColor = true;
-			this->btnGoDashBoard->Click += gcnew System::EventHandler(this, &FrmListado::btnLimpiar_Click);
+			this->btnGoDashBoard->Click += gcnew System::EventHandler(this, &FrmListado::btnGoDashboard_Click);
 			// 
 			// btnLimpiar
 			// 
@@ -366,7 +368,6 @@ namespace GameJam {
 	}
 
 	private: System::Void btnBuscar_Click(System::Object^ sender, System::EventArgs^ e) {
-		/*
 		if (cboDetalleCurso->SelectedIndex < 0) { MessageBox::Show("Seleccione Curso"); return; }
 		if (cboDetalleCategoria->SelectedIndex < 0) { MessageBox::Show("Seleccione Categoria"); return; }
 		if (cboDetalleHerramienta->SelectedIndex < 0) { MessageBox::Show("Seleccione Herramienta de IA"); return; }
@@ -378,21 +379,28 @@ namespace GameJam {
 		vector<RegistroAI*> registros = gestorB->getRegistros();
 		vector<RegistroAI*> nuevaLista;
 
-		for (int i = 0; i < gestorB->getUltimoIDRegistro(); i++) {
-			if ((cursoSelec == registros[i]->getCurso()) ||
-				(cursoSelec == registros[i]->getCurso()) ||
-				(cursoSelec == registros[i]->getCurso())) {
-				nuevaLista.push_back(registros[i]);
-			}
+		for (int i = 0; i < gestorB->ObtenerTotal(); i++) {
+			RegistroAI* r = registros[i];
+
+			bool _Curso = (cursoSelec == "Todos" || r->getCurso() == cursoSelec);
+			bool _Categoria = (categoriaSelec == "Todos" || r->getCategoria() == categoriaSelec);
+			bool _Herramienta = (HerramientaIASelec == "Todos" || r->getHerramientaAI() == HerramientaIASelec);
+
+			if (_Curso || _Categoria || _Herramienta) nuevaLista.push_back(registros[i]);
 		}
 		ModificarLista(nuevaLista);
-		*/
 	}
 
 	private: System::Void btnLimpiar_Click(System::Object^ sender, System::EventArgs^ e) {
 		cboDetalleCategoria->SelectedIndex = -1;
 		cboDetalleCurso->SelectedIndex = -1;
 		cboDetalleHerramienta->SelectedIndex = -1;
+	}
+
+	private: System::Void btnGoDashboard_Click(System::Object^ sender, System::EventArgs^ e) {
+		FrmDashboard^ dash = gcnew FrmDashboard(gestorB);
+		dash->MdiParent = this->MdiParent;
+		dash->Show();
 	}
 };
 };
