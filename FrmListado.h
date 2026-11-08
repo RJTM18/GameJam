@@ -366,13 +366,14 @@ namespace GameJam {
 	}
 
 	private: System::Void btnBuscar_Click(System::Object^ sender, System::EventArgs^ e) {
+		/*
 		if (cboDetalleCurso->SelectedIndex < 0) { MessageBox::Show("Seleccione Curso"); return; }
 		if (cboDetalleCategoria->SelectedIndex < 0) { MessageBox::Show("Seleccione Categoria"); return; }
 		if (cboDetalleHerramienta->SelectedIndex < 0) { MessageBox::Show("Seleccione Herramienta de IA"); return; }
 
-		string cursoSelec = marshal_as<string>(cboDetalleCurso->SelectedIndex);
-		string categoriaSelec = marshal_as<string>(cboDetalleCategoria->SelectedIndex);
-		string HerramientaIASelec = marshal_as<string>(cboDetalleHerramienta->SelectedIndex);
+		string cursoSelec = marshal_as<string>(cboDetalleCurso->Text);
+		string categoriaSelec = marshal_as<string>(cboDetalleCategoria->Text);
+		string HerramientaIASelec = marshal_as<string>(cboDetalleHerramienta->Text);
 
 		vector<RegistroAI*> registros = gestorB->getRegistros();
 		vector<RegistroAI*> nuevaLista;
@@ -385,6 +386,7 @@ namespace GameJam {
 			}
 		}
 		ModificarLista(nuevaLista);
+		*/
 	}
 
 	private: System::Void btnLimpiar_Click(System::Object^ sender, System::EventArgs^ e) {
