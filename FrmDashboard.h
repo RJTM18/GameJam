@@ -75,6 +75,7 @@ namespace GameJam {
 			   this->groupBox1->TabStop = false;
 			   this->groupBox1->Text = L"Registros por categoria (DrawRectangle)";
 			   this->groupBox1->Paint += gcnew System::Windows::Forms::PaintEventHandler(this, &FrmDashboard::groupBox1_Paint);
+			   this->groupBox1->Enter += gcnew System::EventHandler(this, &FrmDashboard::groupBox1_Enter);
 			   // 
 			   // lbelCategoriaMasUsada
 			   // 
@@ -165,7 +166,7 @@ namespace GameJam {
 		for (int j = 1; j < 9; j++) {
 			if (conteoCat[j] > conteoCat[maxCat]) maxCat = j;
 		}
-		lbelCategoriaMasUsada->Text = L"Categoría más usada: " + gcnew String(categorias[maxCat].c_str()) + L" (" + conteoCat[maxCat] + L" consultas)";
+		lbelCategoriaMasUsada->Text = L"Categoria mas usada: " + gcnew String(categorias[maxCat].c_str()) + L" (" + conteoCat[maxCat] + L" consultas)";
 
 		// --- HALLAZGO 2: Curso Con Mayor Uso ---
 		std::string cursos[3] = { "Algoritmos", "Calculo I", "Matematica Discreta" };
@@ -217,5 +218,7 @@ namespace GameJam {
 	}
 	private: System::Void groupBox2_Enter(System::Object^ sender, System::EventArgs^ e) {
 	}
+private: System::Void groupBox1_Enter(System::Object^ sender, System::EventArgs^ e) {
+}
 };
 }
