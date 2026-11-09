@@ -23,7 +23,7 @@ namespace GameJam {
 	public ref class FrmEditarRegistro : public System::Windows::Forms::Form {
 	private:
 		GestorBitacora* gestorB;
-		int idActual; // ID del registro cargado (0 = ninguno)
+		int idActual; 
 
 	public:
 		FrmEditarRegistro(GestorBitacora* gestor)
@@ -42,18 +42,15 @@ namespace GameJam {
 		}
 
 	private:
-		// --- Parte superior: busqueda por ID ---
 		System::Windows::Forms::Label^ lblId;
 		System::Windows::Forms::TextBox^ txtId;
 		System::Windows::Forms::Button^ btnBuscar;
 
-		// --- Panel con la tabla "actual vs nuevo" ---
 		System::Windows::Forms::Panel^ pnlEdicion;
 		System::Windows::Forms::Label^ lblColCampo;
 		System::Windows::Forms::Label^ lblColActual;
 		System::Windows::Forms::Label^ lblColNuevo;
 
-		// Nombres de los campos
 		System::Windows::Forms::Label^ lblFecha;
 		System::Windows::Forms::Label^ lblCurso;
 		System::Windows::Forms::Label^ lblCategoria;
@@ -63,7 +60,6 @@ namespace GameJam {
 		System::Windows::Forms::Label^ lblCambios;
 		System::Windows::Forms::Label^ lblValidacion;
 
-		// Columna izquierda: valores actuales (solo lectura)
 		System::Windows::Forms::TextBox^ txtActualFecha;
 		System::Windows::Forms::TextBox^ txtActualCurso;
 		System::Windows::Forms::TextBox^ txtActualCategoria;
@@ -73,7 +69,6 @@ namespace GameJam {
 		System::Windows::Forms::TextBox^ txtActualCambios;
 		System::Windows::Forms::TextBox^ txtActualValidacion;
 
-		// Columna derecha: valores nuevos (editables)
 		System::Windows::Forms::DateTimePicker^ dtpNuevaFecha;
 		System::Windows::Forms::ComboBox^ cboNuevoCurso;
 		System::Windows::Forms::ComboBox^ cboNuevaCategoria;
@@ -83,7 +78,6 @@ namespace GameJam {
 		System::Windows::Forms::TextBox^ txtNuevoCambios;
 		System::Windows::Forms::ComboBox^ cboNuevaValidacion;
 
-		// --- Botones inferiores ---
 		System::Windows::Forms::Button^ btnEditar;
 		System::Windows::Forms::Button^ btnCancelar;
 
@@ -405,11 +399,6 @@ namespace GameJam {
 		}
 #pragma endregion
 
-	// ------------------------------------------------------------------
-	// Metodos auxiliares
-	// ------------------------------------------------------------------
-
-	// Deja el formulario sin registro cargado: panel y boton Editar deshabilitados.
 	private: void Bloquear() {
 		idActual = 0;
 		pnlEdicion->Enabled = false;
@@ -445,7 +434,6 @@ namespace GameJam {
 		txtActualCambios->Text = cambios;
 		txtActualValidacion->Text = validacion;
 
-		// Derecha inicialmente con los mismos valores que la columna izquierda
 		DateTime f;
 		if (DateTime::TryParseExact(fecha, L"d/M/yyyy",
 			System::Globalization::CultureInfo::InvariantCulture,
@@ -454,7 +442,6 @@ namespace GameJam {
 		}
 		else { dtpNuevaFecha->Value = DateTime::Today; }
 
-		// FindStringExact devuelve -1 si el valor no esta en la lista (queda vacio)
 		cboNuevoCurso->SelectedIndex = cboNuevoCurso->FindStringExact(curso);
 		cboNuevaCategoria->SelectedIndex = cboNuevaCategoria->FindStringExact(categoria);
 		cboNuevaHerramienta->SelectedIndex = cboNuevaHerramienta->FindStringExact(herramienta);
@@ -491,7 +478,6 @@ namespace GameJam {
 		CargarRegistro(r);
 	}
 
-	// Si el usuario cambia el ID despues de buscar, se bloquea hasta que vuelva a buscar.
 	private: System::Void txtId_TextChanged(System::Object^ sender, System::EventArgs^ e) {
 		if (pnlEdicion->Enabled) { Bloquear(); }
 	}
@@ -527,11 +513,9 @@ namespace GameJam {
 		string resultado = marshal_as<string>(txtNuevoResultado->Text);
 		string cambios = marshal_as<string>(txtNuevoCambios->Text);
 
-		// Objeto temporal en la pila: Editar() solo copia sus valores, no guarda el puntero.
 		RegistroAI datos(idActual, fecha, curso, categoria, herramienta,
 			consulta, resultado, cambios, comoSeValido);
 
-		// El constructor deja validacion = false; se conserva la del registro original.
 		datos.setValidacion(original->getValidacion());
 
 		if (gestorB->Editar(idActual, &datos)) {
