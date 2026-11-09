@@ -8,6 +8,7 @@
 #include <string>
 #include <msclr/marshal_cppstd.h>
 #include "FrmListado.h"
+#include "FrmEliminarRegistro.h"
 
 using namespace std;
 using namespace msclr::interop;
@@ -334,6 +335,7 @@ namespace GameJam {
             this->Controls->Add(this->grpNuevoRegistro);
             this->Name = L"FrmRegistro";
             this->Text = L"AI-TRACE - Registro de Bitacora de Uso de IA";
+            this->Load += gcnew System::EventHandler(this, &FrmRegistro::FrmRegistro_Load);
             this->grpNuevoRegistro->ResumeLayout(false);
             this->grpNuevoRegistro->PerformLayout();
             this->ResumeLayout(false);
@@ -415,8 +417,10 @@ namespace GameJam {
         edicion->Show();
     }
     private: System::Void btnEliminarRegistro_click(System::Object^ sender, System::EventArgs^ e) {
-        FrmEliminarRegistro^ eliminacion = gcnew FrmEliminarRegistro(gestorB);
-        eliminacion->Show();
+        GameJam::FrmEliminarRegistro^ frmDel = gcnew GameJam::FrmEliminarRegistro(gestorB);
+        frmDel->ShowDialog();
     }
+private: System::Void FrmRegistro_Load(System::Object^ sender, System::EventArgs^ e) {
+}
 };
 }

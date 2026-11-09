@@ -165,7 +165,7 @@ namespace GameJam {
 			this->IsMdiContainer = true;
 			this->MainMenuStrip = this->menuPrincipal;
 			this->Name = L"FrmInicio";
-			this->Text = L"FrmInicio";
+			this->Text = L"AI-TRACE";
 			this->Load += gcnew System::EventHandler(this, &FrmInicio::FrmInicio_Load);
 			this->Click += gcnew System::EventHandler(this, &FrmInicio::FrmInicio_Click);
 			this->menuPrincipal->ResumeLayout(false);

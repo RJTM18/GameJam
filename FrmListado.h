@@ -301,6 +301,7 @@ namespace GameJam {
 			this->Controls->Add(this->lblDetalleCurso);
 			this->Name = L"FrmListado";
 			this->Text = L"AI-TRACE - Detalle y Analisis";
+			this->Load += gcnew System::EventHandler(this, &FrmListado::FrmListado_Load);
 			this->ResumeLayout(false);
 			this->PerformLayout();
 
@@ -402,5 +403,7 @@ namespace GameJam {
 		dash->MdiParent = this->MdiParent;
 		dash->Show();
 	}
+private: System::Void FrmListado_Load(System::Object^ sender, System::EventArgs^ e) {
+}
 };
 };
